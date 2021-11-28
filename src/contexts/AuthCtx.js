@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TOKEN, USER_ID } from "./../api/constants.js";
+import { TOKEN, USER, USER_ID } from "./../api/constants.js";
 import requester from "./../api/requester.js";
 import { useUser } from "./UserCtx";
 
@@ -13,52 +13,46 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
-//   const [userInfo, setUserInfo] = useUser();
   const [isLoading, setIsLoading] = useState(true);
-  const [userRole, setUserRole] = useState("");
   const [isRegistrationCompleted, setIsRegistrationCompleted] = useState(false);
   const navigate = useNavigate();
 
-  const logout = async () => {
-    localStorage.clear();
-    sessionStorage.clear();
-    navigate("/");
-  };
-
   const signup = async (data) => {
+    console.log(data);
     requester
       .post("Authentication/register", data)
       .then((res) => {
         if (res !== undefined) {
           if (res.hasOwnProperty("status") == 400) {
-            return { error: res.title };
+            return console.log(res.title);
           } else if (res.error) {
-            return { error: res.error, loading: false };
+            return console.log(res.error);
           } else if (res.length >= 0) {
-            res.forEach((err) =>
-              this.setState({ error: err.description, loading: false })
-            );
+            res.forEach((err) => console.log({ error: err.description }));
           }
         } else {
           sessionStorage.setItem("token", res.token);
           sessionStorage.setItem("user-id", res.userId);
+          setCurrentUser({'username': res.username, 'email':res.email, 'userId': res.userId});
         }
       })
       .then((res) => {
         return navigate("/");
       });
-
+    setIsRegistrationCompleted(true);
+    return currentUser;
     //TODO GET USER SERVER RESPOND AND SAVE IT TO GLOBAL CNTX
   };
 
   const login = async (data) => {
-      console.log(data);
     requester
       .post("Authentication/login", data)
       .then((res) => {
         if (!res.hasOwnProperty("status")) {
+          sessionStorage.setItem(USER, "true");
           sessionStorage.setItem(TOKEN, res.token);
           sessionStorage.setItem(USER_ID, res.userId);
+          setCurrentUser({ 'user_Id':res.userId, 'token': res.token});
           navigate("/");
         } else {
           if (res.status === 401) {
@@ -74,7 +68,7 @@ export const AuthProvider = ({ children }) => {
         console.log(res);
       });
     setIsRegistrationCompleted(true);
-    return;
+    return currentUser ;
 
     //TODO GET USER SERVER RESPOND AND SAVE IT TO GLOBAL CNTX
   };
@@ -83,7 +77,7 @@ export const AuthProvider = ({ children }) => {
     setIsRegistrationCompleted,
     login,
     signup,
-    logout,
+    // logout,
   };
 
   return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
