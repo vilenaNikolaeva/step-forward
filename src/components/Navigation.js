@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { FaUserAlt, FaPen, FaHome } from "react-icons/fa";
+import { useAuth } from './../contexts/AuthCtx';
+import { useUser } from './../contexts/UserCtx';
 
 function Navigation() {
   // CHECK IF THE USER IS LOGGEDIN
-
-  const [loggedIn, setIsLoggedIn] = useState(false);
+  const { userInfo } = useUser();
 
   const userNavbarLink = (
     <>
@@ -53,7 +54,7 @@ function Navigation() {
         <Link to="/">
           <FaHome />
         </Link>
-        {loggedIn ? userNavbarLink : guestNavBarLink}
+        {!userInfo ? userNavbarLink : guestNavBarLink}
       </div>
     </div>
   );

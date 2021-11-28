@@ -5,14 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useAuth();
-//   const { updateUserContext } = useUser();
+  const { updateUserContext } = useUser();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const onLoginSubmit = async (ev) => {
-      console.log('Here')
+    console.log("Here");
     ev.preventDefault();
 
     if (username === "" || password === "") {
@@ -20,9 +20,11 @@ function Login() {
     }
 
     try {
-      setError("");
-      const userDetails = await login({'username': username, 'password': password});
-    //   updateUserContext(userDetails);
+      const userDetails = await login({
+        username: username,
+        password: password,
+      });
+      updateUserContext(userDetails);
       navigate("/");
     } catch (err) {
       console.log(err.message);
@@ -32,7 +34,6 @@ function Login() {
 
   return (
     <>
-      <h3>Hello</h3>
       <form onSubmit={onLoginSubmit} className="">
         <input
           name="username"
@@ -51,16 +52,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="">
-          <button
-            type="submit"
-          >
-            LogIn
-          </button>
-          <Link
-            to="/signup"
-          >
-            SignUp
-          </Link>
+          <button type="submit">LogIn</button>
         </div>
       </form>
     </>
