@@ -1,9 +1,9 @@
 import React from "react";
 
-function PersonalResume (){
+function UserProfile (){
     return(
         <h2>Personal Resume</h2>
     )
 }
 
-export default PersonalResume;
+export default UserProfile;
