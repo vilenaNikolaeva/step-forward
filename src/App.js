@@ -1,26 +1,36 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Navigation from "./components/Navigation";
+import Header from "./components/Header";
 import AppRouter from "./api/AppRouter";
 import Footer from "./components/user/edit/Footer";
 import { AuthProvider } from "./contexts/AuthCtx";
 import { UserProvider } from "./contexts/UserCtx";
+import { ToastContainer } from "react-toastify";
+import PageWrapper from "./wrappers/PageWrapper";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <UserProvider>
-          <div className="Header">
-            <Navigation />
-          </div>
-          <div className="MainContainer">
+          <Header />
+          <PageWrapper>
             <AppRouter />
-          </div>
-          <div className="Footer">
-            <Footer />
-          </div>
+          </PageWrapper>
+          <Footer />
         </UserProvider>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </AuthProvider>
     </div>
   );

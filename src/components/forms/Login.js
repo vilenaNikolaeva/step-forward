@@ -1,60 +1,66 @@
 import React, { useState } from "react";
 import { useAuth } from "./../../contexts/AuthCtx";
 import { useUser } from "./../../contexts/UserCtx";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useAuth();
-  const { updateUserContext } = useUser();
-  const [username, setUsername] = useState("");
+  const { setUserInfo } = useUser();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const onLoginSubmit = async (ev) => {
-    console.log("Here");
     ev.preventDefault();
 
-    if (username === "" || password === "") {
+    if (email === "" || password === "") {
       return setError("No empty fields are allowed!");
     }
 
     try {
+      setIsLoading(true);
       const userDetails = await login({
-        username: username,
+        email: email,
         password: password,
       });
-      updateUserContext(userDetails);
+      setUserInfo(userDetails);
+      setIsLoading(false);
       navigate("/");
+
     } catch (err) {
       console.log(err.message);
-      setError("Wrong email or password!");
     }
   };
 
   return (
     <>
-      <form onSubmit={onLoginSubmit} className="">
-        <input
-          name="username"
-          error={error ? error : null}
-          type="text"
-          placeholder="User Name"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+      {isLoading ? (
+        <p style={{ fontSize: "5rem", color: "green" }}>Loading...</p>
+      ) : (
+        <form onSubmit={onLoginSubmit} className="">
+          <input
+            name="email"
+            error={error ? error : null}
+            type="email"
+            placeholder="User email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          name="password"
-          type="password"
-          placeholder="Password *"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <div className="">
-          <button type="submit">LogIn</button>
-        </div>
-      </form>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password *"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div className="">
+            <button type="submit">LogIn</button>
+          </div>
+        </form>
+      )}
     </>
   );
 }
