@@ -1,9 +1,18 @@
 import React from "react";
+import AsideMenu from "./user/profile/AsideMenu";
+import ProfileWrapperContainer from "./../wrappers/ProfileWrapperContainer";
+import ProfileRouter from "./../api/ProfileRouter";
 
-function UserProfile (){
-    return(
-        <h2>Personal Resume</h2>
-    )
+function UserProfile() {
+  return (
+    <>
+      <AsideMenu />
+      <hr />
+      <ProfileWrapperContainer>
+        <ProfileRouter />
+      </ProfileWrapperContainer>
+    </>
+  );
 }
 
 export default UserProfile;

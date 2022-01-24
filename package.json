@@ -12,6 +12,7 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.1.0",
+    "react-tsparticles": "^1.39.0",
     "sass": "^1.49.0",
     "web-vitals": "^1.1.2"
   },
@@ -19,6 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "compile:sass": "node-sass --watch src/assets/scss --output src/ --recursive",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

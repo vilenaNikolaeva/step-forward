@@ -4,7 +4,7 @@ import { FaUserAlt, FaPen, FaHome } from "react-icons/fa";
 import { useUser } from "../contexts/UserCtx";
 import { useAuth } from "../contexts/AuthCtx";
 import logo from "../assets/images/Logo.png";
-import styles from "../assets/scss/styles/Header.module.scss";
+import styles from "../assets/scss/componentsStyles/Header.module.scss";
 
 function Header() {
   const { currentUser, logout } = useAuth();
@@ -17,21 +17,15 @@ function Header() {
 
   const userNavbarLink = (
     <>
-      <Link to="/profile" className="nav-link active " aria-current="page">
+      {/* <Link to="/profile" className="nav-link active " aria-current="page">
         <FaUserAlt />
       </Link>
       <Link to="/edit" className="nav-link active" aria-current="page">
         <FaPen />
-      </Link>
+      </Link> */}
       <button
-        className="navbar-toggler "
-        style={{ backgroundColor: "cadetblue", width: "5rem", height: "2rem" }}
+        className={styles["headerContainer-logoutBtn"]}
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="true"
-        aria-label="Toggle navigation"
         onClick={handleLogout}
       >
         Logout
@@ -55,7 +49,8 @@ function Header() {
       <Link to="/">
         <img src={logo} width={80} height={80} alt="logo_img"></img>
       </Link>
-      {currentUser ? userNavbarLink : guestNavBarLink}
+      <div className={styles['headerContainer-nav']}>
+        {currentUser ? userNavbarLink : guestNavBarLink}</div>
     </div>
   );
 }

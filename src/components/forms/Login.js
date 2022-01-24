@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "./../../contexts/AuthCtx";
 import { useUser } from "./../../contexts/UserCtx";
 import { useNavigate } from "react-router-dom";
+import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
 
 function Login() {
   const { login } = useAuth();
@@ -27,8 +28,7 @@ function Login() {
       });
       setUserInfo(userDetails);
       setIsLoading(false);
-      navigate("/");
-
+      navigate("/profile");
     } catch (err) {
       console.log(err.message);
     }
@@ -39,27 +39,53 @@ function Login() {
       {isLoading ? (
         <p style={{ fontSize: "5rem", color: "green" }}>Loading...</p>
       ) : (
-        <form onSubmit={onLoginSubmit} className="">
-          <input
-            name="email"
-            error={error ? error : null}
-            type="email"
-            placeholder="User email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <div className={styles.formContainer}>
+          <h1>Login</h1>
+          <form
+            onSubmit={onLoginSubmit}
+            className={styles["formContainer-form"]}
+          >
+            <input
+              name="email"
+              error={error ? error : null}
+              type="email"
+              placeholder="User email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password *"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className={styles["formContainer-form-btnBox"]}>
+              <button type="submit"> LogIn </button>
+            </div>
+          </form>
+        </div>
+        // <form onSubmit={onLoginSubmit} className="">
+        //   <input
+        //     name="email"
+        //     error={error ? error : null}
+        //     type="email"
+        //     placeholder="User email..."
+        //     value={email}
+        //     onChange={(e) => setEmail(e.target.value)}
+        //   />
 
-          <input
-            name="password"
-            type="password"
-            placeholder="Password *"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div className="">
-            <button type="submit">LogIn</button>
-          </div>
-        </form>
+        //   <input
+        //     name="password"
+        //     type="password"
+        //     placeholder="Password *"
+        //     value={password}
+        //     onChange={(e) => setPassword(e.target.value)}
+        //   />
+        //   <div className="">
+        //     <button type="submit">LogIn</button>
+        //   </div>
+        // </form>
       )}
     </>
   );

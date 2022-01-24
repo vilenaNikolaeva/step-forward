@@ -19,9 +19,10 @@ html {
 }
 body {
   padding: 0;
-  margin: 0;
-  /* background-color: rgb(53, 48, 77); */
-  background: radial-gradient(ellipse at bottom, #bceee6 0%, #6ba09c 100%);
+  margin: auto;
+  max-width: 1340px;
+  background-color: whitesmoke;
+  /* background: radial-gradient(ellipse at bottom, #bceee6 0%, #6ba09c 100%); */
 }
 a {
   text-decoration: none;

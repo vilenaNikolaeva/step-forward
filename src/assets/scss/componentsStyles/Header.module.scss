@@ -1,0 +1,31 @@
+.headerContainer {
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  list-style-type: none;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-left: 5em;
+  padding-right: 3.5em;
+  padding-top: 2rem;
+  border-bottom: 1px solid darkslategray;
+  align-items: center;
+  z-index: 999;
+  background-color: whitesmoke;
+  a {
+    color: darkslategray;
+  }
+  &-nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30rem;
+  }
+  &-logoutBtn {
+    background-color: #f08a48;
+    border: 1px solid #406e6c;
+    color: white;
+    font-weight: 500;
+    height: 3rem;
+    cursor: pointer;
+  }
+}
