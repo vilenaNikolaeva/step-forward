@@ -2,11 +2,23 @@
   background-color: whitesmoke;
   width: 90rem;
   text-align: center;
+  color: darkblue;
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+ 
   &-profile {
-      h1{
-        color: #007aff;
-      }
-    border-bottom: 1px solid green;
+    h1 {
+      color: #007aff;
+      margin-bottom: 0.3rem;
+    }
+    label {
+      font-size: 2rem;
+      color: #0056b3;
+      font-weight: 600;
+    }
+    border-bottom: 1px solid #007aff;
+    padding-bottom: 2rem;
     display: flex;
     justify-content: space-between;
     &-objective {
@@ -16,6 +28,9 @@
       margin: auto;
       word-break: break-all;
       max-width: 33rem;
+      span{
+        font-style: italic;
+      }
     }
     &-image {
       margin: auto;
@@ -33,7 +48,7 @@
       text-align: end;
       flex-direction: column;
       margin: auto;
-      word-break: break-word;
+      word-break: break-all;
       max-width: 30rem;
       align-self: center;
       span {
@@ -41,6 +56,98 @@
         svg {
           color: #007aff;
         }
+      }
+    }
+  }
+  &-cvContent {
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+
+    &-leftBox {
+      margin-top: 3rem;
+      flex-direction: column;
+      margin-bottom: 7rem;
+      &-education{
+        margin-top: 3rem;
+      }
+      &-experience,
+      &-education {
+        label {
+          font-size: 3.5rem;
+          border-bottom: 3px solid #178cfd;
+          width: 100%;
+          color: #007aff;
+          font-weight: 600;
+          margin: 3.5rem;
+        }
+
+        &-content {
+          margin-top: 1rem;
+          word-break: break-all;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          span:nth-child(1) {
+            font-weight: 600;
+          }
+          span:nth-child(2) {
+            font-weight: 600;
+            color: #007aff;
+          }
+          span:nth-child(3) {
+            font-size: 1rem;
+          }
+          span {
+            font-size: 1.6rem;
+            padding: 0.3rem;
+            margin-left: 3.5rem;
+            svg {
+              color: #9f9fc7;
+            }
+          }
+          ul {
+            margin-left: 2rem;
+            margin-top: 0;
+            margin-bottom: 0;
+            li {
+              border-bottom: 1px solid rgb(207, 207, 207);
+            }
+          }
+        }
+      }
+    }
+
+    &-rightBox {
+      flex-direction: column;
+      margin-top: 3rem;
+      margin-bottom: 7rem;
+      margin-right: 5rem;
+      &-skills,
+      &-languages {
+        label {
+          font-size: 3.5rem;
+          border-bottom: 3px solid #178cfd;
+          width: 100%;
+          color: #007aff;
+          font-weight: 600;
+          margin: 4rem;
+        }
+      }
+      &-skills,
+      &-languages {
+        &-list {
+          display: flex;
+          margin-left: 1.2rem;
+        }
+      }
+      p {
+        flex-direction: row;
+        font-size: 2rem;
+        padding: 0.8rem;
+        margin-left: 2.5rem;
+        border:1px solid  #228afb;
+        color: #228afb;
       }
     }
   }

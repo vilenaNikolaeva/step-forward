@@ -1,5 +1,5 @@
 import React from "react";
-import CVTemplateOne from "../../templates/CVTemplateOne";
+import CVTemplateOne from "../../templates/templateOne/CVTemplateOne";
 
 const Templates = () => {
   return (
