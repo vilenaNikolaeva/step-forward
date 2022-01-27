@@ -1,5 +1,5 @@
 import React from "react";
-import AsideMenu from "./user/profile/AsideMenu";
+import AsideMenu from "./user/AsideMenu";
 import ProfileWrapperContainer from "./../wrappers/ProfileWrapperContainer";
 import ProfileRouter from "./../api/ProfileRouter";
 

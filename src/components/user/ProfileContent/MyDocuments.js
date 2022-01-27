@@ -3,7 +3,11 @@ import React from "react";
 const MyDocuments = () => {
   return (
     <div>
-      <h2>My Documents</h2>
+      <label> My Document:</label>
+       <ul>
+          <li> Document 1 </li>
+          <li> Document 2 </li>
+       </ul>
     </div>
   );
 };

@@ -8,12 +8,12 @@
   padding-left: 5em;
   padding-right: 3.5em;
   padding-top: 2rem;
-  border-bottom: 1px solid darkslategray;
+  border-bottom: 1px solid whitesmoke;
   align-items: center;
-  z-index: 999;
-  background-color: whitesmoke;
-  a {
-    color: darkslategray;
+  &-btn {
+    color: whitesmoke;
+    padding: 1rem;
+    border: 1.3px solid white;
   }
   &-nav {
     display: flex;
@@ -21,11 +21,17 @@
     width: 30rem;
   }
   &-logoutBtn {
-    background-color: #f08a48;
-    border: 1px solid #406e6c;
+    background-color: transparent;
+    border: 1.3px solid white;
     color: white;
     font-weight: 500;
-    height: 3rem;
+    height: 4rem;
+    width: 8rem;
     cursor: pointer;
+  }
+  &-btn:hover,
+  &-logoutBtn:hover {
+    box-shadow: -1px 7px 18px 0px #edebeb;
+    transition: box-shadow 0.3s ease-in-out;
   }
 }

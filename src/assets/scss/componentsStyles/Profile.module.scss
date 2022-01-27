@@ -1,0 +1,43 @@
+.profileContainer {
+  padding: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  h1 {
+    color: whitesmoke;
+  }
+  &-link {
+    button {
+      background-color: transparent;
+      border:none;
+      font-weight: 700;
+      color: whitesmoke;
+      cursor: pointer;
+      float: left;
+      border-bottom: 1px solid white;
+    }
+  }
+  &-welcomeContainer {
+    padding: 2rem;
+    font-weight: 600;
+  }
+  &-cardsContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 2rem;
+    &-card {
+      margin: 1rem;
+      min-width: 25rem;
+      max-width: 30rem;
+      border: 1px solid black;
+      height: 20rem;
+      text-align: center;
+      button {
+        display: flex;
+        color: whitesmoke;
+        font-weight: 400;
+        background-color: orange;
+      }
+    }
+  }
+}

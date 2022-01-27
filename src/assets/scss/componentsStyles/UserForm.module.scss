@@ -1,40 +1,39 @@
 .formContainer {
-    justify-content: center;
-    margin: auto;
-    margin-top: 20rem;
-    z-index: 997;
-    h1{
-        color:darkslategray;
-    }
-      &-form {
-        display: flex;
-        flex-direction: column;
-        width: 45rem;
-        margin: auto;
-          input{
-              margin: 1rem;
-              padding: 1rem;
-          }
-          &-btnBox{
-              display: flex;
-              justify-content: center;
-              height: 4rem;
-              margin-top: 1rem;
-              button{
-                  background-color: transparent;
-                  color: darkslategray;
-                  font-size: 2rem;
-                  padding-left: 2rem;
-                  padding-right: 2rem;
-                  border: 1px solid #b7b7e6;
-                  cursor: pointer;
-              }
-              button:hover{
-                  background-color: rgb(64, 110, 108);
-                  color: whitesmoke;
-                  font-weight: 700;
-              }
-          }
-      }
+  justify-content: center;
+  margin: auto;
+  margin-top: 20rem;
+  z-index: 997;
+  h1 {
+    color: whitesmoke;
   }
-  
+  &-form {
+    display: flex;
+    flex-direction: column;
+    width: 45rem;
+    margin: auto;
+    input {
+      margin: 1rem;
+      padding: 1rem;
+    }
+    &-btnBox {
+      display: flex;
+      justify-content: center;
+      height: 4rem;
+      margin-top: 1rem;
+      button {
+        background-color: transparent;
+        color: whitesmoke;
+        font-size: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border: 1px solid #b7b7e6;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color:transparent;
+        color: whitesmoke;
+        font-weight: 700;
+      }
+    }
+  }
+}

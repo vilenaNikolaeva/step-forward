@@ -8,33 +8,35 @@ import { ToastContainer } from "react-toastify";
 import PageWrapper from "./wrappers/PageWrapper";
 
 import "react-toastify/dist/ReactToastify.css";
-import ParticlesWrapper from "./wrappers/ParticlesWrapper";
+import AppWrapper from "./wrappers/AppWrapper";
 
 function App() {
   return (
     <div className="App">
-      <AuthProvider>
-        <UserProvider>
-          <Header />
-          <PageWrapper>
-            {/* <ParticlesWrapper> */}
+      <AppWrapper>
+        <AuthProvider>
+          <UserProvider>
+            <Header />
+            <PageWrapper>
+              {/* <ParticlesWrapper> */}
               <AppRouter />
-            {/* </ParticlesWrapper> */}
-          </PageWrapper>
-          <Footer />
-        </UserProvider>
-        <ToastContainer
-          position="bottom-left"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </AuthProvider>
+              {/* </ParticlesWrapper> */}
+            </PageWrapper>
+            <Footer />
+          </UserProvider>
+          <ToastContainer
+            position="bottom-left"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        </AuthProvider>
+      </AppWrapper>
     </div>
   );
 }

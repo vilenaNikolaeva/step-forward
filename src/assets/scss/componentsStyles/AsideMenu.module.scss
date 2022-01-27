@@ -1,21 +1,22 @@
 .asideMenuContainer {
   display: flex;
+  position:sticky;
   flex-direction: column;
   min-width: 20rem;
-  // background-color: #c0d9c4;
-  // border: 1px solid darkgreen;
   text-align: start;
-  z-index: 998;
-  
+  padding:auto;
+  max-height: 50rem;
+  margin-right:3rem;
+  z-index: 996;
+
   &-link {
     font-weight: 700;
     padding: 2rem;
-    color: darkgreen;
+    color: whitesmoke;
     font-size: small;
-    background-color: beige;
     margin: 1rem;
   }
   &-link:hover {
-    box-shadow: 1px 1px darkgreen;
+    box-shadow: 1px 1px rgb(105, 105, 228);
   }
 }

@@ -35,10 +35,10 @@ function Header() {
 
   const guestNavBarLink = (
     <>
-      <Link to="/login" className="nav-link active" aria-current="page">
+      <Link to="/login" className={styles['headerContainer-btn']} aria-current="page">
         Login
       </Link>
-      <Link to="/signup" className="nav-link active" aria-current="page">
+      <Link to="/signup" className={styles['headerContainer-btn']}aria-current="page">
         SignUp
       </Link>
     </>
@@ -46,8 +46,8 @@ function Header() {
 
   return (
     <div className={styles.headerContainer}>
-      <Link to="/">
-        <img src={logo} width={80} height={80} alt="logo_img"></img>
+      <Link to="/" className={styles['headerContainer-logo']}>
+        <img src={logo} width={100} height={100} alt="logo_img"></img>
       </Link>
       <div className={styles['headerContainer-nav']}>
         {currentUser ? userNavbarLink : guestNavBarLink}</div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useDebugValue } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -14,14 +14,19 @@ export const AuthProvider = ({ children }) => {
   const [isRegistrationCompleted, setIsRegistrationCompleted] = useState(false);
   const navigate = useNavigate();
 
-    useEffect(()=>{
-      if (currentUser === undefined) {
-        const userSessionData = sessionStorage.getItem("userData");
-        if (userSessionData ) {
-          setCurrentUser({ token: userSessionData.token, userId: userSessionData.userId });
-        }
+  useEffect(() => {
+    console.log(currentUser);
+    if (currentUser == undefined) {
+      const userSessionData = JSON.parse(sessionStorage.getItem("userData"));
+      if (userSessionData) {
+        setCurrentUser({
+          token: userSessionData.token,
+          userId: userSessionData.userId,
+          name: userSessionData.userName,
+        });
       }
-    },[currentUser])
+    }
+  }, [currentUser]);
 
   const signup = async (data) => {
     const userDetails = await userService.addUserRegister(data);
@@ -29,7 +34,11 @@ export const AuthProvider = ({ children }) => {
     if (userDetails === "string") {
       return toast.error("Invalid input details. Try Agrain.");
     } else {
-      setCurrentUser({ token: userDetails.token, userId: userDetails.userId });
+      setCurrentUser({
+        token: userDetails.token,
+        userId: userDetails.userId,
+        name: userDetails.userName,
+      });
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
       toast.success("Have a great experince ! ");
@@ -44,7 +53,12 @@ export const AuthProvider = ({ children }) => {
     } else {
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
-      setCurrentUser({ token: userDetails.token, userId: userDetails.userId });
+      console.log(userDetails);
+      setCurrentUser({
+        token: userDetails.token,
+        userId: userDetails.userId,
+        name: userDetails.userName,
+      });
       toast.success("Have a great experince ! ");
     }
     setIsRegistrationCompleted(true);

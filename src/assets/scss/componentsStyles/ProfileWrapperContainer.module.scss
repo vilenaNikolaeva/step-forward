@@ -5,8 +5,8 @@
     padding-left: 4rem;
     padding-top: 3rem;
     margin-right: 10%;
-    background-color: antiquewhite;
-
+    // background-color: #00c8aa;;
+    z-index: 994;
     @include respond(more1800) {
         padding-right: calc(50% - 800px);
         margin-right: 0%;

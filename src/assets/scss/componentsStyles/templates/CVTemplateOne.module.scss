@@ -1,0 +1,47 @@
+.templateOne {
+  background-color: whitesmoke;
+  width: 90rem;
+  text-align: center;
+  &-profile {
+      h1{
+        color: #007aff;
+      }
+    border-bottom: 1px solid green;
+    display: flex;
+    justify-content: space-between;
+    &-objective {
+      display: flex;
+      text-align: start;
+      flex-direction: column;
+      margin: auto;
+      word-break: break-all;
+      max-width: 33rem;
+    }
+    &-image {
+      margin: auto;
+      padding-top: 2rem;
+      svg {
+        width: 14rem;
+        height: 13rem;
+        color: #5f7ca0;
+        border: 1px solid #5f7ca0;
+        border-radius: 100rem;
+      }
+    }
+    &-info {
+      display: flex;
+      text-align: end;
+      flex-direction: column;
+      margin: auto;
+      word-break: break-word;
+      max-width: 30rem;
+      align-self: center;
+      span {
+        padding: 0.3rem;
+        svg {
+          color: #007aff;
+        }
+      }
+    }
+  }
+}
