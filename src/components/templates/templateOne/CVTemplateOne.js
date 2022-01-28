@@ -1,6 +1,6 @@
 import React from "react";
-import ExperienceContent from './ExperienceContent';
-import EducationContent from './EducationContent';
+import ExperienceContent from '../ExperienceContent';
+import EducationContent from '../EducationContent';
 
 import {
   FaLinkedin,
@@ -61,10 +61,10 @@ const CVTemplateOne = () => {
           <div className={styles["templateOne-cvContent-leftBox-education"]}>
             <label>Education</label>
             <div className={styles["templateOne-cvContent-leftBox-education-content"]} >
-            <EducationContent/>
+            <EducationContent contentType="one"/>
             </div>
             <div className={styles["templateOne-cvContent-leftBox-education-content"]}>
-            <EducationContent/>
+            <EducationContent contentType="one"/>
             </div>
           </div>
         </div>

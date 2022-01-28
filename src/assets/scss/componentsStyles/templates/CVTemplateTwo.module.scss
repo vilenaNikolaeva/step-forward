@@ -1,0 +1,204 @@
+.templateTwo {
+  background-color: whitesmoke;
+  display: flex;
+  &-profile {
+    width: 30rem;
+    background-color: #e5d6d3;
+    padding-bottom: 3rem;
+    label {
+      font-size: 2.5rem;
+      text-align: center;
+      border-bottom: 2px solid rgb(61, 22, 21);
+    }
+    &-image {
+      margin: auto;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      svg {
+        width: 14rem;
+        height: 13rem;
+        color: whitesmoke;
+        border: 1px solid #0a0d11;
+        border-radius: 100rem;
+        background-color: #3e323e;
+      }
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+      padding: 2rem;
+      margin: auto;
+      max-width: 20rem;
+      &-box {
+        display: flex;
+        margin-bottom: 1rem;
+        align-items: center;
+        svg {
+          margin-right: 1rem;
+          width: 2rem;
+          height: 2rem;
+          padding: 0.3rem;
+          background-color: rgb(61, 22, 21);
+          border-radius: 100%;
+          color: white;
+        }
+        span {
+          margin: 0.3rem;
+        }
+        p {
+          word-break: break-all;
+          margin-top: 0;
+          //   margin-bottom: 0;
+        }
+      }
+    }
+    &-education {
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+      label {
+        font-size: 2.5rem;
+        text-align: center;
+        border-bottom: 2px solid rgb(61, 22, 21);
+      }
+      &-content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2rem;
+        margin: auto;
+        padding-bottom: 0;
+        max-width: 20rem;
+        font-style: italic;
+        color: #403a3d;
+      }
+    }
+    &-languages {
+      label {
+        font-size: 2.5rem;
+        text-align: center;
+        border-bottom: 2px solid rgb(61, 22, 21);
+      }
+      &-list {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2rem;
+        margin: auto;
+        padding-bottom: 0;
+        max-width: 20rem;
+        font-style: italic;
+        color: #403a3d;
+      }
+    }
+  }
+  &-cvContent {
+    width: 70rem;
+    padding-bottom: 3rem;
+    &-rightBox {
+      display: flex;
+      flex-direction: column;
+      &-username {
+        text-align: start;
+        height: 20rem;
+        background-color: #3e323e;
+        color: whitesmoke;
+        padding-left: 5rem;
+        padding-top: 5rem;
+        label {
+          font-size: 4rem;
+          font-weight: 600;
+        }
+        p {
+          font-size: 2rem;
+          font-weight: 500;
+        }
+      }
+      &-experience,
+      &-workExperience {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        label {
+          font-size: 2.5rem;
+          text-align: start;
+          border-bottom: 2px solid #3d1615;
+        }
+        &-content {
+          text-align: start;
+          span {
+            font-weight: 600;
+          }
+          p {
+            font-style: italic;
+            margin-bottom: 2px;
+          }
+          ul {
+            margin-top: 0.5rem;
+            padding-left: 2rem;
+            li {
+              padding-top: 0.5rem;
+            }
+          }
+        }
+      }
+      &-specialization,
+      &-skills {
+        display: flex;
+        padding: 3rem;
+        flex-direction: column;
+        label {
+          font-size: 2.5rem;
+          text-align: start;
+          border-bottom: 2px solid #3d1615;
+        }
+        &-content {
+            display:flex;
+          div {
+            display: inline-flex;
+            p {
+              background: rgb(229, 214, 211);
+              background: linear-gradient(
+                144deg,
+                rgba(229, 214, 211, 1) 0%,
+                rgba(62, 50, 62, 1) 51%
+              );
+              color: whitesmoke;
+              font-weight: 400;
+              font-style: 1.2rem;
+              width: 8rem;
+              height: 8rem;
+              border-radius: 100%;
+              margin: 1rem;
+              padding-top: 1.5rem;
+              text-align: center;
+            }
+          }
+        }
+      }
+      &-skills {
+        text-align: start;
+        div {
+          margin-top: 1rem;
+          span {
+            background: rgb(229, 214, 211);
+            background: linear-gradient(
+              144deg,
+              rgba(229, 214, 211, 1) 0%,
+              rgba(62, 50, 62, 1) 51%
+            );
+            color: whitesmoke;
+            font-weight: 400;
+            padding: 1rem;
+            font-style: 1.5rem;
+            margin: 1rem;
+            border-radius: 20rem;
+            text-align: center;
+            min-height: 6rem;
+          }
+        }
+      }
+    }
+  }
+}

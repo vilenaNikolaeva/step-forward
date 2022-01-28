@@ -1,5 +1,6 @@
 import React from "react";
 import CVTemplateOne from "../../templates/templateOne/CVTemplateOne";
+import CVTemplateTwo from './../../templates/templateTwo/CVTemplateTwo';
 
 const Templates = () => {
   return (
@@ -7,7 +8,7 @@ const Templates = () => {
       <div>
         <label> CV Templates </label>
       </div>
-      <CVTemplateOne />
+      <CVTemplateTwo/>
     </div>
   );
 };
