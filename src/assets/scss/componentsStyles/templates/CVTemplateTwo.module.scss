@@ -1,13 +1,15 @@
 .templateTwo {
   background-color: whitesmoke;
   display: flex;
+  margin-bottom: 2rem;
   &-profile {
     width: 30rem;
     background-color: #e5d6d3;
     padding-bottom: 3rem;
     label {
       font-size: 2.5rem;
-      text-align: center;
+      margin-right: 6rem;
+      font-weight:600;
       border-bottom: 2px solid rgb(61, 22, 21);
     }
     &-image {
@@ -27,7 +29,10 @@
       display: flex;
       flex-direction: column;
       text-align: start;
-      padding: 2rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      padding-left: 0.4rem;
+      align-items: flex-start;
       margin: auto;
       max-width: 20rem;
       &-box {
@@ -59,14 +64,18 @@
       text-align: start;
       label {
         font-size: 2.5rem;
-        text-align: center;
+        font-weight:600;
+        margin-right: 6rem;
         border-bottom: 2px solid rgb(61, 22, 21);
       }
       &-content {
         display: flex;
         justify-content: center;
         flex-direction: column;
-        padding: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+        padding-left: 0.4rem;
+        align-items: flex-start;
         margin: auto;
         padding-bottom: 0;
         max-width: 20rem;
@@ -77,7 +86,8 @@
     &-languages {
       label {
         font-size: 2.5rem;
-        text-align: center;
+        font-weight: 600;
+        margin-right: 6rem;
         border-bottom: 2px solid rgb(61, 22, 21);
       }
       &-list {
@@ -123,6 +133,7 @@
         label {
           font-size: 2.5rem;
           text-align: start;
+          font-weight: 600;
           border-bottom: 2px solid #3d1615;
         }
         &-content {
@@ -151,6 +162,7 @@
         label {
           font-size: 2.5rem;
           text-align: start;
+          font-weight: 600;
           border-bottom: 2px solid #3d1615;
         }
         &-content {

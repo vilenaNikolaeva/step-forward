@@ -1,0 +1,42 @@
+.templates {
+    z-index: 1000;
+    label {
+        font-size: 5rem;
+        font-weight: 600;
+        color: white;
+    }
+
+    &-content {
+        margin-top: 4rem;
+
+        &-box {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+
+            &-card {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                margin: 2rem;
+                padding: 2rem;
+                border: 1px solid white;
+               
+                img {
+                    margin-bottom: 2rem;
+                }
+               
+                button {
+                    padding: 1rem;
+                    margin: auto;
+                    max-width: 15rem;
+                    background-color: transparent;
+                    color: white;
+                    letter-spacing: 1px;
+                    border-color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

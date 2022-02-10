@@ -72,9 +72,9 @@ const CVTemplateOne = () => {
           <div className={styles["templateOne-cvContent-rightBox-skills"]}>
             <label>Skills</label>
           <div className={styles["templateOne-cvContent-rightBox-skills-list"]}>
-            <p>One</p>
-            <p>Two</p>
-            <p>Three</p>
+            <p>Teamwork</p>
+            <p>Organization Skills</p>
+            <p>Creativity</p>
             </div>
           </div>
           <div className={styles["templateOne-cvContent-rightBox-languages"]}>

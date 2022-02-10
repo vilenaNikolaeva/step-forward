@@ -10,18 +10,15 @@ const AsideMenu = () => {
           Profile
         </Link>
         <Link
-          to="/profile/myDocuments"
-          className={styles["asideMenuContainer-link"]}
+          to="/profile/myDocuments" className={styles["asideMenuContainer-link"]}
         >
           My Documents
         </Link>
-        <Link to="/templates" className={styles["asideMenuContainer-link"]}>
+        <Link to="/profile/templates" className={styles["asideMenuContainer-link"]}>
           Templates
         </Link>
         <Link
-          to="/profile/exampleCv"
-          className={styles["asideMenuContainer-link"]}
-        >
+          to="/profile/exampleCv" className={styles["asideMenuContainer-link"]}>
           Examples
         </Link>
       </aside>

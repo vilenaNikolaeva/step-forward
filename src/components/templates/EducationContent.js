@@ -22,10 +22,10 @@ const EducationContent = (contentType) => {
     return (
         <>
           <span>
-            <FaCalendarAlt /> 09/2012 - 04/2016]
+            <FaCalendarAlt /> 09/2012 - 04/2016
           </span>
           <span>Title</span>
-          <p>Description : sdrvgfsdfvg sgsfsdfsdf sdfsfsdfsf resfrfrgrgdg dregerg</p>
+          <p>Description : Here you can place description topics of your education process</p>
         </>
       );
   };

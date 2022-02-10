@@ -26,8 +26,7 @@ const ExperinceContent = (contentType) => {
         <p> Position title</p>
         <span> Company Name</span>
         <p>
-          Experience description : sahfcadkvfbdsfvjlsdbfvlksdvg;sbvg
-          jsdvglsfibgoslvgjbdfvdslgnsdgdogfbnkd/;tgn
+          Experience description : Here where you can place description about what exactly was your experience in this position
         </p>
       </>
     );

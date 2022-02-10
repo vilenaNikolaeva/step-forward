@@ -1,6 +1,5 @@
 import React from "react";
 import { useAuth } from "../../../contexts/AuthCtx";
-import { Link } from "react-router-dom";
 
 import styles from "../../../assets/scss/componentsStyles/Profile.module.scss";
 
@@ -10,22 +9,23 @@ const Profile = () => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles["prfileContainer-label"]}>
-        <h1> Hello , {currentUser.name}</h1>
+        <h1> Hello , {currentUser?.name}</h1>
       </div>
       <div className={styles["profileContainer-welcomeContainer"]}>
         <p>Some welcome message over </p>
       </div>
       <div className={styles["profileContainer-cardsContainer"]}>
+        <label>Possible instruction</label>
         <p className={styles["profileContainer-cardsContainer-card"]}>
-          Choose template card
-          <button>Choose </button>
+          1 .. Choose the right template for your document 
+          <button>Choose template</button>
         </p>
         <p className={styles["profileContainer-cardsContainer-card"]}>
-          Build a CV card
+         2..  Build a CV card
           <button>Create your CV </button>
         </p>
         <p className={styles["profileContainer-cardsContainer-card"]}>
-          Ways to share and send your document
+          3.. Ways to share and send your document
           <button>Check out HOW </button>
         </p>
       </div>
