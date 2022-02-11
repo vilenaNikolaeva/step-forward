@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "../../../contexts/AuthCtx";
 
 import styles from "../../../assets/scss/componentsStyles/Profile.module.scss";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { currentUser } = useAuth();
@@ -9,25 +10,38 @@ const Profile = () => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles["prfileContainer-label"]}>
-        <h1> Hello , {currentUser?.name}</h1>
+        <h1> Welcome , {currentUser?.name}</h1>
       </div>
       <div className={styles["profileContainer-welcomeContainer"]}>
-        <p>Some welcome message over </p>
+        <p>So happy you’re here! The concept is simple:
+          Step Forward helps you get organized, get motivated,
+          get more done and start your own professional adventure by those small steps. </p>
       </div>
       <div className={styles["profileContainer-cardsContainer"]}>
-        <label>Possible instruction</label>
-        <p className={styles["profileContainer-cardsContainer-card"]}>
-          1 .. Choose the right template for your document 
-          <button>Choose template</button>
-        </p>
-        <p className={styles["profileContainer-cardsContainer-card"]}>
-         2..  Build a CV card
-          <button>Create your CV </button>
-        </p>
-        <p className={styles["profileContainer-cardsContainer-card"]}>
-          3.. Ways to share and send your document
-          <button>Check out HOW </button>
-        </p>
+        <div className={styles["profileContainer-cardsContainer-card"]}>
+          <p >
+            1. Choose the right document for you
+          </p>
+          <Link to="/documents">
+            <button>Choose document </button>
+          </Link>
+        </div>
+        <div className={styles["profileContainer-cardsContainer-card"]}>
+          <p>
+            2. Choose the right template for your document
+          </p>
+          <Link to="/templates">
+            <button>Choose template</button>
+          </Link>
+        </div>
+        <div className={styles["profileContainer-cardsContainer-card"]}>
+          <p>
+            3. Find out how to share your documents
+          </p>
+          <Link to="">
+            <button>Check out HOW </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

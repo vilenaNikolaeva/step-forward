@@ -1,12 +1,10 @@
 import React from "react";
+import styles from '../../assets/scss/componentsStyles/documents/MyDocuments.module.scss'
 
-import styles from '../../../assets/scss/componentsStyles/documents/MyDocuments.module.scss'
-
-const MyDocuments = () => {
+const Documents = () => {
   return (
     <div className={styles.myDocumentsContent}>
-      <label> My Documents:</label>
-      <p> ???? Probably someting new </p>
+      <label>Documents:</label>
       <div className={styles['myDocumentsContent-container']}>
         <div className={styles['myDocumentsContent-container-box']}>
           <label> CV Document</label>
@@ -19,4 +17,4 @@ const MyDocuments = () => {
   );
 };
 
-export default MyDocuments;
+export default Documents;

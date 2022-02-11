@@ -1,0 +1,65 @@
+.letterContainer {
+    min-width: 50rem;
+    min-height: 90rem;
+    display: flex;
+    font-size: 1.3rem;
+    justify-content: center;
+    &-leftBox {
+        background-color: #3e323e;
+        max-width: 30rem;
+        text-align: start;
+        padding: 4rem 10rem 5rem 4rem;
+        font-weight: 300;
+        color: #e5d6d3;
+        label {
+            font-size: 1.8rem;
+        }
+        span {
+            font-weight: 600;
+        }
+        &-info {
+            margin-top: 5rem;
+            &-box {
+                margin-top: 2rem;
+            }
+        }
+    }
+    &-rightBox {
+        min-width: 60rem;
+        background-color: #e5d6d3;
+        display: flex;
+        text-align: start;
+        justify-content: space-around;
+        flex-direction: column;
+        padding-bottom:7rem;
+        font-weight: 500;
+        &-address{
+            padding-left: 5rem;
+        }
+        &-textSection{
+            padding-left: 5rem;
+            padding-right: 3rem;
+            p{
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+            }
+            &-section{
+                margin-top:2rem;
+                margin-bottom: 2rem;
+            }
+            &-list{
+                padding-left: 2rem;
+                padding-right: 3rem;
+                li{
+                    padding-left: 1rem;
+                    margin-bottom: 0.5rem;
+                }
+            }
+            &-last,
+            &-ps{
+                padding-left: 5rem;
+                padding-right: 3rem;
+            }
+        }
+    }
+}

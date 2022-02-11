@@ -2,13 +2,15 @@
   padding: 2rem;
   font-size: 1.5rem;
   text-align: center;
+  min-height: 80rem;
+  background-color: cornflowerblue;
   h1 {
     color: whitesmoke;
   }
   &-link {
     button {
       background-color: transparent;
-      border:none;
+      border: none;
       font-weight: 700;
       color: whitesmoke;
       cursor: pointer;
@@ -17,27 +19,62 @@
     }
   }
   &-welcomeContainer {
-    padding: 2rem;
+    margin: auto;
+    max-width: 90%;
+    padding: 1rem;
     font-weight: 600;
+    font-size: 1.8rem;
+    border: 1px solid wheat;
+    display: flex;
+    justify-content: center;
+    p {
+      max-width: 60%;
+      color: white;
+      letter-spacing: 1px;
+    }
   }
+
   &-cardsContainer {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin: 2rem;
+    margin: 5rem;
+    align-items: center;
+
     &-card {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
       margin: 1rem;
       min-width: 25rem;
       max-width: 30rem;
-      border: 1px solid black;
+      background-color: #f5f5ff;
       height: 20rem;
       text-align: center;
-      button {
-        display: flex;
-        color: whitesmoke;
-        font-weight: 400;
-        background-color: orange;
+      padding: 1rem;
+      p{
+        font-weight: 600;
       }
+      button {
+        align-items: center;
+        margin-top: 2rem;
+        color: rgb(42, 14, 94);
+        font-weight: 500;
+        padding: 1rem;
+        background-color: transparent;
+        border: 1px solid rgb(42, 14, 94);
+        cursor: pointer;
+      }
+      button:hover {
+        box-shadow: -1px 7px 13px 0px rgb(78 84 200 / 33%);
+        background-color: #5c62cc99;
+        color: white;
+        font-weight: 700;
+      }
+    }
+    &-card:hover{
+      box-shadow: 2px 9px 13px 3px rgb(247 247 247 / 33%);
+      transition: box-shadow 0.3s ease-in-out;
     }
   }
 }

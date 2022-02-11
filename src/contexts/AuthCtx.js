@@ -15,14 +15,13 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(currentUser);
     if (currentUser == undefined) {
       const userSessionData = JSON.parse(sessionStorage.getItem("userData"));
       if (userSessionData) {
         setCurrentUser({
           token: userSessionData.token,
           userId: userSessionData.userId,
-          name: userSessionData.userName,
+          name: userSessionData.name,
         });
       }
     }
@@ -48,12 +47,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (data) => {
     const userDetails = await userService.addUserLogin(data);
-    if (typeof userDetails === "string") {
+
+    if (typeof userDetails === "string" || typeof userDetails === '') {
       return toast.error("Invalid input details. Try Agrain.");
-    } else {
+    }
+    else {
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
-      console.log(userDetails);
       setCurrentUser({
         token: userDetails.token,
         userId: userDetails.userId,
@@ -62,7 +62,6 @@ export const AuthProvider = ({ children }) => {
       toast.success("Have a great experince ! ");
     }
     setIsRegistrationCompleted(true);
-
     return userDetails;
   };
 

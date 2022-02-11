@@ -3,6 +3,7 @@ import { useAuth } from "./../../contexts/AuthCtx";
 import { useUser } from "./../../contexts/UserCtx";
 import { useNavigate } from "react-router-dom";
 import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
+import { ToastContainer } from "react-toastify";
 
 function Login() {
   const { login } = useAuth();
@@ -22,13 +23,21 @@ function Login() {
 
     try {
       setIsLoading(true);
+
       const userDetails = await login({
         email: email,
         password: password,
       });
+
       setUserInfo(userDetails);
-      setIsLoading(false);
-      navigate("/profile");
+      if (typeof userDetails !== "string") {
+        setIsLoading(false);
+        navigate("/profile");
+      }
+      else{
+        setIsLoading(false);
+      }
+
     } catch (err) {
       console.log(err.message);
     }

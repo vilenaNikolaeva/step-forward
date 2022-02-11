@@ -6,6 +6,7 @@ import Login from "../components/forms/Login";
 import NotFoundPage from "../components/NotFoundPage";
 import UserProfile from "./../components/UserProfile";
 import Templates from "../components/user/ProfileContent/Templates";
+import Documents from "../components/documents/Documents";
 
 function AppRouter() {
   /*Check if  user is loggedin*/
@@ -16,6 +17,7 @@ function AppRouter() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/templates" element={<Templates/>} />
+      <Route path="/documents" element={<Documents/>} />
       <Route path="/profile/*" element={<UserProfile />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

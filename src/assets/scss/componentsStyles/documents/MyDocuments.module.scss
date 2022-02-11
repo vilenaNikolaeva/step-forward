@@ -1,0 +1,18 @@
+.myDocumentsContent {
+    min-height: 50rem;
+    min-width: 80rem;
+    background-color: transparent;
+    padding: 5rem;
+    font-size: 1.8rem;
+    border: 1px solid white;
+
+    label {
+        color: white;
+    }
+
+    &-container {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 3rem;
+    }
+}
