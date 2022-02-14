@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useDebugValue } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { addUserToState, removeUserFromState } from "../redux/user/userActions";
 
 import userService from "./../services/userService";
 const AuthCtx = React.createContext();
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser({
           token: userSessionData.token,
           userId: userSessionData.userId,
-          name: userSessionData.name,
+          name: userSessionData.userName,
         });
       }
     }
@@ -38,6 +39,12 @@ export const AuthProvider = ({ children }) => {
         userId: userDetails.userId,
         name: userDetails.userName,
       });
+      addUserToState({
+        token: userDetails.token,
+        userId: userDetails.userId,
+        name: userDetails.userName,
+      });
+      console.log(userDetails)
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
       toast.success("Have a great experince ! ");
@@ -54,6 +61,11 @@ export const AuthProvider = ({ children }) => {
     else {
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
+      addUserToState({
+        token: userDetails.token,
+        userId: userDetails.userId,
+        name: userDetails.userName,
+      });
       setCurrentUser({
         token: userDetails.token,
         userId: userDetails.userId,
@@ -68,6 +80,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     sessionStorage.clear();
     setCurrentUser();
+    removeUserFromState();
     navigate("/");
     return "";
   };

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
 import { useAuth } from "./../../contexts/AuthCtx";
 import { useUser } from "./../../contexts/UserCtx";
 import { useNavigate } from "react-router-dom";
 import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
-import { ToastContainer } from "react-toastify";
+import { addUserToState } from './../../redux/user/userActions'
 
 function Login() {
   const { login } = useAuth();
@@ -34,7 +35,7 @@ function Login() {
         setIsLoading(false);
         navigate("/profile");
       }
-      else{
+      else {
         setIsLoading(false);
       }
 
@@ -74,29 +75,15 @@ function Login() {
             </div>
           </form>
         </div>
-        // <form onSubmit={onLoginSubmit} className="">
-        //   <input
-        //     name="email"
-        //     error={error ? error : null}
-        //     type="email"
-        //     placeholder="User email..."
-        //     value={email}
-        //     onChange={(e) => setEmail(e.target.value)}
-        //   />
-
-        //   <input
-        //     name="password"
-        //     type="password"
-        //     placeholder="Password *"
-        //     value={password}
-        //     onChange={(e) => setPassword(e.target.value)}
-        //   />
-        //   <div className="">
-        //     <button type="submit">LogIn</button>
-        //   </div>
-        // </form>
       )}
     </>
   );
 }
-export default Login;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addUserToState: (userData) => dispatch(addUserToState(userData))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);

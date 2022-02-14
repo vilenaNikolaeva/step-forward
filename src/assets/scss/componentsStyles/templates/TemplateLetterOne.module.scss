@@ -4,6 +4,8 @@
     display: flex;
     font-size: 1.3rem;
     justify-content: center;
+    max-width: 70%;
+    margin: auto;
     &-leftBox {
         background-color: #3e323e;
         max-width: 30rem;

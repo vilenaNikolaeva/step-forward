@@ -3,8 +3,10 @@ import { useAuth } from "./../../contexts/AuthCtx";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "./../../contexts/UserCtx";
 import { toast } from "react-toastify";
+import { addUserToState } from './../../redux/user/userActions'
 
 import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
+import { connect } from "react-redux";
 
 function SignUp() {
   const { signup } = useAuth();
@@ -44,102 +46,56 @@ function SignUp() {
         <p style={{ fontSize: "5rem", color: "green" }}>Loading...</p>
       ) : (
         <div className={styles.formContainer}>
-      <h1>Sign Up</h1>
-        <form onSubmit={onRegisterSubmit} className={styles['formContainer-form']}>
-          <input
-            name="username"
-            type="text"
-            placeholder="** Place your username..."
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder=" ** Place your email..."
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-          <input
-            name="password"
-            type="password"
-            placeholder="** Place your password..."
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <input
-            name="repeatedPass"
-            type="password"
-            placeholder="** Repeat your password..."
-            value={repeatedPassword}
-            onChange={(e) => {
-              setRepeatedPassword(e.target.value);
-            }}
-          />
-          <div className={styles['formContainer-form-btnBox']}>
-            <button type="submit"> SignUp </button>
-          </div>
-        </form>
-      </div>
-        // <form onSubmit={onRegisterSubmit} className="Register">
-        //   <div className="register-container">
-        //     <label as="h3" className="register-title">
-        //       Register
-        //     </label>
-        //     <input
-        //       type="text"
-        //       placeholder="Username..."
-        //       name="username"
-        //       id="username"
-        //       required
-        //       onChange={(e) => setUsername(e.target.value)}
-        //     />
-        //     <input
-        //       type="email"
-        //       placeholder="Email..."
-        //       name="email"
-        //       id="email"
-        //       required
-        //       onChange={(e) => setEmail(e.target.value)}
-        //     />
-        //     <p className="mandatory-combination">
-        //       ***Mandatory password combinations :
-        //       <span>
-        //         Contain upper and lowercase, have digits, Punctuation
-        //         characters!
-        //       </span>
-        //     </p>
-        //     <input
-        //       type="password"
-        //       placeholder="Password at least 8 symbols..."
-        //       name="password"
-        //       id="psw"
-        //       required
-        //       autoComplete="on"
-        //       onChange={(e) => setPassword(e.target.value)}
-        //     />
-        //     <input
-        //       type="password"
-        //       placeholder="Repeat Password..."
-        //       name="repeatedPassword"
-        //       autoComplete="on"
-        //       id="psw-repeat"
-        //       required
-        //       onChange={(e) => setRepeatedPassword(e.target.value)}
-        //     />
-        //     <button type="btn btn-sumbit" value="Register">
-        //       <b>Register</b>{" "}
-        //     </button>
-        //   </div>
-        // </form>
+          <h1>Sign Up</h1>
+          <form onSubmit={onRegisterSubmit} className={styles['formContainer-form']}>
+            <input
+              name="username"
+              type="text"
+              placeholder="** Place your username..."
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+            <input
+              name="email"
+              type="email"
+              placeholder=" ** Place your email..."
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="** Place your password..."
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <input
+              name="repeatedPass"
+              type="password"
+              placeholder="** Repeat your password..."
+              value={repeatedPassword}
+              onChange={(e) => {
+                setRepeatedPassword(e.target.value);
+              }}
+            />
+            <div className={styles['formContainer-form-btnBox']}>
+              <button type="submit"> SignUp </button>
+            </div>
+          </form>
+        </div>
       )}
     </>
   );
+} const mapDispatchToProps = dispatch => {
+  return {
+    addUserToState: (userData) => dispatch(addUserToState(userData))
+  }
 }
-export default SignUp;
+
+export default connect(null, mapDispatchToProps)(SignUp);
