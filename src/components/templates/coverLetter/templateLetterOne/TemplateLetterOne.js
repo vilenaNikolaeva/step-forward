@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from '../../../../assets/images/Logo.png'
 import styles from '../../../../assets/scss/componentsStyles/templates/TemplateLetterOne.module.scss'
 
 const TemplateLetterOne = () => {
@@ -32,7 +32,6 @@ const TemplateLetterOne = () => {
                             </p>
                         </div>
                     </div>
-
                 </div>
                 <div className={styles['letterContainer-rightBox']}>
                     <div className={styles['letterContainer-rightBox-address']}>
@@ -76,7 +75,7 @@ const TemplateLetterOne = () => {
                         <p> Best Regards,</p>
                         <p>John Doe, Marketing Manager</p>
                     </div>
-
+                    <img src={logo} width={80} height={80}/>
                 </div>
             </div>
         </div>

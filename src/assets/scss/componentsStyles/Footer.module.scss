@@ -1,10 +1,29 @@
-.footerContainer{
-    height: 17rem ;
+.footerContainer {
+    height: 17rem;
     border-top: 1px solid whitesmoke;
-    h1{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    &-rights,
+    &-project,
+    &-about {
+        margin-top: 6rem;
         display: flex;
-        justify-content: center;
-        color: whitesmoke;
-        padding-top: 4rem;
+        flex-direction: column;
+        label{
+            font-size: 1.2rem;
+            color: whitesmoke;
+            font-weight: 600;
+        }
+        svg{
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        a{
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: whitesmoke;
+            text-decoration: underline;
+        }
     }
 }

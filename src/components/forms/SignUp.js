@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useAuth } from "./../../contexts/AuthCtx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./../../contexts/UserCtx";
 import { toast } from "react-toastify";
 import { addUserToState } from './../../redux/user/userActions'
 
 import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
 import { connect } from "react-redux";
+import Spinner from "../Spinner";
 
 function SignUp() {
   const { signup } = useAuth();
@@ -43,7 +44,7 @@ function SignUp() {
   return (
     <>
       {isLoading ? (
-        <p style={{ fontSize: "5rem", color: "green" }}>Loading...</p>
+        <Spinner />
       ) : (
         <div className={styles.formContainer}>
           <h1>Sign Up</h1>
@@ -88,6 +89,9 @@ function SignUp() {
               <button type="submit"> SignUp </button>
             </div>
           </form>
+          <p>
+            Already have an account? <Link to="/login">Login here</Link>
+          </p>
         </div>
       )}
     </>

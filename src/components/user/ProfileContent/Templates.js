@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import templateOne from '../../../assets/images/templateOne.png';
 import templateTwo from '../../../assets/images/templateTwo.png';
+import coverLetterOne from '../../../assets/images/coverLetterOne.PNG'
 
 import styles from '../../../assets/scss/componentsStyles/templates/Templates.module.scss';
-import TemplateLetterOne from "../../templates/coverLetter/templateLetterOne/TemplateLetterOne";
 
 const Templates = () => {
+  const [cvTemplate, setCvTemplate] = useState();
+  const [coverLetterTemplate, setCoverLetterTemplate] = useState();
+
   return (
     <div className={styles.templates}>
-      {/* <label> CV Templates </label> */}
-      <label> Cover Letters</label>
-      <TemplateLetterOne/>
-      {/* <div className={styles['templates-content']}>
+      <label> CV Templates </label>
+      <div className={styles['templates-content']}>
         <div className={styles['templates-content-box']}>
           <div className={styles['templates-content-box-card']}>
             <img width={300} height={350} src={templateOne}></img>
@@ -27,15 +28,15 @@ const Templates = () => {
       <div className={styles['templates-content']}>
         <div className={styles['templates-content-box']}>
           <div className={styles['templates-content-box-card']}>
-            <img width={300} height={350} src={templateOne}></img>
+            <img width={300} height={350} src={coverLetterOne}></img>
             <button>Choose the template</button>
           </div>
           <div className={styles['templates-content-box-card']}>
-            <img width={300} height={350} src={templateTwo}></img>
+            <img width={300} height={350} src={""} alt="upcomming ..."></img>
             <button>Choose the template</button>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

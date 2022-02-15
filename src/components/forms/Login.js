@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "./../../contexts/AuthCtx";
 import { useUser } from "./../../contexts/UserCtx";
-import { useNavigate } from "react-router-dom";
-import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
 import { addUserToState } from './../../redux/user/userActions'
+import Spinner from "../Spinner";
+
+import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
 
 function Login() {
   const { login } = useAuth();
@@ -30,8 +33,8 @@ function Login() {
         password: password,
       });
 
-      setUserInfo(userDetails);
       if (typeof userDetails !== "string") {
+        setUserInfo(userDetails);
         setIsLoading(false);
         navigate("/profile");
       }
@@ -47,7 +50,7 @@ function Login() {
   return (
     <>
       {isLoading ? (
-        <p style={{ fontSize: "5rem", color: "green" }}>Loading...</p>
+        <Spinner />
       ) : (
         <div className={styles.formContainer}>
           <h1>Login</h1>

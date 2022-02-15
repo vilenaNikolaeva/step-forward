@@ -1,9 +1,27 @@
+.userInfoBtn {
+  button {
+    float: left;
+    margin-left: 7rem;
+    font-weight: 600;
+    background-color: green;
+    border: 1px solid green;
+    padding: 1rem;
+    color: whitesmoke;
+    cursor: pointer;
+  }
+  button:hover {
+    box-shadow: -1px 7px 13px 0px rgba(148, 151, 221, 0.33);
+    background-color: transparent;
+    color: white;
+    font-weight: 700;
+  }
+}
 .profileContainer {
   padding: 2rem;
   font-size: 1.5rem;
   text-align: center;
   min-height: 80rem;
-  background-color: cornflowerblue;
+
   h1 {
     color: whitesmoke;
   }
@@ -36,9 +54,9 @@
 
   &-cardsContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
-    margin: 5rem;
+    margin: 2rem 2rem 2rem 2rem;
     align-items: center;
 
     &-card {
@@ -52,7 +70,7 @@
       height: 20rem;
       text-align: center;
       padding: 1rem;
-      p{
+      p {
         font-weight: 600;
       }
       button {
@@ -72,7 +90,7 @@
         font-weight: 700;
       }
     }
-    &-card:hover{
+    &-card:hover {
       box-shadow: 2px 9px 13px 3px rgb(247 247 247 / 33%);
       transition: box-shadow 0.3s ease-in-out;
     }

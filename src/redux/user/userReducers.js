@@ -1,6 +1,6 @@
 import * as actionTypes from './userTypes';
 
-const INITIAL_USER_STATE = null;
+const INITIAL_USER_STATE = {};
 
 const userReducer = (state = INITIAL_USER_STATE, action) => {
     switch (action.type) {
@@ -9,11 +9,13 @@ const userReducer = (state = INITIAL_USER_STATE, action) => {
         case actionTypes.REMOVE_USER_FROM_STATE:
             return null
         case actionTypes.UPDATE_USER_INFO:
-
-            // CHANGE UPDATE
-            return { ...state, favorites: action.payload }
+            return { ...state, userData: action.payload }
+        case actionTypes.UPDATE_CV_TEMPLATE:
+            return { ...state, cvTemplate: action.payload }
+        case actionTypes.UPDATE_CL_TEMPLATE:
+            return { ...state, clTemplate: action.payload }
         default:
-            return state;
+            return  state;
     }
 }
 

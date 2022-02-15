@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useDebugValue } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 import { addUserToState, removeUserFromState } from "../redux/user/userActions";
 
 import userService from "./../services/userService";
@@ -44,7 +45,6 @@ export const AuthProvider = ({ children }) => {
         userId: userDetails.userId,
         name: userDetails.userName,
       });
-      console.log(userDetails)
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
       toast.success("Have a great experince ! ");

@@ -5,14 +5,30 @@
     padding: 5rem;
     font-size: 1.8rem;
     border: 1px solid white;
-
     label {
         color: white;
     }
-
-    &-container {
-        display: flex;
-        justify-content: space-evenly;
+    &-tables {
         margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        &-tableCv {
+            margin-bottom: 5rem;
+        }
+        th,
+        td {
+            max-width: 18rem;
+            border: 1px solid whitesmoke;
+        }
+        th {
+            text-align: center;
+            color: whitesmoke;
+        }
+        tr {
+            text-align: left;
+            font-weight: 600;
+            color: #1c1e41;
+        }
     }
 }
