@@ -39,8 +39,8 @@ function HomePage() {
         <FaFileInvoice />
       </div>
       <div className={styles['homeContainer-templates']}>
-        <img className={styles['homeContainer-templates-imgOne']} src={templateOne} width={260} height={350} />
-        <img className={styles['homeContainer-templates-imgTwo']} src={templateTwo} width={260} height={350} />
+        <img className={styles['homeContainer-templates-imgOne']} alt="templateImg" src={templateOne} width={260} height={350} />
+        <img className={styles['homeContainer-templates-imgTwo']} alt="templateImg" src={templateTwo} width={260} height={350} />
       </div>
       <div className={styles['homeContainer-examples']}>
         <label> Feel free to draw ideas from the examples </label>

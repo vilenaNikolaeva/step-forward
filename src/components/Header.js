@@ -1,28 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUserAlt, FaPen, FaHome } from "react-icons/fa";
-import { useUser } from "../contexts/UserCtx";
 import { useAuth } from "../contexts/AuthCtx";
 import logo from "../assets/images/Logo.png";
 import styles from "../assets/scss/componentsStyles/Header.module.scss";
+import {  useSelector } from "react-redux";
 
 function Header() {
-  const { currentUser, logout } = useAuth();
-  const { clearUserInfo } = useUser();
+  const user = useSelector((state) => state.user.userData);
+  const { logout } = useAuth();
 
   const handleLogout = () => {
-    clearUserInfo();
     logout();
   };
 
   const userNavbarLink = (
     <>
-      {/* <Link to="/profile" className="nav-link active " aria-current="page">
-        <FaUserAlt />
-      </Link>
-      <Link to="/edit" className="nav-link active" aria-current="page">
-        <FaPen />
-      </Link> */}
       <button
         className={styles["headerContainer-logoutBtn"]}
         type="button"
@@ -38,7 +30,7 @@ function Header() {
       <Link to="/login" className={styles['headerContainer-btn']} aria-current="page">
         Login
       </Link>
-      <Link to="/signup" className={styles['headerContainer-btn']}aria-current="page">
+      <Link to="/signup" className={styles['headerContainer-btn']} aria-current="page">
         SignUp
       </Link>
     </>
@@ -50,7 +42,7 @@ function Header() {
         <img src={logo} width={100} height={100} alt="logo_img"></img>
       </Link>
       <div className={styles['headerContainer-nav']}>
-        {currentUser ? userNavbarLink : guestNavBarLink}</div>
+        {Object.entries(user).length > 0 ? userNavbarLink : guestNavBarLink}</div>
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import React from "react";
 import { useAuth } from "../../../contexts/AuthCtx";
+import { Link } from "react-router-dom";
 
 import styles from "../../../assets/scss/componentsStyles/Profile.module.scss";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const Profile = () => {
   const { currentUser } = useAuth();
@@ -11,7 +10,7 @@ const Profile = () => {
   return (
     <div>
       <div className={styles.userInfoBtn}>
-        <button >Personal Info </button>
+        <button>Personal Info </button>
       </div>
       <div className={styles.profileContainer}>
         <div className={styles["prfileContainer-label"]}>

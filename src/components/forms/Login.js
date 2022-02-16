@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import { connect } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "./../../contexts/AuthCtx";
-import { useUser } from "./../../contexts/UserCtx";
-import { addUserToState } from './../../redux/user/userActions'
 import Spinner from "../Spinner";
 
 import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
 
 function Login() {
   const { login } = useAuth();
-  const { setUserInfo } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -34,7 +30,6 @@ function Login() {
       });
 
       if (typeof userDetails !== "string") {
-        setUserInfo(userDetails);
         setIsLoading(false);
         navigate("/profile");
       }
@@ -82,11 +77,4 @@ function Login() {
     </>
   );
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addUserToState: (userData) => dispatch(addUserToState(userData))
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;

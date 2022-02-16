@@ -8,6 +8,9 @@ const addUserRegister = (userData) => {
 const addUserLogin = (userData) => {
     return requester.post(apiRoutes.userLoginURL(), userData);
 };
+const updateUserProfileInfo = (userId, userInfo) => {
+    return requester.put(apiRoutes.userUpdateProfileInfoURL(userId), userInfo)
+}
 
 // const updateUserInfo = (userId, userData) => {
 //     return requester.put(apiRoutes.userByIdURL(userId), userData);
@@ -16,7 +19,7 @@ const addUserLogin = (userData) => {
 const userService = {
     addUserRegister,
     addUserLogin,
-    // updateUserInfo
+    updateUserProfileInfo,
 };
 
 export default userService;

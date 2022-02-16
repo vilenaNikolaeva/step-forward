@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import AppRouter from "./api/AppRouter";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./contexts/AuthCtx";
-import { UserProvider } from "./contexts/UserCtx";
 import { ToastContainer } from "react-toastify";
 import PageWrapper from "./wrappers/PageWrapper";
 
@@ -15,15 +14,11 @@ function App() {
     <div className="App">
       <AppWrapper>
         <AuthProvider>
-          <UserProvider>
-            <Header />
-            <PageWrapper>
-              {/* <ParticlesWrapper> */}
-              <AppRouter />
-              {/* </ParticlesWrapper> */}
-            </PageWrapper>
-            <Footer />
-          </UserProvider>
+          <Header />
+          <PageWrapper>
+            <AppRouter />
+          </PageWrapper>
+          <Footer />
           <ToastContainer
             position="bottom-left"
             autoClose={4000}
