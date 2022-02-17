@@ -1,0 +1,65 @@
+@import "../../../styles/common";
+@import "../../../styles/media-queries";
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    background-color: #eeeeee;
+    min-width: 70rem;
+    // height: 47.8rem;
+    margin: 2rem 2rem 2rem 2rem;
+    padding: 5rem 5rem 2rem 0rem;
+    &-form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-width: 40rem;
+        margin: auto;
+        font-weight: 600;
+        font-size: 1.5rem;
+        padding: 2rem;
+        &-share {
+            text-align: left;
+        }
+        label {
+            text-align: left;
+            padding:  0.4rem 0.4rem 0.4rem 0rem;
+            margin: 0.5rem;
+            color: rgb(0, 104, 0);
+        }
+        input {
+            border: 1px solid green;
+            padding: 0.6rem;
+        }
+        input:hover{
+            box-shadow: 0 2px 10px rgba(116, 116, 116, 0.3);
+        }
+        &-btnContainer {
+            display: flex;
+            justify-content: end;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            &-close,
+            &-save {
+                margin: 0.5rem;
+                min-width: 7rem;
+                min-height: 3rem;
+                text-align: center;
+                font-weight: 600;
+                color: whitesmoke;
+                border: none;
+                cursor: pointer;
+            }
+            &-close:hover,
+            &-save:hover {
+                box-shadow: 0 5px 10px rgba(116, 116, 116, 0.3);
+            }
+            &-close {
+                background-color: #323685;
+            }
+            &-save {
+                background-color: green;
+            }
+        }
+    }
+}

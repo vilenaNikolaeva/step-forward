@@ -8,17 +8,22 @@ import PageWrapper from "./wrappers/PageWrapper";
 
 import "react-toastify/dist/ReactToastify.css";
 import AppWrapper from "./wrappers/AppWrapper";
+import { ModalProvider } from "./contexts/ModalCtx";
 
 function App() {
   return (
     <div className="App">
       <AppWrapper>
         <AuthProvider>
-          <Header />
-          <PageWrapper>
-            <AppRouter />
-          </PageWrapper>
-          <Footer />
+          <ModalProvider>
+            <Header />
+
+            <PageWrapper>
+              <AppRouter />
+            </PageWrapper>
+            <Footer />
+          </ModalProvider>
+
           <ToastContainer
             position="bottom-left"
             autoClose={4000}
@@ -32,7 +37,7 @@ function App() {
           />
         </AuthProvider>
       </AppWrapper>
-    </div>
+    </div >
   );
 }
 

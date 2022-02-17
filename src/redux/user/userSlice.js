@@ -23,14 +23,22 @@ const userSlice = createSlice({
         clearUserInfo(state, action) {
             state.userData = {};
         },
-        updateUserProfile(state, action) {
-            const userInfo = userService.updateUserProfileInfo(state.userData.userId, action.payload)
-            state.userProfileInfo = userInfo;
-        }
+        updateUserProfileInfo(state, action) {
+            state.userProfileInfo = action.payload;
+        },
+        // updateUserFullName(state, action) {
+        //     state.userProfileInfo.username = action.payload;
+        // },
+        // updateUserAddress(state, action) {
+        //     state.userProfileInfo.address = action.payload;
+        // },
+        // updateUserEmail(state, action) {
+        //     state.userProfileInfo.email = acton.payload;
+        // }
     },
 });
 
-export const { currentUserInfo, clearUserInfo } =
+export const { currentUserInfo, clearUserInfo, updateUserProfileInfo } =
     userSlice.actions;
 
 export const selectUserInfo = (state) => state.users.userData;

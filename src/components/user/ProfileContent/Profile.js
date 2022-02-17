@@ -1,20 +1,22 @@
 import React from "react";
-import { useAuth } from "../../../contexts/AuthCtx";
 import { Link } from "react-router-dom";
 
 import styles from "../../../assets/scss/componentsStyles/Profile.module.scss";
+import { useSelector } from "react-redux";
+import { useModal } from "../../../contexts/ModalCtx";
 
 const Profile = () => {
-  const { currentUser } = useAuth();
+  const user = useSelector((state) => state.user.userData.name);
+  const { setIsOpenUserProfileModal } = useModal();
 
   return (
     <div>
       <div className={styles.userInfoBtn}>
-        <button>Personal Info </button>
+        <button onClick={() => setIsOpenUserProfileModal(true)}> Personal Info </button>
       </div>
       <div className={styles.profileContainer}>
         <div className={styles["prfileContainer-label"]}>
-          <h1> Welcome , {currentUser?.name}</h1>
+          <h1> Welcome , {user}</h1>
         </div>
         <div className={styles["profileContainer-welcomeContainer"]}>
           <p>So happy that you’re here! The concept is simple:
