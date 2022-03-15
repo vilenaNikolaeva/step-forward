@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from "react-toastify";
-import { currentUserInfo, clearUserInfo } from '../redux/user/userSlice';
+import { currentUserInfo, clearUserInfo } from '../features/userSlice';
 import userService from "./../services/userService";
 
 const AuthCtx = React.createContext();
@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
     if (Object.entries(user).length <= 0) {
       const userSessionData = JSON.parse(sessionStorage.getItem("userData"));
       if (userSessionData) {
-        console.log('in useeffect')
         dispatch(currentUserInfo({
           token: userSessionData.token,
           userId: userSessionData.userId,

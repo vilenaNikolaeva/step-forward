@@ -8,7 +8,6 @@ export const ModalProvider = ({ children }) => {
    const [isOpenUserProfileModal, setIsOpenUserProfileModal] = useState(false);
    
    const showUserProfileInfo = () =>{
-       console.log('ahaa')
        setIsOpenUserProfileModal(true);
    }
     const closeModal = () => {
