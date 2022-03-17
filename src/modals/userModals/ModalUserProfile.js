@@ -11,7 +11,8 @@ import {
   updateUserLink,
   updateUserInfo,
   updateUserDescription,
-  updateUserProfileInfo,
+  updateUserProfileStatus
+  // updateUserProfileInfo,
 } from "../../features/userSlice.js";
 import ModalWrapper from "../../wrappers/ModalWrapper";
 import Spinner from "../../components/Spinner";
@@ -29,11 +30,11 @@ const ModalUserProfile = () => {
     dispatch(getUserInfoAsync(userId));
   }, []);
 
-  const handleUpdateUserInfo = () =>{
-     //TODO
-      dispatch(updateUserInfo({userId,userInfo}))
-      setIsOpenUserProfileModal(false)
-  }
+  const handleUpdateUserInfo = (e) => {
+    e.preventDefault();
+    dispatch(updateUserInfo({ userId, userInfo }));
+    setIsOpenUserProfileModal(false);
+  };
   return (
     <>
       {!userInfo ? (
@@ -44,13 +45,16 @@ const ModalUserProfile = () => {
           isOpenModalComponent={isOpenUserProfileModal}
         >
           <div className={styles["modal-container"]}>
-            <form className={styles["modal-container-form"]} onSubmit={handleUpdateUserInfo}>
+            <form
+              className={styles["modal-container-form"]}
+              onSubmit={handleUpdateUserInfo}
+            >
               <label className={styles["modal-container-form-share"]}>
                 <input
                   type="checkbox"
                   name="isItPublic"
-                  checked={userInfo?.isItPublic ? "checked" : null}
-                  // onClick={() => this.setState({ isItPublic: !this.state.isItPublic })}
+                  defaultChecked={userInfo.isItPublic ? "checked" : null}
+                  onClick={(e) => dispatch(updateUserProfileStatus(e.target.value))}
                 />{" "}
                 SHARE
               </label>
@@ -99,12 +103,15 @@ const ModalUserProfile = () => {
                 type="text"
                 name="description"
                 defaultValue={userInfo?.description}
-                onChange={(e) => dispatch(updateUserDescription(e.target.value))}
+                onChange={(e) =>
+                  dispatch(updateUserDescription(e.target.value))
+                }
                 placeholder="Personal description..."
               />
               <div className={styles["modal-container-form-btnContainer"]}>
                 <button
                   className={styles["modal-container-form-btnContainer-close"]}
+                  onClick={()=>setIsOpenUserProfileModal(false)}
                 >
                   Close
                 </button>

@@ -5,6 +5,7 @@ import { useAuth } from "./../../contexts/AuthCtx";
 import Spinner from "../Spinner";
 
 import styles from '../../assets/scss/componentsStyles/UserForm.module.scss';
+import { toast } from "react-toastify";
 
 function Login() {
   const { login } = useAuth();
@@ -28,7 +29,6 @@ function Login() {
         email: email,
         password: password,
       });
-
       if (typeof userDetails !== "string") {
         setIsLoading(false);
         navigate("/profile");
@@ -38,7 +38,9 @@ function Login() {
       }
 
     } catch (err) {
+      toast.error('Error input validation. Try Again! ')
       console.log(err.message);
+      setIsLoading(false)
     }
   };
 

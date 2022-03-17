@@ -27,7 +27,7 @@ export const updateUserInfo = createAsyncThunk(
     const {userId, userInfo} = userData;
     const user = await userService
       .updateUserProfileInfo(userId,userInfo)
-      .then((res) => console.log(res))
+      .then((res) =>res)
       .catch((err) => console.log(err));
     return await user;
   }
@@ -40,11 +40,21 @@ const userSlice = createSlice({
     currentUserInfo(state, action) {
       state.userData = action.payload;
     },
-    clearUserInfo(state, action) {
-      state.userData = {};
-    },
     updateUserProfileInfo(state, action) {
       state.userProfileInfo = action.payload;
+    },
+    updateUserProfileStatus(state, action) {
+      const status= state.userProfileInfo.isItPublic;
+      state.userProfileInfo.isItPublic = !status;
+    },
+    updateUserCVTemplate(state,action) {
+      console.log(action.payload)
+
+      // state.userProfileInfo.cvTemplate= action.payload;
+    },
+    updateUserCLTemplate(state,action) {
+       console.log(action.payload)
+      // state.userProfileInfo.clTemplate= action.payload;
     },
     updateUserFullName(state, action) {
       state.userProfileInfo.username = action.payload;
@@ -64,11 +74,17 @@ const userSlice = createSlice({
     updateUserEmail(state, action) {
       state.userProfileInfo.email = action.payload;
     },
+    clearUserInfo(state) {
+      state.userData = {};
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getUserInfoAsync.fulfilled, (state, action) => {
       state.userProfileInfo = action.payload;
     });
+    builder.addCase(updateUserInfo.fulfilled , (state,action)=>{
+      state.userProfileInfo=action.payload;
+    })
   },
 });
 
@@ -81,6 +97,9 @@ export const {
   updateUserEmail,
   updateUserPhone,
   updateUserLink,
+  updateUserCVTemplate,
+  updateUserCLTemplate,
+  updateUserProfileStatus,
   updateUserDescription,
 } = userSlice.actions;
 
