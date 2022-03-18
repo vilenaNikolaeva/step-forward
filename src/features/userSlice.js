@@ -1,15 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import userService from "../services/userService";
 
 const initialState = {
   userData: {},
-  userProfileInfo: [],
-  userEducation: {},
-  userProExperience: [],
-  userWorkExperience: {},
-  userSkills: [],
-  userSummery: "",
-  userLanguages: [],
+  userProfileInfo: {
+    username: '',
+    jobTitle: '',
+    isItPublic: '',
+    address: '',
+    phone: '',
+    email: '',
+    link: '',
+    description: '',
+    imageSrc: '',
+    imageFile: '',
+    cvTemplate: '',
+    clTemplate: '',
+  },
 };
 export const getUserInfoAsync = createAsyncThunk(
   "user/fetchUserInfo",
@@ -24,11 +32,12 @@ export const getUserInfoAsync = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
   "user/updateUserInfo", 
   async (userData) => {
+    console.log(userData)
     const {userId, userInfo} = userData;
     const user = await userService
       .updateUserProfileInfo(userId,userInfo)
-      .then((res) =>res)
-      .catch((err) => console.log(err));
+      .then((res) =>(res,toast.success('Successfully updated information.')))
+      .catch((err) =>toast.error(err.message));
     return await user;
   }
 );
@@ -49,18 +58,20 @@ const userSlice = createSlice({
     },
     updateUserCVTemplate(state,action) {
       console.log(action.payload)
-
-      // state.userProfileInfo.cvTemplate= action.payload;
+      state.userProfileInfo.cvTemplate= action.payload;
     },
     updateUserCLTemplate(state,action) {
        console.log(action.payload)
-      // state.userProfileInfo.clTemplate= action.payload;
+      state.userProfileInfo.clTemplate= action.payload;
     },
     updateUserFullName(state, action) {
       state.userProfileInfo.username = action.payload;
     },
     updateUserAddress(state, action) {
       state.userProfileInfo.address = action.payload;
+    },
+    updateUserJobTitle(state, action) {
+      state.userProfileInfo.jobTitle = action.payload;
     },
     updateUserPhone(state, action) {
       state.userProfileInfo.phone = action.payload;
@@ -101,8 +112,9 @@ export const {
   updateUserCLTemplate,
   updateUserProfileStatus,
   updateUserDescription,
+  updateUserJobTitle,
 } = userSlice.actions;
 
 export const selectUserInfo = (state) => state.users.userData;
-
+export const selectUserProfileInfo = (state)=>state.user.userProfileInfo;
 export default userSlice.reducer;

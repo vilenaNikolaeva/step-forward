@@ -9,8 +9,9 @@ import {
   FaRegEnvelope,
   FaUserAlt,
 } from "react-icons/fa";
-import logo from '../../../assets/images/Logo.png';
-import styles from "../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss";
+
+import logo from '../../../../assets/images/Logo.png';
+import styles from '../../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss';
 
 const CVTemplateOne = () => {
   return (

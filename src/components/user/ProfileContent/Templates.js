@@ -33,7 +33,7 @@ const Templates = () => {
           </div>
           <div className={styles['templates-content-box-card']}>
             <img width={300} height={350} src={templateTwo} alt="templateImg"></img>
-            <button name ={'ash'}  onClick={(e)=>dispatch(updateUserCVTemplate(e.target.name))} >Choose the template</button>
+            <button name ={'ash'}  onClick={(e)=>handleTemplate(e)} >Choose the template</button>
           </div>
         </div>
       </div>

@@ -1,7 +1,11 @@
 import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 
-const ExperinceContent = (contentType) => {
+const ExperinceContent = () => {
+  const type=useSelector((state)=>state.user.userProfileInfo.cvTemplate);
+  const dispatch=useDispatch();
+
   const handleTypeOne = () => {
     return (
       <>
@@ -23,7 +27,7 @@ const ExperinceContent = (contentType) => {
   const handleTypeTwo = () => {
     return (
       <>
-        <p> Position title</p>
+       <p> Position title</p>
         <span> Company Name</span>
         <p>
           Experience description : Here where you can place description about what exactly was your experience in this position
@@ -31,6 +35,6 @@ const ExperinceContent = (contentType) => {
       </>
     );
   };
-  return contentType === "one" ? handleTypeOne() : handleTypeTwo();
+  return type === "ash" ? handleTypeOne() : handleTypeTwo();
 };
 export default ExperinceContent;

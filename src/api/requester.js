@@ -82,7 +82,8 @@
 import { toast } from "react-toastify";
 
 function getToken() {
-    if(sessionStorage.token){
+
+    if(!sessionStorage.token){
       return 'Bearer ' + sessionStorage.token;
     }
     else{
@@ -106,8 +107,7 @@ export const request = async (url, options) => {
     const data = await response.json();
     return data;
   } catch (err) {
-    toast.error(err.message);
-    return err.message;
+   return  toast.error(err.message);
   }
 };
 

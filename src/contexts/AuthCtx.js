@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { currentUserInfo, clearUserInfo } from '../features/userSlice';
+import { currentUserInfo, clearUserInfo } from "../features/userSlice";
 import userService from "./../services/userService";
 
 const AuthCtx = React.createContext();
@@ -22,11 +22,13 @@ export const AuthProvider = ({ children }) => {
     if (Object.entries(user).length <= 0) {
       const userSessionData = JSON.parse(sessionStorage.getItem("userData"));
       if (userSessionData) {
-        dispatch(currentUserInfo({
-          token: userSessionData.token,
-          userId: userSessionData.userId,
-          name: userSessionData.userName,
-        }));
+        dispatch(
+          currentUserInfo({
+            token: userSessionData.token,
+            userId: userSessionData.userId,
+            name: userSessionData.userName,
+          })
+        );
       }
     }
   }, []);
@@ -37,11 +39,13 @@ export const AuthProvider = ({ children }) => {
     if (userDetails === "string") {
       return toast.error("Invalid input details. Try Agrain.");
     } else {
-      dispatch(currentUserInfo({
-        token: userDetails.token,
-        userId: userDetails.userId,
-        name: userDetails.userName,
-      }));
+      dispatch(
+        currentUserInfo({
+          token: userDetails.token,
+          userId: userDetails.userId,
+          name: userDetails.userName,
+        })
+      );
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
       toast.success("Have a great experince ! ");
@@ -52,17 +56,18 @@ export const AuthProvider = ({ children }) => {
   const login = async (data) => {
     const userDetails = await userService.addUserLogin(data);
 
-    if (typeof (userDetails) === "string" || typeof (userDetails) === '') {
+    if (typeof userDetails === "string" || typeof userDetails === "") {
       return toast.error("Invalid input details. Try Agrain.");
-    }
-    else {
+    } else {
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
       setIsRegistrationCompleted(true);
-      dispatch(currentUserInfo({
-        token: userDetails.token,
-        userId: userDetails.userId,
-        name: userDetails.userName,
-      }));
+      dispatch(
+        currentUserInfo({
+          token: userDetails.token,
+          userId: userDetails.userId,
+          name: userDetails.userName,
+        })
+      );
       toast.success("Have a great experince ! ");
     }
     setIsRegistrationCompleted(true);
