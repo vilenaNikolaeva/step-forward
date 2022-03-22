@@ -12,6 +12,7 @@ const initialState = {
     phone: '',
     email: '',
     link: '',
+    otherConnections: '',
     description: '',
     imageSrc: '',
     imageFile: '',
@@ -32,7 +33,6 @@ export const getUserInfoAsync = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
   "user/updateUserInfo", 
   async (userData) => {
-    console.log(userData)
     const {userId, userInfo} = userData;
     const user = await userService
       .updateUserProfileInfo(userId,userInfo)
@@ -57,7 +57,6 @@ const userSlice = createSlice({
       state.userProfileInfo.isItPublic = !status;
     },
     updateUserCVTemplate(state,action) {
-      console.log(action.payload)
       state.userProfileInfo.cvTemplate= action.payload;
     },
     updateUserCLTemplate(state,action) {
@@ -78,6 +77,9 @@ const userSlice = createSlice({
     },
     updateUserLink(state, action) {
       state.userProfileInfo.link = action.payload;
+    },
+    updateUserOtherConnections(state, action) {
+      state.userProfileInfo.otherConnections = action.payload;
     },
     updateUserDescription(state, action) {
       state.userProfileInfo.description = action.payload;
@@ -113,6 +115,7 @@ export const {
   updateUserProfileStatus,
   updateUserDescription,
   updateUserJobTitle,
+  updateUserOtherConnections,
 } = userSlice.actions;
 
 export const selectUserInfo = (state) => state.users.userData;

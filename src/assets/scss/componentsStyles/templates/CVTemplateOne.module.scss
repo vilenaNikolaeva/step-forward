@@ -1,4 +1,5 @@
 .templateOne {
+  padding: 5rem;
   overflow: auto;
   background-color: whitesmoke;
   max-width: 90rem;
@@ -19,7 +20,7 @@
       font-weight: 600;
     }
     border-bottom: 1px solid #007aff;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     display: flex;
     justify-content: space-between;
     &-objective {
@@ -31,9 +32,13 @@
       max-width: 33rem;
       padding-left: 4rem;
       input, textarea {
-        margin: 0.2rem;
+        margin: 0.5rem;
         border: none;
         color: #178cfd;
+      }
+      textarea{
+        min-height: 10rem;
+
       }
       span {
         font-style: italic;
@@ -59,7 +64,7 @@
       max-width: 30rem;
       align-self: center;
       span {
-        padding: 0.3rem;
+        padding: 0.5rem;
         margin-right: 3rem;
         svg {
           color: #007aff;

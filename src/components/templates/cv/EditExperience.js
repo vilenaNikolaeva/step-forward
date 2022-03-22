@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getUserExperiencesAsync } from "../../../features/experienceSlice";
+import { getExperinceInfoById, getUserExperiencesAsync, updateCompanyName, updateJobDescription, updateJobTitle, updateUserExperienceAsync } from "../../../features/experienceSlice";
 import Spinner from '../../Spinner';
 
-const ExperinceContent = (edit) => {
+const EditExperience = (edit) => {
   const type = useSelector((state) => state.user.userProfileInfo.cvTemplate);
   const userId = useSelector((state) => state.user.userData.userId);
   const userExperiences = useSelector(
@@ -17,6 +17,13 @@ const ExperinceContent = (edit) => {
   useEffect(() => {
     dispatch(getUserExperiencesAsync(userId));
   }, []);
+
+  const handelUpdateUserExperience = (event,id) => {
+    event.preventDefault();
+
+    //TODOOO
+
+};
 
   const handleTypeOne = () => {
     return (
@@ -37,19 +44,22 @@ const ExperinceContent = (edit) => {
     );
   };
   const handleTypeTwo = () => {
+    
     return (
       <>
       {userExperiences || userExperiences!== undefined ?  userExperiences.map((exp,id) => {
           return (
-            < div key={id}>
+            <form onSubmit={(e)=>handelUpdateUserExperience(e,id)} key={id}>
               <span>
                 {" "}
                 <FaCalendarAlt /> period from {exp.startDate?.toLocaleString().slice(0,10)} - to {exp.endDate?.toLocaleString().slice(0,10)}{" "}
               </span>
-              <p> {exp.jobTitle}</p>
-              <span>{exp.companyName}</span>
-              <p>{exp.description}</p>
-            </div >
+              <input type="text" name='jobTitle' placeholder=" Job Title..." defaultValue={exp.jobTitle} onChange={(e)=>dispatch(updateJobTitle(e.target.value))}/>
+              <input type="text" name='jobTitle' placeholder="Company Name..." defaultValue={exp.companyName} onChange={(e)=>dispatch(updateCompanyName(e.target.value))}/>
+              <textarea type="text" name="description" placeholder="Description of your accomplishments..." defaultValue={exp.description} 
+              onChange={(e)=> dispatch(updateJobDescription(e.target.value))}/>  
+              <button type="sybmit"> Save </button>
+            </form >
           );
         }) : 
         <Spinner/>
@@ -57,6 +67,6 @@ const ExperinceContent = (edit) => {
       </>
     );
   };
-  return type === "ash" ? handleTypeOne(edit) : handleTypeTwo(edit);
+  return type === "ash" ? handleTypeOne() : handleTypeTwo();
 };
-export default ExperinceContent;
+export default EditExperience;

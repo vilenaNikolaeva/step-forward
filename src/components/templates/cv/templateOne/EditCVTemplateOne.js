@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import ExperienceContent from "../ExperienceContent";
 import EducationContent from "../EducationContent";
 import {
@@ -12,6 +14,7 @@ import {
   updateUserLink,
   getUserInfoAsync,
   updateUserInfo,
+  updateUserOtherConnections,
 } from "../../../../features/userSlice";
 
 import {
@@ -20,17 +23,20 @@ import {
   FaPhone,
   FaRegEnvelope,
   FaUserAlt,
+  FaLink,
 } from "react-icons/fa";
 
 import logo from "../../../../assets/images/Logo.png";
 import styles from "../../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { getUserExperiencesAsync } from "../../../../features/experienceSlice";
+import EditExperience from "../EditExperience";
+
 
 const EditCVTemplateOne = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.userData.userId);
   const userInfo = useSelector((state) => state.user.userProfileInfo);
- 
+
   useEffect(() => {
     dispatch(getUserInfoAsync(userId));
   }, []);
@@ -39,9 +45,15 @@ const EditCVTemplateOne = () => {
     e.preventDefault();
     dispatch(updateUserInfo({ userId, userInfo }));
   };
+  // TODOO
+  //  const handleUpdateExpereince=(e)=>{}
+
   return (
     <div className={styles.templateOne}>
-      <form onSubmit={handleUpdateUserInfo} className={styles["templateOne-profile"]}>
+      <form
+        onSubmit={handleUpdateUserInfo}
+        className={styles["templateOne-profile"]}
+      >
         <div className={styles["templateOne-profile-objective"]}>
           {userId ? (
             <input
@@ -141,39 +153,51 @@ const EditCVTemplateOne = () => {
             )}
             <FaLinkedin />
           </span>
+          <span>
+            {userId ? (
+              <input
+                type="text"
+                name="otherConnections"
+                defaultValue={userInfo.link}
+                onChange={(e) =>
+                  dispatch(updateUserOtherConnections(e.target.value))
+                }
+                placeholder="Other connections..."
+              />
+            ) : (
+              " otherConnections.com"
+            )}
+            <FaLink />
+          </span>
         </div>
-        <button
-        type="submit"
-        >
-          Save
-        </button>
+        <button type="submit">Save</button>
       </form>
       <div className={styles["templateOne-cvContent"]}>
         <div className={styles["templateOne-cvContent-leftBox"]}>
-          <div className={styles["templateOne-cvContent-leftBox-experience"]}>
-            <label>Experiences</label>
-            <div
-              className={
-                styles["templateOne-cvContent-leftBox-experience-content"]
-              }
-            >
-              <ExperienceContent />
+            <div className={styles["templateOne-cvContent-leftBox-experience"]}>
+              <label>Experiences</label>
+              <div
+                className={
+                  styles["templateOne-cvContent-leftBox-experience-content"]
+                }
+              >
+                <EditExperience/>
+              </div>
+              {/* <div
+                className={
+                  styles["templateOne-cvContent-leftBox-experience-content"]
+                }
+              >
+                <ExperienceContent />
+              </div>
+              <div
+                className={
+                  styles["templateOne-cvContent-leftBox-experience-content"]
+                }
+              >
+                <ExperienceContent />
+              </div> */}
             </div>
-            <div
-              className={
-                styles["templateOne-cvContent-leftBox-experience-content"]
-              }
-            >
-              <ExperienceContent />
-            </div>
-            <div
-              className={
-                styles["templateOne-cvContent-leftBox-experience-content"]
-              }
-            >
-              <ExperienceContent />
-            </div>
-          </div>
           <div className={styles["templateOne-cvContent-leftBox-education"]}>
             <label>Education</label>
             <div
