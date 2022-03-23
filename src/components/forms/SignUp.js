@@ -24,7 +24,7 @@ function SignUp() {
 
     try {
       setIsLoading(true);
-      const userDetails = await signup({
+       await signup({
         username: username,
         email: email,
         password: password,

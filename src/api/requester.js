@@ -82,17 +82,12 @@
 import { toast } from "react-toastify";
 
 function getToken() {
-
-    if(!sessionStorage.token){
-      return 'Bearer ' + sessionStorage.token;
-    }
-    else{
-     const userData=(JSON.parse(sessionStorage.userData));
-     return 'Bearer ' + userData.token;
-
-    }
+  if (sessionStorage.token === undefined) {
+    const userData = JSON.parse(sessionStorage.userData);
+    return "Bearer " + userData.token;
+  }
+  return "Bearer " + sessionStorage.token;
 }
-
 
 export const request = async (url, options) => {
   try {
@@ -107,7 +102,7 @@ export const request = async (url, options) => {
     const data = await response.json();
     return data;
   } catch (err) {
-   return  toast.error(err.message);
+    return toast.error(err);
   }
 };
 
@@ -130,4 +125,3 @@ export const getOptions = async (method = "get", body) => {
 
   return options;
 };
-

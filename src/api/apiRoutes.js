@@ -6,15 +6,14 @@ const userRoutes = {
     userLoginURL: () => `${BASE_URL}Authentication/login`,
     userProfileInfoURL: (id) => `${BASE_URL}User/${id}`,
     userExperienceURL: (userId)=> `${BASE_URL}User/${userId}/experiences`,
-
-    // userByIdURL: (userId) => {
-    //     return userId ? `${baseUrl}/user/${userId}` : printError();
-    // },
 }
-// const userExperinceRoutes = {
-// }
+const userExperinceRoutes = {
+    updateExperienceURL  : (id) => `${BASE_URL}Experience/${id}`,
+
+}
 const apiRoutes = {
     ...userRoutes,
+    ...userExperinceRoutes
 }
 
 export default apiRoutes;

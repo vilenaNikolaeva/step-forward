@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import experienceService from "../services/experienceService";
 
 import { toast } from "react-toastify";
@@ -35,7 +35,10 @@ export const updateUserExperienceAsync = createAsyncThunk(
       .updateUserExperince(id, experience)
       .then((res) => (res, toast.success("Successfully updated information.")))
       .catch((err) => toast.error(err.message));
-    return await experienceResult;
+    if (experienceResult) {
+      return experience;
+    }
+    // return await experienceResult;
   }
 );
 
@@ -46,27 +49,36 @@ const experienceSlice = createSlice({
     clearUserExperience(state) {
       state.userData = {};
     },
-    updateStartData(state, action) {
-      state.userExperience.startData = action.payload;
+    getExperience(state, action) {
+      state.userExperience.find((item) => item.id === action.payload);
+    },
+    updateStartDate(state, action) {
+      console.log(action.payload)
+      // TODO
+      // Moment(experienceForEdit.startDate).format('YYYY-MM-DD')
     },
     updateEndDate(state, action) {
       state.userExperience.endDate = action.payload;
     },
     updateStillWork(state, action) {
-      state.userExperience.stillWork = action.payload;
+      const { value, id } = action.payload;
+      const experience = state.userExperience.find((item) => item.id === id);
+      experience.stillWork = value;
     },
     updateJobTitle(state, action) {
-      console.log(action.payload);
-      // state.userExperience.jobTitle = action.payload;
+      const { value, id } = action.payload;
+      const experience = state.userExperience.find((item) => item.id === id);
+      experience.jobTitle = value;
     },
     updateCompanyName(state, action) {
-      state.userExperience.companyName = action.payload;
+      const { value, id } = action.payload;
+      const experience = state.userExperience.find((item) => item.id === id);
+      experience.companyName = value;
     },
     updateJobDescription(state, action) {
-      state.userExperience.description = action.payload;
-    },
-    updateUserExperience(state, action) {
-      state.userExperience = action.payload;
+      const { value, id } = action.payload;
+      const experience = state.userExperience.find((item) => item.id === id);
+      experience.description = value;
     },
   },
   extraReducers: (builder) => {
@@ -74,21 +86,19 @@ const experienceSlice = createSlice({
       state.userExperience = action.payload;
     });
     builder.addCase(updateUserExperienceAsync.fulfilled, (state, action) => {
-      console.log(action.payload)
-      const experience = state.userExperience.map(
+      current(state.userExperience).find(
         (item) => item.id === action.payload.id
       );
-      experience = action.payload;
-      console.log(state.userExperience);
     });
   },
 });
 
 export const {
   clearUserExperience,
+  getExperience,
   getExperinceInfoById,
   updateUserExperience,
-  updateStartData,
+  updateStartDate,
   updateEndDate,
   updateStillWork,
   updateJobTitle,

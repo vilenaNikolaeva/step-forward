@@ -1,11 +1,22 @@
 import React, { useEffect } from "react";
+import DatePicker from "react-datepicker";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getExperinceInfoById, getUserExperiencesAsync, updateCompanyName, updateJobDescription, updateJobTitle, updateUserExperienceAsync } from "../../../features/experienceSlice";
-import Spinner from '../../Spinner';
+import "react-datepicker/dist/react-datepicker.css";
 
-const EditExperience = (edit) => {
+import {
+  getUserExperiencesAsync,
+  updateCompanyName,
+  updateJobDescription,
+  updateJobTitle,
+  updateStartData,
+  updateStartDate,
+  updateUserExperienceAsync,
+} from "../../../features/experienceSlice";
+import Spinner from "../../Spinner";
+
+const EditExperience = () => {
   const type = useSelector((state) => state.user.userProfileInfo.cvTemplate);
   const userId = useSelector((state) => state.user.userData.userId);
   const userExperiences = useSelector(
@@ -18,12 +29,36 @@ const EditExperience = (edit) => {
     dispatch(getUserExperiencesAsync(userId));
   }, []);
 
-  const handelUpdateUserExperience = (event,id) => {
+  const handleChange = (e, id) => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+
+    switch (name) {
+      case "jobTitle":
+        dispatch(updateJobTitle({ value, id }));
+        break;
+      case "companyName":
+        dispatch(updateCompanyName({ value, id }));
+        break;
+      case "description":
+        dispatch(updateJobDescription({ value, id }));
+        break;
+      case "startDate":
+        break;
+      case "endDate":
+        break;
+      default:
+        break;
+    }
+  };
+  const handelUpdateUserExperience = (event, id) => {
     event.preventDefault();
+    const experience = userExperiences.find((item) => item.id === id);
 
+    dispatch(updateUserExperienceAsync({ id, experience }));
     //TODOOO
-
-};
+  };
 
   const handleTypeOne = () => {
     return (
@@ -44,26 +79,53 @@ const EditExperience = (edit) => {
     );
   };
   const handleTypeTwo = () => {
-    
     return (
       <>
-      {userExperiences || userExperiences!== undefined ?  userExperiences.map((exp,id) => {
-          return (
-            <form onSubmit={(e)=>handelUpdateUserExperience(e,id)} key={id}>
-              <span>
-                {" "}
-                <FaCalendarAlt /> period from {exp.startDate?.toLocaleString().slice(0,10)} - to {exp.endDate?.toLocaleString().slice(0,10)}{" "}
-              </span>
-              <input type="text" name='jobTitle' placeholder=" Job Title..." defaultValue={exp.jobTitle} onChange={(e)=>dispatch(updateJobTitle(e.target.value))}/>
-              <input type="text" name='jobTitle' placeholder="Company Name..." defaultValue={exp.companyName} onChange={(e)=>dispatch(updateCompanyName(e.target.value))}/>
-              <textarea type="text" name="description" placeholder="Description of your accomplishments..." defaultValue={exp.description} 
-              onChange={(e)=> dispatch(updateJobDescription(e.target.value))}/>  
-              <button type="sybmit"> Save </button>
-            </form >
-          );
-        }) : 
-        <Spinner/>
-      }
+        {userExperiences || userExperiences !== undefined ? (
+          userExperiences.map((exp, id) => {
+            return (
+              <form
+                onSubmit={(e) => handelUpdateUserExperience(e, exp.id)}
+                key={exp.id}
+              >
+                <span>
+                  {" "}
+                  <DatePicker
+                    name="startDate"
+                    value={exp.startDate?.toLocaleString().slice(0, 10)}
+                    onChange={(date) => dispatch(updateStartDate(new Date(date),exp.id))}
+                  />
+                  <FaCalendarAlt /> period from {} - to{" "}
+                  {exp.endDate?.toLocaleString().slice(0, 10)}{" "}
+                </span>
+                <input
+                  type="text"
+                  name="jobTitle"
+                  placeholder=" Job Title..."
+                  defaultValue={exp.jobTitle}
+                  onChange={(e) => handleChange(e, exp.id)}
+                />
+                <input
+                  type="text"
+                  name="companyName"
+                  placeholder="Company Name..."
+                  defaultValue={exp.companyName}
+                  onChange={(e) => handleChange(e, exp.id)}
+                />
+                <textarea
+                  type="text"
+                  name="description"
+                  placeholder="Description of your accomplishments..."
+                  defaultValue={exp.description}
+                  onChange={(e) => handleChange(e, exp.id)}
+                />
+                <button type="sybmit"> Save </button>
+              </form>
+            );
+          })
+        ) : (
+          <Spinner />
+        )}
       </>
     );
   };

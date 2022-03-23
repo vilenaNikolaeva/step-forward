@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import ExperienceContent from "../ExperienceContent";
 import EducationContent from "../EducationContent";
 import {
   updateUserDescription,
   updateUserJobTitle,
   updateUserFullName,
-  updateUserProfileInfo,
   updateUserEmail,
   updateUserAddress,
   updateUserPhone,
@@ -28,7 +26,6 @@ import {
 
 import logo from "../../../../assets/images/Logo.png";
 import styles from "../../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss";
-import { getUserExperiencesAsync } from "../../../../features/experienceSlice";
 import EditExperience from "../EditExperience";
 
 
