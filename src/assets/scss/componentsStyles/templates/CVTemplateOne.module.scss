@@ -31,14 +31,14 @@
       word-break: break-all;
       max-width: 33rem;
       padding-left: 4rem;
-      input, textarea {
+      input,
+      textarea {
         margin: 0.5rem;
         border: none;
         color: #178cfd;
       }
-      textarea{
+      textarea {
         min-height: 10rem;
-
       }
       span {
         font-style: italic;
@@ -141,6 +141,54 @@
             margin-bottom: 0;
             li {
               border-bottom: 1px solid rgb(207, 207, 207);
+            }
+          }
+          button {
+            max-width: 6rem;
+            margin-top: 2rem;
+            font-weight: 600;
+            background-color: white;
+            color: #007aff;
+            border: 2px solid #007aff;
+            padding: 0.5rem;
+            cursor: pointer;
+          }
+          form {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            span {
+              display: flex;
+              input {
+                max-width: 14rem;
+                color: #007aff;
+                border: none;
+                margin: 0.4rem;
+                cursor: pointer;
+              }
+            }
+            input {
+              color: #007aff;
+              border: none;
+              margin: 0.4rem;
+              cursor: pointer;
+            }
+            textarea {
+              color: #007aff;
+              border: none;
+              margin: 0.4rem;
+              cursor: pointer;
+            }
+            button {
+              max-width: 6rem;
+              margin-top: 2rem;
+              font-weight: 600;
+              background-color: white;
+              color: green;
+              border: 2px solid green;
+              padding: 0.5rem;
+              cursor: pointer;
             }
           }
         }

@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
-import DatePicker from "react-datepicker";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
-import "react-datepicker/dist/react-datepicker.css";
-
 import {
+  addNewFormFile,
   getUserExperiencesAsync,
   updateCompanyName,
+  updateEndDate,
   updateJobDescription,
   updateJobTitle,
-  updateStartData,
   updateStartDate,
   updateUserExperienceAsync,
 } from "../../../features/experienceSlice";
@@ -30,7 +28,6 @@ const EditExperience = () => {
   }, []);
 
   const handleChange = (e, id) => {
-    e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
 
@@ -45,8 +42,11 @@ const EditExperience = () => {
         dispatch(updateJobDescription({ value, id }));
         break;
       case "startDate":
+        console.log(value);
+        dispatch(updateStartDate(value));
         break;
       case "endDate":
+        dispatch(updateEndDate(value));
         break;
       default:
         break;
@@ -59,7 +59,10 @@ const EditExperience = () => {
     dispatch(updateUserExperienceAsync({ id, experience }));
     //TODOOO
   };
-
+  const handleAddNewFormFile = () =>{
+    //TODO
+    dispatch(addNewFormFile());
+  }
   const handleTypeOne = () => {
     return (
       <>
@@ -89,14 +92,19 @@ const EditExperience = () => {
                 key={exp.id}
               >
                 <span>
-                  {" "}
-                  <DatePicker
+                  <input
+                    type="date"
                     name="startDate"
-                    value={exp.startDate?.toLocaleString().slice(0, 10)}
-                    onChange={(date) => dispatch(updateStartDate(new Date(date),exp.id))}
+                    defaultValue={exp.startDate?.toLocaleString().slice(0, 10)}
+                    onChange={(e) => handleChange(e)}
+                  />{" "}
+                  -
+                  <input
+                    type="date"
+                    name="endDate"
+                    value={exp.endDate?.toLocaleString().slice(0, 10)}
+                    onChange={(e) => handleChange(e)}
                   />
-                  <FaCalendarAlt /> period from {} - to{" "}
-                  {exp.endDate?.toLocaleString().slice(0, 10)}{" "}
                 </span>
                 <input
                   type="text"
@@ -129,6 +137,12 @@ const EditExperience = () => {
       </>
     );
   };
-  return type === "ash" ? handleTypeOne() : handleTypeTwo();
+  return (
+    <>
+      {type === "ash" ? handleTypeOne() : handleTypeTwo()}
+      <button onClick={handleAddNewFormFile}> +</button>
+    </>
+  )
 };
+
 export default EditExperience;

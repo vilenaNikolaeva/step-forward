@@ -82,7 +82,7 @@
 import { toast } from "react-toastify";
 
 function getToken() {
-  if (sessionStorage.token === undefined) {
+  if (sessionStorage.userData) {
     const userData = JSON.parse(sessionStorage.userData);
     return "Bearer " + userData.token;
   }
@@ -108,7 +108,6 @@ export const request = async (url, options) => {
 
 export const getOptions = async (method = "get", body) => {
   const idToken = await getToken();
-
   const options = {
     method,
     headers: {},

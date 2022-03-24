@@ -49,6 +49,10 @@ const experienceSlice = createSlice({
     clearUserExperience(state) {
       state.userData = {};
     },
+    addNewFormFile(state){
+      //TODO
+      console.log(current(state.userExperience).length);
+    },
     getExperience(state, action) {
       state.userExperience.find((item) => item.id === action.payload);
     },
@@ -58,7 +62,9 @@ const experienceSlice = createSlice({
       // Moment(experienceForEdit.startDate).format('YYYY-MM-DD')
     },
     updateEndDate(state, action) {
-      state.userExperience.endDate = action.payload;
+      console.log(action.payload)
+
+      // state.userExperience.endDate = action.payload;
     },
     updateStillWork(state, action) {
       const { value, id } = action.payload;
@@ -95,6 +101,7 @@ const experienceSlice = createSlice({
 
 export const {
   clearUserExperience,
+  addNewFormFile,
   getExperience,
   getExperinceInfoById,
   updateUserExperience,
