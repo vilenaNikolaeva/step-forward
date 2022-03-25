@@ -3,7 +3,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  addNewFormFile,
+  addNewExperienceAsync,
+  deleteExperienceAsync,
   getUserExperiencesAsync,
   updateCompanyName,
   updateEndDate,
@@ -42,11 +43,10 @@ const EditExperience = () => {
         dispatch(updateJobDescription({ value, id }));
         break;
       case "startDate":
-        console.log(value);
-        dispatch(updateStartDate(value));
+        dispatch(updateStartDate({value,id}));
         break;
       case "endDate":
-        dispatch(updateEndDate(value));
+        dispatch(updateEndDate({value,id}));
         break;
       default:
         break;
@@ -59,10 +59,12 @@ const EditExperience = () => {
     dispatch(updateUserExperienceAsync({ id, experience }));
     //TODOOO
   };
-  const handleAddNewFormFile = () =>{
-    //TODO
-    dispatch(addNewFormFile());
-  }
+  const handleAddNewExperience = () => {
+    dispatch(addNewExperienceAsync(userId)).then((res) => console.log(res));
+  };
+  const handleDeleteExperience = (id) => {
+    dispatch(deleteExperienceAsync(id));
+  };
   const handleTypeOne = () => {
     return (
       <>
@@ -96,14 +98,14 @@ const EditExperience = () => {
                     type="date"
                     name="startDate"
                     defaultValue={exp.startDate?.toLocaleString().slice(0, 10)}
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => handleChange(e,exp.id)}
                   />{" "}
                   -
                   <input
                     type="date"
                     name="endDate"
                     value={exp.endDate?.toLocaleString().slice(0, 10)}
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => handleChange(e,exp.id)}
                   />
                 </span>
                 <input
@@ -127,7 +129,12 @@ const EditExperience = () => {
                   defaultValue={exp.description}
                   onChange={(e) => handleChange(e, exp.id)}
                 />
-                <button type="sybmit"> Save </button>
+                <div>
+                  <button onClick={() => handleDeleteExperience(exp.id)}>
+                    Delete
+                  </button>
+                  <button type="sybmit"> Save </button>
+                </div>
               </form>
             );
           })
@@ -140,9 +147,9 @@ const EditExperience = () => {
   return (
     <>
       {type === "ash" ? handleTypeOne() : handleTypeTwo()}
-      <button onClick={handleAddNewFormFile}> +</button>
+      <button onClick={handleAddNewExperience}> +</button>
     </>
-  )
+  );
 };
 
 export default EditExperience;

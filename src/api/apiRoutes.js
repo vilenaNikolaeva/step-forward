@@ -9,7 +9,8 @@ const userRoutes = {
 }
 const userExperinceRoutes = {
     updateExperienceURL  : (id) => `${BASE_URL}Experience/${id}`,
-
+    addNewExperience : () => `${BASE_URL}Experience`,
+    deleteExpereince : (experienceId) => `${BASE_URL}Experience/${experienceId}`
 }
 const apiRoutes = {
     ...userRoutes,

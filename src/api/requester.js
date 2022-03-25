@@ -97,6 +97,7 @@ export const request = async (url, options) => {
     const response = await fetch(url, options);
     if (!response.ok) {
       const message = await response.json();
+      toast.error(message.title);
       throw new Error(message.message);
     }
     const data = await response.json();

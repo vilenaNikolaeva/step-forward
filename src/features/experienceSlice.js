@@ -27,13 +27,46 @@ export const getUserExperiencesAsync = createAsyncThunk(
     return await experiences;
   }
 );
+export const addNewExperienceAsync = createAsyncThunk(
+  "user/addNewExpereince",
+  async (userId) => {
+    const exp = {
+      startData: new Date(),
+      endDate: new Date(),
+      stillWork: false,
+      jobTitle: "",
+      companyName: "",
+      description: "",
+      userId: userId,
+    };
+    await experienceService
+      .addNewExperience(exp)
+      .then((res) => res)
+      .catch((err) => console.log(err));
+    return await exp;
+  }
+);
+export const deleteExperienceAsync = createAsyncThunk(
+  "user/deleteExperience",
+  async (experienceId) => {
+    await experienceService
+      .deleteExperience(experienceId)
+      .then((res) => res)
+      .catch((err) => console.log(err));
+    return await experienceId;
+  }
+);
 export const updateUserExperienceAsync = createAsyncThunk(
   "user/updateUserExperience",
   async (experienceData) => {
     const { id, experience } = experienceData;
     const experienceResult = await experienceService
       .updateUserExperince(id, experience)
-      .then((res) => (res, toast.success("Successfully updated information.")))
+      .then((res) => 
+        typeof(res) !== 'string'
+          ? toast.success("Successfully updated information.")
+          : res
+      )
       .catch((err) => toast.error(err.message));
     if (experienceResult) {
       return experience;
@@ -49,22 +82,20 @@ const experienceSlice = createSlice({
     clearUserExperience(state) {
       state.userData = {};
     },
-    addNewFormFile(state){
-      //TODO
-      console.log(current(state.userExperience).length);
-    },
     getExperience(state, action) {
       state.userExperience.find((item) => item.id === action.payload);
     },
     updateStartDate(state, action) {
-      console.log(action.payload)
-      // TODO
-      // Moment(experienceForEdit.startDate).format('YYYY-MM-DD')
+      const experience = state.userExperience.find(
+        (item) => item.id === action.payload.id
+      );
+      experience.startDate = action.payload.value;
     },
     updateEndDate(state, action) {
-      console.log(action.payload)
-
-      // state.userExperience.endDate = action.payload;
+      const experience = state.userExperience.find(
+        (item) => item.id === action.payload.id
+      );
+      experience.endDate = action.payload.value;
     },
     updateStillWork(state, action) {
       const { value, id } = action.payload;
@@ -94,6 +125,14 @@ const experienceSlice = createSlice({
     builder.addCase(updateUserExperienceAsync.fulfilled, (state, action) => {
       current(state.userExperience).find(
         (item) => item.id === action.payload.id
+      );
+    });
+    builder.addCase(addNewExperienceAsync.fulfilled, (state, action) => {
+      state.userExperience.push(action.payload);
+    });
+    builder.addCase(deleteExperienceAsync.fulfilled, (state, action) => {
+      state.userExperience = current(state.userExperience).filter(
+        (item) => item.id !== action.payload
       );
     });
   },
