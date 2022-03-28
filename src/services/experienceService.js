@@ -8,10 +8,10 @@ const updateUserExperince = (id,userInfo) => {
     return requester.put(apiRoutes.updateExperienceURL(id), userInfo)
 }
 const addNewExperience = (newExperience) =>{
-    return requester.post(apiRoutes.addNewExperience(),newExperience)
+    return requester.post(apiRoutes.addNewExperienceURL(),newExperience)
 }
 const deleteExperience = (experienceId) => {
-    return requester.del(apiRoutes.deleteExpereince(experienceId));
+    return requester.del(apiRoutes.deleteExpereinceURL(experienceId));
 }
 const experienceService = {
     getUserExperinces,

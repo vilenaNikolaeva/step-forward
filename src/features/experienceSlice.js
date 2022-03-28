@@ -7,8 +7,8 @@ const initialState = {
   userExperience: [
     {
       id: 0,
-      startData: "",
-      endDate: "",
+      startDate:new Date(),
+      endDate: new Date(),
       stillWork: "",
       jobTitle: "",
       companyName: "",
@@ -31,19 +31,19 @@ export const addNewExperienceAsync = createAsyncThunk(
   "user/addNewExpereince",
   async (userId) => {
     const exp = {
-      startData: new Date(),
-      endDate: new Date(),
+      startDate: new Date().toISOString(),
+      endDate: new Date().toISOString(),
       stillWork: false,
       jobTitle: "",
       companyName: "",
       description: "",
       userId: userId,
     };
-    await experienceService
+    const experience = await experienceService
       .addNewExperience(exp)
       .then((res) => res)
       .catch((err) => console.log(err));
-    return await exp;
+    return await experience;
   }
 );
 export const deleteExperienceAsync = createAsyncThunk(
@@ -59,11 +59,12 @@ export const deleteExperienceAsync = createAsyncThunk(
 export const updateUserExperienceAsync = createAsyncThunk(
   "user/updateUserExperience",
   async (experienceData) => {
+    console.log("in update slice");
     const { id, experience } = experienceData;
     const experienceResult = await experienceService
       .updateUserExperince(id, experience)
-      .then((res) => 
-        typeof(res) !== 'string'
+      .then((res) =>
+        typeof res !== "string"
           ? toast.success("Successfully updated information.")
           : res
       )
@@ -71,7 +72,6 @@ export const updateUserExperienceAsync = createAsyncThunk(
     if (experienceResult) {
       return experience;
     }
-    // return await experienceResult;
   }
 );
 
@@ -89,7 +89,7 @@ const experienceSlice = createSlice({
       const experience = state.userExperience.find(
         (item) => item.id === action.payload.id
       );
-      experience.startDate = action.payload.value;
+      experience.startDate =action.payload.value;
     },
     updateEndDate(state, action) {
       const experience = state.userExperience.find(
@@ -123,6 +123,7 @@ const experienceSlice = createSlice({
       state.userExperience = action.payload;
     });
     builder.addCase(updateUserExperienceAsync.fulfilled, (state, action) => {
+      console.log("in update slice CASE");
       current(state.userExperience).find(
         (item) => item.id === action.payload.id
       );
@@ -131,6 +132,7 @@ const experienceSlice = createSlice({
       state.userExperience.push(action.payload);
     });
     builder.addCase(deleteExperienceAsync.fulfilled, (state, action) => {
+      console.log("in delete slice CASE");
       state.userExperience = current(state.userExperience).filter(
         (item) => item.id !== action.payload
       );

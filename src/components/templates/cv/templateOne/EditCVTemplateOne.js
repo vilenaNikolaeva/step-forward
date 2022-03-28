@@ -27,6 +27,8 @@ import {
 import logo from "../../../../assets/images/Logo.png";
 import styles from "../../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss";
 import EditExperience from "../EditExperience";
+import EditEducation from "../EditEducation";
+import EditSkill from "../EditSkill";
 
 
 const EditCVTemplateOne = () => {
@@ -202,14 +204,15 @@ const EditCVTemplateOne = () => {
                 styles["templateOne-cvContent-leftBox-education-content"]
               }
             >
-              <EducationContent contentType="one" />
+              <EditEducation/>
+              {/* <EducationContent contentType="one" /> */}
             </div>
             <div
               className={
                 styles["templateOne-cvContent-leftBox-education-content"]
               }
             >
-              <EducationContent contentType="one" />
+              {/* <EducationContent contentType="one" /> */}
             </div>
           </div>
         </div>
@@ -219,9 +222,10 @@ const EditCVTemplateOne = () => {
             <div
               className={styles["templateOne-cvContent-rightBox-skills-list"]}
             >
-              <p>Teamwork</p>
+              <EditSkill/>
+              {/* <p>Teamwork</p>
               <p>Organization Skills</p>
-              <p>Creativity</p>
+              <p>Creativity</p> */}
             </div>
           </div>
           <div className={styles["templateOne-cvContent-rightBox-languages"]}>
@@ -237,7 +241,6 @@ const EditCVTemplateOne = () => {
           </div>
         </div>
       </div>
-      {userId ? <button>Save</button> : ""}
       <div className={styles.logo}>
         <img src={logo} width={70} height={70}></img>
       </div>

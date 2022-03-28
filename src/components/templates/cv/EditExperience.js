@@ -14,6 +14,10 @@ import {
   updateUserExperienceAsync,
 } from "../../../features/experienceSlice";
 import Spinner from "../../Spinner";
+import {FaCheck,FaRegWindowClose} from 'react-icons/fa'
+
+
+
 
 const EditExperience = () => {
   const type = useSelector((state) => state.user.userProfileInfo.cvTemplate);
@@ -21,7 +25,6 @@ const EditExperience = () => {
   const userExperiences = useSelector(
     (state) => state.experience.userExperience
   );
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,21 +46,20 @@ const EditExperience = () => {
         dispatch(updateJobDescription({ value, id }));
         break;
       case "startDate":
-        dispatch(updateStartDate({value,id}));
+        dispatch(updateStartDate({ value, id }));
         break;
       case "endDate":
-        dispatch(updateEndDate({value,id}));
+        dispatch(updateEndDate({ value, id }));
         break;
       default:
         break;
     }
   };
+
   const handelUpdateUserExperience = (event, id) => {
     event.preventDefault();
     const experience = userExperiences.find((item) => item.id === id);
-
     dispatch(updateUserExperienceAsync({ id, experience }));
-    //TODOOO
   };
   const handleAddNewExperience = () => {
     dispatch(addNewExperienceAsync(userId)).then((res) => console.log(res));
@@ -89,53 +91,57 @@ const EditExperience = () => {
         {userExperiences || userExperiences !== undefined ? (
           userExperiences.map((exp, id) => {
             return (
-              <form
-                onSubmit={(e) => handelUpdateUserExperience(e, exp.id)}
-                key={exp.id}
-              >
-                <span>
+              <div>
+                <button onClick={() => handleDeleteExperience(exp.id)}>
+                  <FaRegWindowClose/>
+                </button>
+                <form
+                  onSubmit={(e) => handelUpdateUserExperience(e, exp.id)}
+                  key={exp.id}
+                >
+                  <span>
+                    <input
+                      type="date"
+                      name="startDate"
+                      defaultValue={exp.startDate
+                        ?.toLocaleString()
+                        .slice(0, 10)}
+                      onChange={(e) => handleChange(e, exp.id)}
+                    />{" "}
+                    -
+                    <input
+                      type="date"
+                      name="endDate"
+                      value={exp.endDate?.toLocaleString().slice(0, 10)}
+                      onChange={(e) => handleChange(e, exp.id)}
+                    />
+                  </span>
                   <input
-                    type="date"
-                    name="startDate"
-                    defaultValue={exp.startDate?.toLocaleString().slice(0, 10)}
-                    onChange={(e) => handleChange(e,exp.id)}
-                  />{" "}
-                  -
-                  <input
-                    type="date"
-                    name="endDate"
-                    value={exp.endDate?.toLocaleString().slice(0, 10)}
-                    onChange={(e) => handleChange(e,exp.id)}
+                    type="text"
+                    name="jobTitle"
+                    placeholder=" Job Title..."
+                    defaultValue={exp.jobTitle}
+                    onChange={(e) => handleChange(e, exp.id)}
                   />
-                </span>
-                <input
-                  type="text"
-                  name="jobTitle"
-                  placeholder=" Job Title..."
-                  defaultValue={exp.jobTitle}
-                  onChange={(e) => handleChange(e, exp.id)}
-                />
-                <input
-                  type="text"
-                  name="companyName"
-                  placeholder="Company Name..."
-                  defaultValue={exp.companyName}
-                  onChange={(e) => handleChange(e, exp.id)}
-                />
-                <textarea
-                  type="text"
-                  name="description"
-                  placeholder="Description of your accomplishments..."
-                  defaultValue={exp.description}
-                  onChange={(e) => handleChange(e, exp.id)}
-                />
-                <div>
-                  <button onClick={() => handleDeleteExperience(exp.id)}>
-                    Delete
-                  </button>
-                  <button type="sybmit"> Save </button>
-                </div>
-              </form>
+                  <input
+                    type="text"
+                    name="companyName"
+                    placeholder="Company Name..."
+                    defaultValue={exp.companyName}
+                    onChange={(e) => handleChange(e, exp.id)}
+                  />
+                  <textarea
+                    type="text"
+                    name="description"
+                    placeholder="Description of your accomplishments..."
+                    defaultValue={exp.description}
+                    onChange={(e) => handleChange(e, exp.id)}
+                  />
+                  <div>
+                    <button type="sybmit"> <FaCheck/> </button>
+                  </div>
+                </form>
+              </div>
             );
           })
         ) : (
