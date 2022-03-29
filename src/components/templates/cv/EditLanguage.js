@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  updateSkill,
-  addNewSkillAsync,
-  deleteSkillAsync,
-  getUserSkillsAsync,
-  updateUserSkillAsync,
-} from "../../../features/skillSlice";
+  updateLanguage,
+  addNewLanguageAsync,
+  deleteLanguageAsync,
+  getUserLanguagesAsync,
+  updateUserLanguageAsync,
+} from "../../../features/languageSlice";
 import Spinner from "../../Spinner";
 import { FaCheck } from "react-icons/fa";
 
-const EditSkill = () => {
+const EditLanguage = () => {
   const userId = useSelector((state) => state.user.userData.userId);
-  const userSkills = useSelector((state) => state.skill.userSkill);
+  const userLanguages = useSelector((state) => state.language.userLanguage);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserSkillsAsync(userId));
+    dispatch(getUserLanguagesAsync(userId));
   }, []);
 
   const handleChange = (e, id) => {
@@ -26,51 +26,47 @@ const EditSkill = () => {
     console.log(id);
     switch (name) {
       case "title":
-        dispatch(updateSkill({ value, id }));
+        dispatch(updateLanguage({ value, id }));
         break;
       default:
         break;
     }
   };
 
-  const handelUpdateUserSkill = (event, id) => {
+  const handelUpdateUserLanguage = (event, id) => {
     event.preventDefault();
-    const skill = userSkills.find((item) => item.id === id);
-    dispatch(updateUserSkillAsync({ id, skill }));
+    const language = userLanguages.find((item) => item.id === id);
+    dispatch(updateUserLanguageAsync({ id, language }));
   };
-  const handleAddNewSkill = () => {
-    dispatch(addNewSkillAsync(userId)).then((res) => console.log(res));
+  const handleAddNewLanguage = () => {
+    dispatch(addNewLanguageAsync(userId)).then((res) => console.log(res));
   };
-  const handleDeleteSkill = (id) => {
-    dispatch(deleteSkillAsync(id));
+  const handleDeleteLanguage = (id) => {
+    console.log(id);
+    dispatch(deleteLanguageAsync(id));
   };
 
   return (
-    // <div>
-    //   <span> Spec 1</span>
-    //   <span> Spec 2</span>
-    //   <span> Spec 3</span>
-    // </div>
     <>
-      {userSkills || userSkills !== undefined ? (
-        userSkills.map((skill, id) => {
+      {userLanguages || userLanguages !== undefined ? (
+        userLanguages.map((lng, id) => {
           return (
             <>
               <div>
                 <form
-                  onSubmit={(e) => handelUpdateUserSkill(e, skill.id)}
-                  key={skill.id}
+                  onSubmit={(e) => handelUpdateUserLanguage(e, lng.id)}
+                  key={lng.id}
                 >
                   <p>
                     <input
                       type="text"
                       name="title"
-                      placeholder="Skill..."
-                      defaultValue={skill.title}
-                      onChange={(e) => handleChange(e, skill.id)}
+                      placeholder="Language..."
+                      defaultValue={lng.title}
+                      onChange={(e) => handleChange(e, lng.id)}
                     />
                     <span>
-                      <button onClick={() => handleDeleteSkill(skill.id)}>
+                      <button onClick={() => handleDeleteLanguage(lng.id)}>
                         {" "}
                         X{" "}
                       </button>
@@ -88,9 +84,9 @@ const EditSkill = () => {
       ) : (
         <Spinner />
       )}
-      <button className={'addBtn'} onClick={handleAddNewSkill}> + </button>
+      <button onClick={handleAddNewLanguage}> + </button>
     </>
   );
 };
 
-export default EditSkill;
+export default EditLanguage;

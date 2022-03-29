@@ -4,8 +4,9 @@ import ModalWrapper from "../../wrappers/ModalWrapper";
 import EditCVTemplateOne from "../../components/templates/cv/templateOne/EditCVTemplateOne";
 
 const ModalUserCV = () => {
-  const { isOpenUserCvTemplateModal, setIsOpenUserCvTemplateModal } = useModal();
- 
+  const { isOpenUserCvTemplateModal, setIsOpenUserCvTemplateModal } =
+    useModal();
+
   return (
     /* TODO */
     <ModalWrapper
@@ -13,7 +14,8 @@ const ModalUserCV = () => {
       isOpenModalComponent={isOpenUserCvTemplateModal}
     >
       <div>
-        <EditCVTemplateOne/>
+        <button  onClick={()=>setIsOpenUserCvTemplateModal(false)} className={'modalBackground-clsBtn'}>X</button>
+        <EditCVTemplateOne />
       </div>
     </ModalWrapper>
   );

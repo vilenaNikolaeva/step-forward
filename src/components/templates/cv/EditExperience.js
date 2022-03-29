@@ -14,12 +14,12 @@ import {
   updateUserExperienceAsync,
 } from "../../../features/experienceSlice";
 import Spinner from "../../Spinner";
-import {FaCheck,FaRegWindowClose} from 'react-icons/fa'
+import {FaCheck} from 'react-icons/fa'
 
 
 
 
-const EditExperience = () => {
+const EditExperience = (styles) => {
   const type = useSelector((state) => state.user.userProfileInfo.cvTemplate);
   const userId = useSelector((state) => state.user.userData.userId);
   const userExperiences = useSelector(
@@ -92,8 +92,8 @@ const EditExperience = () => {
           userExperiences.map((exp, id) => {
             return (
               <div>
-                <button onClick={() => handleDeleteExperience(exp.id)}>
-                  <FaRegWindowClose/>
+                <button className="deleteBtn" onClick={() => handleDeleteExperience(exp.id)}>
+                  X
                 </button>
                 <form
                   onSubmit={(e) => handelUpdateUserExperience(e, exp.id)}
@@ -138,7 +138,7 @@ const EditExperience = () => {
                     onChange={(e) => handleChange(e, exp.id)}
                   />
                   <div>
-                    <button type="sybmit"> <FaCheck/> </button>
+                    <button className="sybmitBtn" type="sybmit"> <FaCheck/> </button>
                   </div>
                 </form>
               </div>
@@ -153,7 +153,7 @@ const EditExperience = () => {
   return (
     <>
       {type === "ash" ? handleTypeOne() : handleTypeTwo()}
-      <button onClick={handleAddNewExperience}> +</button>
+      <button className="addBtn" onClick={handleAddNewExperience}> +</button>
     </>
   );
 };

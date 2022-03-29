@@ -29,7 +29,7 @@ export const addNewSkillAsync = createAsyncThunk(
     const skill = {
         title: "",
         level: 0,
-        userId: ""
+        userId: userId
     };
     const skillResult = await skillService
       .addNewSkill(skill)
@@ -51,7 +51,6 @@ export const deleteSkillAsync = createAsyncThunk(
 export const updateUserSkillAsync = createAsyncThunk(
   "user/updateUserSkill",
   async (skillData) => {
-    console.log('updateee')
     const { id, skill } = skillData;
     const skillResult = await skillService
       .updateSkill(id, skill)
@@ -79,7 +78,7 @@ const skillSlice = createSlice({
     },
     updateSkill(state, action) {
       const { value, id } = action.payload;
-      const skill = state.userSkills.find((item) => item.id === id);
+      const skill = state.userSkill.find((item) => item.id === id);
       skill.title = value;
     },
   },

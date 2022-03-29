@@ -7,8 +7,7 @@
   text-align: center;
   color: darkblue;
   font-size: 1.3rem;
-  margin: 10rem;
-  margin-bottom: 4rem;
+  margin: 1rem 10rem 0rem 10rem;
   &-profile {
     h1 {
       color: #007aff;
@@ -145,7 +144,6 @@
           }
           button {
             max-width: 6rem;
-            margin-top: 2rem;
             font-weight: 600;
             background-color: white;
             color: #007aff;
@@ -157,11 +155,11 @@
             margin-bottom: 2rem;
             border-bottom: 3px solid white;
             button:nth-child(1) {
-              margin-left: 23rem;
               margin-top: inherit;
               display: flex;
+              justify-content: flex-start;
+              padding: 0.5rem;
               color: rgb(165, 2, 2);
-              min-width: 4rem;
               border: 1px solid rgb(165, 2, 2);
             }
             form {
@@ -192,12 +190,12 @@
               }
               div {
                 display: flex;
-                justify-content: flex-end;
+                justify-content: flex-start;
               }
 
               button:nth-child(1) {
                 max-width: 6rem;
-                margin: 1rem;
+                margin-top: 1rem;
                 font-weight: 600;
                 background-color: white;
                 color: green;
@@ -219,8 +217,10 @@
       div {
         form {
           p {
-            button {
-              color: red;
+            button:nth-child(1) {
+              color: rgb(177, 3, 3);
+              background-color: transparent;
+              border: 1px solid rgb(105, 0, 0);
               cursor: pointer;
             }
           }
@@ -248,25 +248,40 @@
       &-skills,
       &-languages {
         &-list {
-          input {
-            border: none;
-            background-color: transparent;
-            color: #007aff;
+          display: flex;
+          flex-direction: column;
+          .addBtn{
+            border-color: blue ;
           }
-          button {
-            font-weight: 600;
-            text-align: center;
+          div {
+            form {
+              p {
+                display: inline-flex;
+                flex-direction: row;
+                font-size: 2rem;
+                padding: 0.8rem;
+                margin-left: 2.5rem;
+                border: 1px solid #228afb;
+                color: #228afb;
+              }
+              span {
+                display: flex;
+              }
+              input {
+                border: none;
+                background-color: transparent;
+                color: #007aff;
+              }
+              button{
+                font-weight: 600;
+                text-align: center;
+                color: green;
+                cursor: pointer;
+              }
+              margin-left: 1.2rem;
+            }
           }
-          margin-left: 1.2rem;
         }
-      }
-      p {
-        flex-direction: row;
-        font-size: 2rem;
-        padding: 0.8rem;
-        margin-left: 2.5rem;
-        border: 1px solid #228afb;
-        color: #228afb;
       }
     }
   }

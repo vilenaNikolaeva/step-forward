@@ -13,7 +13,7 @@ import {
   updateUserEducationAsync,
 } from "../../../features/educationSlice";
 import Spinner from "../../Spinner";
-import {FaCheck,FaRegWindowClose} from 'react-icons/fa'
+import {FaCheck} from 'react-icons/fa'
 
 
 const EditEducation = () => {
@@ -99,7 +99,7 @@ const EditEducation = () => {
             return (
               <div>
                 <button onClick={() => handleDeleteEducation(educ.id)}>
-                  <FaRegWindowClose/>
+                 X
                 </button>
                 <form
                   onSubmit={(e) => handelUpdateUserEducation(e, educ.id)}

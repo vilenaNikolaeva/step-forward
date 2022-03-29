@@ -7,7 +7,7 @@ const userRoutes = {
   userExperienceURL: (userId) => `${BASE_URL}User/${userId}/experiences`,
   userEducationURL: (userId) =>`${BASE_URL}User/${userId}/educations`,
   userSkillURL: (userId) =>`${BASE_URL}User/${userId}/skills`,
-
+  userLanguageURL: (userId) =>`${BASE_URL}User/${userId}/languages`,
 };
 const userExperinceRoutes = {
   updateExperienceURL: (id) => `${BASE_URL}Experience/${id}`,
@@ -22,14 +22,20 @@ const userEducationRoutes = {
 const userSkillRoutes = {
   updateSkillURL: (id) => `${BASE_URL}Skill/${id}`,
   addNewSkillURL: () => `${BASE_URL}Skill`,
-  deleteSkillURL: (experienceId) => `${BASE_URL}Skill/${experienceId}`,
+  deleteSkillURL: (skillId) => `${BASE_URL}Skill/${skillId}`,
 };
+const userLanguageRoutes ={ 
+  updateLanguageURL: (id) => `${BASE_URL}Language/${id}`,
+  addNewLanguageURL: () => `${BASE_URL}Language`,
+  deleteLanguageURL: (languageId) => `${BASE_URL}Language/${languageId}`,
+}
 
 const apiRoutes = {
   ...userRoutes,
   ...userExperinceRoutes,
   ...userEducationRoutes,
   ...userSkillRoutes,
+  ...userLanguageRoutes,
 };
 
 export default apiRoutes;

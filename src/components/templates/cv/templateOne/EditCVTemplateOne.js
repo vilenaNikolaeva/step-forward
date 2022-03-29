@@ -23,12 +23,13 @@ import {
   FaUserAlt,
   FaLink,
 } from "react-icons/fa";
-
-import logo from "../../../../assets/images/Logo.png";
-import styles from "../../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss";
 import EditExperience from "../EditExperience";
 import EditEducation from "../EditEducation";
 import EditSkill from "../EditSkill";
+import EditLanguage from "../EditLanguage";
+
+import logo from "../../../../assets/images/Logo.png";
+import styles from "../../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss";
 
 
 const EditCVTemplateOne = () => {
@@ -173,16 +174,16 @@ const EditCVTemplateOne = () => {
       </form>
       <div className={styles["templateOne-cvContent"]}>
         <div className={styles["templateOne-cvContent-leftBox"]}>
-            <div className={styles["templateOne-cvContent-leftBox-experience"]}>
-              <label>Experiences</label>
-              <div
-                className={
-                  styles["templateOne-cvContent-leftBox-experience-content"]
-                }
-              >
-                <EditExperience/>
-              </div>
-              {/* <div
+          <div className={styles["templateOne-cvContent-leftBox-experience"]}>
+            <label>Experiences</label>
+            <div
+              className={
+                styles["templateOne-cvContent-leftBox-experience-content"]
+              }
+            >
+              <EditExperience styles={styles} />
+            </div>
+            {/* <div
                 className={
                   styles["templateOne-cvContent-leftBox-experience-content"]
                 }
@@ -196,7 +197,7 @@ const EditCVTemplateOne = () => {
               >
                 <ExperienceContent />
               </div> */}
-            </div>
+          </div>
           <div className={styles["templateOne-cvContent-leftBox-education"]}>
             <label>Education</label>
             <div
@@ -204,7 +205,7 @@ const EditCVTemplateOne = () => {
                 styles["templateOne-cvContent-leftBox-education-content"]
               }
             >
-              <EditEducation/>
+              <EditEducation styles={styles}  />
               {/* <EducationContent contentType="one" /> */}
             </div>
             <div
@@ -222,7 +223,7 @@ const EditCVTemplateOne = () => {
             <div
               className={styles["templateOne-cvContent-rightBox-skills-list"]}
             >
-              <EditSkill/>
+              <EditSkill styles={styles}  />
               {/* <p>Teamwork</p>
               <p>Organization Skills</p>
               <p>Creativity</p> */}
@@ -235,8 +236,9 @@ const EditCVTemplateOne = () => {
                 styles["templateOne-cvContent-rightBox-languages-list"]
               }
             >
-              <p>English</p>
-              <p>Arabic</p>
+              <EditLanguage  styles={styles}  />
+              {/* <p>English</p>
+              <p>Arabic</p> */}
             </div>
           </div>
         </div>
