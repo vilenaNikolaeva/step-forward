@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import skillService from "../services/skillService";
 
 const initialState = {
-  userSkills: [
+  userSkill: [
     {
         title: "",
         level: 0,
@@ -53,7 +53,7 @@ export const updateUserSkillAsync = createAsyncThunk(
   async (skillData) => {
     const { id, skill } = skillData;
     const skillResult = await skillService
-      .updateSkill(id, skill)
+      .updateUserSkill(id, skill)
       .then((res) =>
         typeof res !== "string"
           ? toast.success("Successfully updated information.")
@@ -71,10 +71,10 @@ const skillSlice = createSlice({
   initialState,
   reducers: {
     clearUserSkills(state) {
-      state.userEducation = {};
+      state.userSkill = {};
     },
     getSkill(state, action) {
-      state.userSkills.find((item) => item.id === action.payload);
+      state.userSkill.find((item) => item.id === action.payload);
     },
     updateSkill(state, action) {
       const { value, id } = action.payload;

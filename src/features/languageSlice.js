@@ -78,7 +78,7 @@ const languageSlice = createSlice({
     },
     updateLanguage(state, action) {
       const { value, id } = action.payload;
-      const language = state.userlanguage.find((item) => item.id === id);
+      const language = state.userLanguage.find((item) => item.id === id);
       language.title = value;
     },
   },
@@ -92,7 +92,6 @@ const languageSlice = createSlice({
       );
     });
     builder.addCase(addNewLanguageAsync.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.userLanguage.push(action.payload);
     });
     builder.addCase(deleteLanguageAsync.fulfilled, (state, action) => {

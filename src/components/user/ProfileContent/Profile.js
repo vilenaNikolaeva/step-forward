@@ -6,9 +6,8 @@ import { useSelector } from "react-redux";
 import { useModal } from "../../../contexts/ModalCtx";
 
 const Profile = () => {
-  const user = useSelector((state) => state.user.userData.name);
+  const userName = useSelector((state) => state.user.userData.name);
   const { setIsOpenUserProfileModal } = useModal();
-
   return (
     <div>
       <div className={styles.userInfoBtn}>
@@ -16,7 +15,7 @@ const Profile = () => {
       </div>
       <div className={styles.profileContainer}>
         <div className={styles["prfileContainer-label"]}>
-          <h1> Welcome , {user}</h1>
+          <h1> Welcome , {userName}</h1>
         </div>
         <div className={styles["profileContainer-welcomeContainer"]}>
           <p>So happy that you’re here! The concept is simple:

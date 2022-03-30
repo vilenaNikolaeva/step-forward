@@ -6,8 +6,8 @@ import educationService from "../services/educationService";
 const initialState = {
   userEducation: [
     {
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: "",
+      endDate: "",
       present: false,
       university: "",
       title: "",

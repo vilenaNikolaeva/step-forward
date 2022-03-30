@@ -97,7 +97,7 @@ const EditEducation = () => {
         {userEducations || userEducations !== undefined ? (
           userEducations.map((educ, id) => {
             return (
-              <div>
+              <div key={id}>
                 <button onClick={() => handleDeleteEducation(educ.id)}>
                  X
                 </button>

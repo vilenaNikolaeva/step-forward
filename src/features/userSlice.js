@@ -36,7 +36,7 @@ export const updateUserInfo = createAsyncThunk(
     const {userId, userInfo} = userData;
     const user = await userService
       .updateUserProfileInfo(userId,userInfo)
-      .then((res) =>(res,toast.success('Successfully updated information.')))
+      .then((res) =>(res , toast.success('Successfully updated information.')))
       .catch((err) =>toast.error(err.message));
     return await user;
   }
@@ -52,7 +52,7 @@ const userSlice = createSlice({
     updateUserProfileInfo(state, action) {
       state.userProfileInfo = action.payload;
     },
-    updateUserProfileStatus(state, action) {
+    updateUserProfileStatus(state) {
       const status= state.userProfileInfo.isItPublic;
       state.userProfileInfo.isItPublic = !status;
     },

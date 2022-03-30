@@ -20,10 +20,9 @@ const EditLanguage = () => {
   }, []);
 
   const handleChange = (e, id) => {
-    e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
-    console.log(id);
+
     switch (name) {
       case "title":
         dispatch(updateLanguage({ value, id }));
@@ -51,34 +50,32 @@ const EditLanguage = () => {
       {userLanguages || userLanguages !== undefined ? (
         userLanguages.map((lng, id) => {
           return (
-            <>
-              <div>
-                <form
-                  onSubmit={(e) => handelUpdateUserLanguage(e, lng.id)}
-                  key={lng.id}
-                >
-                  <p>
-                    <input
-                      type="text"
-                      name="title"
-                      placeholder="Language..."
-                      defaultValue={lng.title}
-                      onChange={(e) => handleChange(e, lng.id)}
-                    />
-                    <span>
-                      <button onClick={() => handleDeleteLanguage(lng.id)}>
-                        {" "}
-                        X{" "}
-                      </button>
-                      <button type="sybmit">
-                        {" "}
-                        <FaCheck />{" "}
-                      </button>
-                    </span>
-                  </p>
-                </form>
-              </div>
-            </>
+            <div key={id}>
+              <form
+                onSubmit={(e) => handelUpdateUserLanguage(e, lng.id)}
+                key={lng.id}
+              >
+                <p>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Language..."
+                    defaultValue={lng.title}
+                    onChange={(e) => handleChange(e, lng.id)}
+                  />
+                  <span>
+                    <button onClick={() => handleDeleteLanguage(lng.id)}>
+                      {" "}
+                      X{" "}
+                    </button>
+                    <button type="sybmit">
+                      {" "}
+                      <FaCheck />{" "}
+                    </button>
+                  </span>
+                </p>
+              </form>
+            </div>
           );
         })
       ) : (

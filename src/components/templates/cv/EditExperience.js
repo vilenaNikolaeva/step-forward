@@ -91,7 +91,7 @@ const EditExperience = (styles) => {
         {userExperiences || userExperiences !== undefined ? (
           userExperiences.map((exp, id) => {
             return (
-              <div>
+              <div key={id}>
                 <button className="deleteBtn" onClick={() => handleDeleteExperience(exp.id)}>
                   X
                 </button>

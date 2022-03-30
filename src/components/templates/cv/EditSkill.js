@@ -23,7 +23,7 @@ const EditSkill = () => {
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
-    console.log(id);
+
     switch (name) {
       case "title":
         dispatch(updateSkill({ value, id }));
@@ -46,49 +46,45 @@ const EditSkill = () => {
   };
 
   return (
-    // <div>
-    //   <span> Spec 1</span>
-    //   <span> Spec 2</span>
-    //   <span> Spec 3</span>
-    // </div>
     <>
       {userSkills || userSkills !== undefined ? (
         userSkills.map((skill, id) => {
           return (
-            <>
-              <div>
-                <form
-                  onSubmit={(e) => handelUpdateUserSkill(e, skill.id)}
-                  key={skill.id}
-                >
-                  <p>
-                    <input
-                      type="text"
-                      name="title"
-                      placeholder="Skill..."
-                      defaultValue={skill.title}
-                      onChange={(e) => handleChange(e, skill.id)}
-                    />
-                    <span>
-                      <button onClick={() => handleDeleteSkill(skill.id)}>
-                        {" "}
-                        X{" "}
-                      </button>
-                      <button type="sybmit">
-                        {" "}
-                        <FaCheck />{" "}
-                      </button>
-                    </span>
-                  </p>
-                </form>
-              </div>
-            </>
+            <div key={id}>
+              <form
+                onSubmit={(e) => handelUpdateUserSkill(e, skill.id)}
+                key={skill.id}
+              >
+                <p>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Skill..."
+                    defaultValue={skill.title}
+                    onChange={(e) => handleChange(e, skill.id)}
+                  />
+                  <span>
+                    <button onClick={() => handleDeleteSkill(skill.id)}>
+                      {" "}
+                      X{" "}
+                    </button>
+                    <button type="sybmit">
+                      {" "}
+                      <FaCheck />{" "}
+                    </button>
+                  </span>
+                </p>
+              </form>
+            </div>
           );
         })
       ) : (
         <Spinner />
       )}
-      <button className={'addBtn'} onClick={handleAddNewSkill}> + </button>
+      <button className={"addBtn"} onClick={handleAddNewSkill}>
+        {" "}
+        +{" "}
+      </button>
     </>
   );
 };

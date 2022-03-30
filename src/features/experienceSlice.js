@@ -7,8 +7,8 @@ const initialState = {
   userExperience: [
     {
       id: 0,
-      startDate:new Date(),
-      endDate: new Date(),
+      startDate:"",
+      endDate: "",
       stillWork: "",
       jobTitle: "",
       companyName: "",
@@ -59,7 +59,6 @@ export const deleteExperienceAsync = createAsyncThunk(
 export const updateUserExperienceAsync = createAsyncThunk(
   "user/updateUserExperience",
   async (experienceData) => {
-    console.log("in update slice");
     const { id, experience } = experienceData;
     const experienceResult = await experienceService
       .updateUserExperince(id, experience)

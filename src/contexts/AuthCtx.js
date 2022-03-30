@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (data) => {
     const userDetails = await userService.addUserRegister(data);
-
     if (userDetails === "string") {
       return toast.error("Invalid input details. Try Agrain.");
     } else {
@@ -43,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         currentUserInfo({
           token: userDetails.token,
           userId: userDetails.userId,
-          name: userDetails.userName,
+          name: userDetails.name,
         })
       );
       sessionStorage.setItem("userData", JSON.stringify(userDetails));
@@ -65,7 +64,7 @@ export const AuthProvider = ({ children }) => {
         currentUserInfo({
           token: userDetails.token,
           userId: userDetails.userId,
-          name: userDetails.userName,
+          name: userDetails.name,
         })
       );
       toast.success("Have a great experince ! ");

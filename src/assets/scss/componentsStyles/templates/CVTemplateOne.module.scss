@@ -78,8 +78,8 @@
     }
     button {
       display: flex;
-      align-self: end;
-      align-items: end;
+      align-self:flex-end;
+      align-items: flex-end;
       background-color: green;
       color: white;
       border: none;
@@ -226,7 +226,7 @@
           }
           div {
             display: flex;
-            justify-content: end;
+            // justify-content: end;
             button {
               color: green;
               cursor: pointer;
@@ -288,6 +288,6 @@
 }
 .logo {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-right: 2rem;
 }
