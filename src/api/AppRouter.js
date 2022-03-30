@@ -4,8 +4,8 @@ import HomePage from "../pages/HomePage";
 import SignUp from "../components/forms/SignUp";
 import Login from "../components/forms/Login";
 import NotFoundPage from "../components/NotFoundPage";
-import UserProfile from "./../components/UserProfile";
-import Templates from "../components/user/ProfileContent/Templates";
+import UserProfile from "../components/user/UserProfile";
+import Templates from "../components/user/profileContent/Templates";
 import Documents from "../components/documents/Documents";
 
 function AppRouter() {

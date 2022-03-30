@@ -6,9 +6,10 @@ import {
   deleteLanguageAsync,
   getUserLanguagesAsync,
   updateUserLanguageAsync,
-} from "../../../features/languageSlice";
-import Spinner from "../../Spinner";
+} from "../../features/languageSlice";
+
 import { FaCheck } from "react-icons/fa";
+import Spinner from "../../components/Spinner";
 
 const EditLanguage = () => {
   const userId = useSelector((state) => state.user.userData.userId);

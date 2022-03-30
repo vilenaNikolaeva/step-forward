@@ -1,5 +1,5 @@
 import React from "react";
-import UserProfile from "../components/UserProfile";
+import UserProfile from "../components/user/UserProfile";
 import { useAuth } from "./../contexts/AuthCtx";
 import { Link } from "react-router-dom";
 

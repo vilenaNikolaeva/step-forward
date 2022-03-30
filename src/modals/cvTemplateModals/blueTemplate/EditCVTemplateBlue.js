@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import EducationContent from "../EducationContent";
+import EditExperience from "../EditExperience";
+import EditEducation from "../EditEducation";
+import EditSkill from "../EditSkill";
+import EditLanguage from "../EditLanguage";
+
 import {
   updateUserDescription,
   updateUserJobTitle,
@@ -13,7 +17,7 @@ import {
   getUserInfoAsync,
   updateUserInfo,
   updateUserOtherConnections,
-} from "../../../../features/userSlice";
+} from "../../../features/userSlice";
 
 import {
   FaLinkedin,
@@ -23,16 +27,13 @@ import {
   FaUserAlt,
   FaLink,
 } from "react-icons/fa";
-import EditExperience from "../EditExperience";
-import EditEducation from "../EditEducation";
-import EditSkill from "../EditSkill";
-import EditLanguage from "../EditLanguage";
 
-import logo from "../../../../assets/images/Logo.png";
-import styles from "../../../../assets/scss/componentsStyles/templates/CVTemplateOne.module.scss";
+import logo from "../../../assets/images/Logo.png";
+import styles from "../../../assets/scss/componentsStyles/templates/CVTemplateBlue.module.scss";
 
 
-const EditCVTemplateOne = () => {
+
+const EditCVTemplateBlue = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.userData.userId);
   const userInfo = useSelector((state) => state.user.userProfileInfo);
@@ -181,7 +182,7 @@ const EditCVTemplateOne = () => {
                 styles["templateOne-cvContent-leftBox-experience-content"]
               }
             >
-              <EditExperience styles={styles} />
+              <EditExperience />
             </div>
             {/* <div
                 className={
@@ -205,7 +206,7 @@ const EditCVTemplateOne = () => {
                 styles["templateOne-cvContent-leftBox-education-content"]
               }
             >
-              <EditEducation styles={styles}  />
+              <EditEducation/>
               {/* <EducationContent contentType="one" /> */}
             </div>
             <div
@@ -223,7 +224,7 @@ const EditCVTemplateOne = () => {
             <div
               className={styles["templateOne-cvContent-rightBox-skills-list"]}
             >
-              <EditSkill styles={styles}  />
+              <EditSkill/>
               {/* <p>Teamwork</p>
               <p>Organization Skills</p>
               <p>Creativity</p> */}
@@ -236,7 +237,7 @@ const EditCVTemplateOne = () => {
                 styles["templateOne-cvContent-rightBox-languages-list"]
               }
             >
-              <EditLanguage  styles={styles}  />
+              <EditLanguage />
               {/* <p>English</p>
               <p>Arabic</p> */}
             </div>
@@ -250,4 +251,4 @@ const EditCVTemplateOne = () => {
   );
 };
 
-export default EditCVTemplateOne;
+export default EditCVTemplateBlue;

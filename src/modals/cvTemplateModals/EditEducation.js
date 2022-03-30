@@ -11,9 +11,9 @@ import {
   updateStartDate,
   updateUniversity,
   updateUserEducationAsync,
-} from "../../../features/educationSlice";
-import Spinner from "../../Spinner";
+} from "../../features/educationSlice";
 import {FaCheck} from 'react-icons/fa'
+import Spinner from "../../components/Spinner";
 
 
 const EditEducation = () => {

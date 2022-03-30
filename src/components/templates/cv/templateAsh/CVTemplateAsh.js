@@ -10,12 +10,12 @@ import {
   FaUserAlt,
 } from "react-icons/fa";
 import logo from "../../../assets/images/Logo.png";
-import styles from "../../../assets/scss/componentsStyles/templates/CVTemplateTwo.module.scss";
+import styles from "../../../assets/scss/componentsStyles/templates/CVTemplateAsh.module.scss";
 import WorkExperienceContent from "../WorkExperienceContent";
-import MainSpecialization from "./../MainSpecializationContent";
-import SkillsContent from "./../SkillsContent";
+import MainSpecialization from "../MainSpecializationContent";
+import SkillsContent from "../SkillsContent";
 
-const CVTemplateTwo = () => {
+const CVTemplateAsh = () => {
   return (
     <div className={styles.templateTwo}>
       <div className={styles["templateTwo-profile"]}>
@@ -122,4 +122,4 @@ const CVTemplateTwo = () => {
   );
 };
 
-export default CVTemplateTwo;
+export default CVTemplateAsh;

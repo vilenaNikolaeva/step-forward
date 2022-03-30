@@ -7,6 +7,15 @@ import styles from "../../assets/scss/componentsStyles/ImageCropper.module.scss"
 
 const ImageCropper = () => {
 
+    // setImageFileState = (file) => {
+    //     if (file == null) {
+    //         this.setState({ imageFile: file, imageSrc: null, showEdit: true })
+    //     }
+    //     else {
+    //         this.setState({ imageFile: file, showEdit: true })
+    //     }
+    // }
+
     const base64StringtoFile = (base64String, filename) => {
         var arr = base64String.split(','), mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n)

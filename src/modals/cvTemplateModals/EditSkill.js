@@ -6,9 +6,10 @@ import {
   deleteSkillAsync,
   getUserSkillsAsync,
   updateUserSkillAsync,
-} from "../../../features/skillSlice";
-import Spinner from "../../Spinner";
+} from "../../features/skillSlice";
+
 import { FaCheck } from "react-icons/fa";
+import Spinner from "../../components/Spinner";
 
 const EditSkill = () => {
   const userId = useSelector((state) => state.user.userData.userId);

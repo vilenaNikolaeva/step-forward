@@ -12,9 +12,10 @@ import {
   updateJobTitle,
   updateStartDate,
   updateUserExperienceAsync,
-} from "../../../features/experienceSlice";
-import Spinner from "../../Spinner";
+} from "../../features/experienceSlice";
+
 import {FaCheck} from 'react-icons/fa'
+import Spinner from "../../components/Spinner";
 
 
 

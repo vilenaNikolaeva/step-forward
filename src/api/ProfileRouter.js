@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import MyDocuments from "../components/user/ProfileContent/MyDocuments";
+import MyDocuments from "../components/user/profileContent/MyDocuments";
 import ExampleCV from "./../components/ExampleCV";
-import Profile from '../components/user/ProfileContent/Profile';
-import Templates from './../components/user/ProfileContent/Templates';
+import Profile from '../components/user/profileContent/Profile';
+import Templates from './../components/user/profileContent/Templates';
 
 const ProfileRouter = () => {
   return (

@@ -1,21 +1,21 @@
 import React from "react";
 import { useModal } from "../../contexts/ModalCtx";
 import ModalWrapper from "../../wrappers/ModalWrapper";
-import EditCVTemplateOne from "../../components/templates/cv/templateOne/EditCVTemplateOne";
+import EditCVTemplateBlue from "../cvTemplateModals/blueTemplate/EditCVTemplateBlue";
 
 const ModalUserCV = () => {
   const { isOpenUserCvTemplateModal, setIsOpenUserCvTemplateModal } =
     useModal();
 
   return (
-    /* TODO */
+    /* TODO ----- render if templete blue or ashh*/
     <ModalWrapper
       setIsOpenModalComponent={setIsOpenUserCvTemplateModal}
       isOpenModalComponent={isOpenUserCvTemplateModal}
     >
       <div>
         <button  onClick={()=>setIsOpenUserCvTemplateModal(false)} className={'modalBackground-clsBtn'}>X</button>
-        <EditCVTemplateOne />
+        <EditCVTemplateBlue/>
       </div>
     </ModalWrapper>
   );
