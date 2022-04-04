@@ -107,7 +107,7 @@ export const request = async (url, options) => {
   }
 };
 
-export const getOptions = async (method = "get", body) => {
+export const getOptions = async (method = "get", body,type) => {
   const idToken = await getToken();
   const options = {
     method,
@@ -118,7 +118,9 @@ export const getOptions = async (method = "get", body) => {
     options.headers["Authorization"] = idToken;
   }
 
-  if (body) {
+  if (type === "formData") {
+    options.body = body;
+  } else {
     options.headers["Content-Type"] = "application/json";
     options.body = JSON.stringify(body);
   }

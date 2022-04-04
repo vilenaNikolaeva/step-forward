@@ -11,12 +11,12 @@ import {
   updateUserLink,
   updateUserInfo,
   updateUserDescription,
-  updateUserProfileStatus
+  updateUserProfileStatus,
   // updateUserProfileInfo,
 } from "../../features/userSlice.js";
 import ModalWrapper from "../../wrappers/ModalWrapper";
 import Spinner from "../../components/Spinner";
-import ImageCropper from "./ImageCropper";
+import ImageContent from "./ImageContent";
 
 import styles from "../../assets/scss/componentsStyles/modals/userModals/ModalUserProfile.module.scss";
 
@@ -54,7 +54,9 @@ const ModalUserProfile = () => {
                   type="checkbox"
                   name="isItPublic"
                   defaultChecked={userInfo.isItPublic ? "checked" : null}
-                  onClick={(e) => dispatch(updateUserProfileStatus(e.target.value))}
+                  onClick={(e) =>
+                    dispatch(updateUserProfileStatus(e.target.value))
+                  }
                 />{" "}
                 SHARE
               </label>
@@ -111,7 +113,7 @@ const ModalUserProfile = () => {
               <div className={styles["modal-container-form-btnContainer"]}>
                 <button
                   className={styles["modal-container-form-btnContainer-close"]}
-                  onClick={()=>setIsOpenUserProfileModal(false)}
+                  onClick={() => setIsOpenUserProfileModal(false)}
                 >
                   Close
                 </button>
@@ -123,7 +125,7 @@ const ModalUserProfile = () => {
                 </button>
               </div>
             </form>
-            <ImageCropper />
+            <ImageContent />
           </div>
         </ModalWrapper>
       )}

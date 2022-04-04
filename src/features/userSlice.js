@@ -1,23 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import "cropperjs/dist/cropper.css";
 import { toast } from "react-toastify";
 import userService from "../services/userService";
 
 const initialState = {
   userData: {},
   userProfileInfo: {
-    username: '',
-    jobTitle: '',
-    isItPublic: '',
-    address: '',
-    phone: '',
-    email: '',
-    link: '',
-    otherConnections: '',
-    description: '',
-    imageSrc: '',
-    imageFile: '',
-    cvTemplate: '',
-    clTemplate: '',
+    username: "",
+    jobTitle: "",
+    isItPublic: "",
+    address: "",
+    phone: "",
+    email: "",
+    link: "",
+    otherConnections: "",
+    description: "",
+    imageSrc: "",
+    imageFile: "",
+    cvTemplate: "",
+    clTemplate: "",
   },
 };
 export const getUserInfoAsync = createAsyncThunk(
@@ -31,13 +32,28 @@ export const getUserInfoAsync = createAsyncThunk(
   }
 );
 export const updateUserInfo = createAsyncThunk(
-  "user/updateUserInfo", 
+  "user/updateUserInfo",
   async (userData) => {
-    const {userId, userInfo} = userData;
+    const { userId, userInfo } = userData;
+    const formData = new FormData();
+    formData.append("username", userInfo.username);
+    formData.append("jobTitle", userInfo.jobTitle);
+    formData.append("isItPublic", userInfo.isItPublic);
+    formData.append("address", userInfo.address);
+    formData.append("phone", userInfo.phone);
+    formData.append("email", userInfo.email);
+    formData.append("link", userInfo.link);
+    formData.append("otherConnections", userInfo.otherConnections);
+    formData.append("description", userInfo.description);
+    formData.append("imageSrc", userInfo.imageSrc);
+    formData.append("imageFile", userInfo.imageFile);
+    formData.append("cvTemplate", userInfo.cvTemplate);
+    formData.append("clTemplate", userInfo.clTemplate);
+    
     const user = await userService
-      .updateUserProfileInfo(userId,userInfo)
-      .then((res) =>(res , toast.success('Successfully updated information.')))
-      .catch((err) =>toast.error(err.message));
+      .updateUserProfileInfo(userId, formData)
+      .then((res) => (res, toast.success("Successfully updated information.")))
+      .catch((err) => toast.error(err.message));
     return await user;
   }
 );
@@ -53,15 +69,15 @@ const userSlice = createSlice({
       state.userProfileInfo = action.payload;
     },
     updateUserProfileStatus(state) {
-      const status= state.userProfileInfo.isItPublic;
+      const status = state.userProfileInfo.isItPublic;
       state.userProfileInfo.isItPublic = !status;
     },
-    updateUserCVTemplate(state,action) {
-      state.userProfileInfo.cvTemplate= action.payload;
+    updateUserCVTemplate(state, action) {
+      state.userProfileInfo.cvTemplate = action.payload;
     },
-    updateUserCLTemplate(state,action) {
-       console.log(action.payload)
-      state.userProfileInfo.clTemplate= action.payload;
+    updateUserCLTemplate(state, action) {
+      console.log(action.payload);
+      state.userProfileInfo.clTemplate = action.payload;
     },
     updateUserFullName(state, action) {
       state.userProfileInfo.username = action.payload;
@@ -87,6 +103,12 @@ const userSlice = createSlice({
     updateUserEmail(state, action) {
       state.userProfileInfo.email = action.payload;
     },
+    updateUserImageSrc(state, action) {
+      state.userProfileInfo.imageSrc = action.payload;
+    },
+    updateUserImageFile(state, action) {
+      state.userProfileInfo.imageFile = action.payload;
+    },
     clearUserInfo(state) {
       state.userData = {};
     },
@@ -95,9 +117,10 @@ const userSlice = createSlice({
     builder.addCase(getUserInfoAsync.fulfilled, (state, action) => {
       state.userProfileInfo = action.payload;
     });
-    builder.addCase(updateUserInfo.fulfilled , (state,action)=>{
-      state.userProfileInfo=action.payload;
-    })
+    builder.addCase(updateUserInfo.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.userProfileInfo = action.payload;
+    });
   },
 });
 
@@ -115,9 +138,11 @@ export const {
   updateUserProfileStatus,
   updateUserDescription,
   updateUserJobTitle,
+  updateUserImageSrc,
+  updateUserImageFile,
   updateUserOtherConnections,
 } = userSlice.actions;
 
 export const selectUserInfo = (state) => state.users.userData;
-export const selectUserProfileInfo = (state)=>state.user.userProfileInfo;
+export const selectUserProfileInfo = (state) => state.user.userProfileInfo;
 export default userSlice.reducer;

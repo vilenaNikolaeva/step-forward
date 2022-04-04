@@ -23,6 +23,13 @@ export const put = async (url, data) => {
     const options = await getOptions('put', data);
     return await request(url, options);
 }
+export const putFormData = async (url, data) => {
+    if (!url || !data)
+        throw new Error('Invalid params in crud.put()');
+    const type='formData';
+    const options = await getOptions('put', data, type);
+    return await request(url, options);
+}
 
 export const del = async (url) => {
     if (!url)

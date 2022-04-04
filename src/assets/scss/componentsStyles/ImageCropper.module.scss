@@ -6,9 +6,11 @@
       float: right;
     }
     &-imageContainer {
+     
       &-image {
-        width: 40rem;
-        border-radius: 10rem;
+        max-height: 20rem;
+        max-width: 20rem;
+        border-radius: 1rem;
       }
     
       &-file {

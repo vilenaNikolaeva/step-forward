@@ -11,7 +11,7 @@ const addUserLogin = (userData) => {
     return requester.post(apiRoutes.userLoginURL(), userData);
 };
 const updateUserProfileInfo = (userId, userInfo) => {
-    return requester.put(apiRoutes.userProfileInfoURL(userId), userInfo)
+    return requester.putFormData(apiRoutes.userProfileInfoURL(userId), userInfo)
 }
 
 // const updateUserInfo = (userId, userData) => {
