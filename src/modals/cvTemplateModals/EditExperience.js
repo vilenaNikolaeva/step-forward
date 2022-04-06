@@ -13,14 +13,12 @@ import {
   updateStartDate,
   updateUserExperienceAsync,
 } from "../../features/experienceSlice";
-
-import {FaCheck} from 'react-icons/fa'
 import Spinner from "../../components/Spinner";
 
+import { FaCheck } from "react-icons/fa";
+import bluestyles from "../../assets/scss/componentsStyles/templates/EditCvTemplateBlue.module.scss";
 
-
-
-const EditExperience = (styles) => {
+const EditExperience = () => {
   const type = useSelector((state) => state.user.userProfileInfo.cvTemplate);
   const userId = useSelector((state) => state.user.userData.userId);
   const userExperiences = useSelector(
@@ -92,57 +90,66 @@ const EditExperience = (styles) => {
         {userExperiences || userExperiences !== undefined ? (
           userExperiences.map((exp, id) => {
             return (
-              <div key={id}>
-                <button className="deleteBtn" onClick={() => handleDeleteExperience(exp.id)}>
-                  X
-                </button>
-                <form
-                  onSubmit={(e) => handelUpdateUserExperience(e, exp.id)}
-                  key={exp.id}
-                >
-                  <span>
-                    <input
-                      type="date"
-                      name="startDate"
-                      defaultValue={exp.startDate
-                        ?.toLocaleString()
-                        .slice(0, 10)}
-                      onChange={(e) => handleChange(e, exp.id)}
-                    />{" "}
-                    -
-                    <input
-                      type="date"
-                      name="endDate"
-                      value={exp.endDate?.toLocaleString().slice(0, 10)}
-                      onChange={(e) => handleChange(e, exp.id)}
-                    />
-                  </span>
+              <form
+                className={
+                  bluestyles["tempBlue-cntnt-ltBox-experience-content-form"]
+                }
+                onSubmit={(e) => handelUpdateUserExperience(e, exp.id)}
+                key={exp.id}
+              >
+                <input
+                  type="text"
+                  name="jobTitle"
+                  placeholder=" Job Title..."
+                  defaultValue={exp.jobTitle}
+                  onChange={(e) => handleChange(e, exp.id)}
+                />
+                <input
+                  type="text"
+                  name="companyName"
+                  placeholder="Company Name..."
+                  defaultValue={exp.companyName}
+                  onChange={(e) => handleChange(e, exp.id)}
+                />
+                <span>
                   <input
-                    type="text"
-                    name="jobTitle"
-                    placeholder=" Job Title..."
-                    defaultValue={exp.jobTitle}
+                    type="date"
+                    name="startDate"
+                    defaultValue={exp.startDate?.toLocaleString().slice(0, 10)}
                     onChange={(e) => handleChange(e, exp.id)}
-                  />
+                  />{" "}
+                  -
                   <input
-                    type="text"
-                    name="companyName"
-                    placeholder="Company Name..."
-                    defaultValue={exp.companyName}
+                    type="date"
+                    name="endDate"
+                    value={exp.endDate?.toLocaleString().slice(0, 10)}
                     onChange={(e) => handleChange(e, exp.id)}
                   />
-                  <textarea
-                    type="text"
-                    name="description"
-                    placeholder="Description of your accomplishments..."
-                    defaultValue={exp.description}
-                    onChange={(e) => handleChange(e, exp.id)}
-                  />
-                  <div>
-                    <button className="sybmitBtn" type="sybmit"> <FaCheck/> </button>
-                  </div>
-                </form>
-              </div>
+                </span>
+                <textarea
+                  type="text"
+                  name="description"
+                  placeholder="Description of your accomplishments..."
+                  defaultValue={exp.description}
+                  onChange={(e) => handleChange(e, exp.id)}
+                />
+                <div>
+                  <button
+                     className={
+                      bluestyles["tempBlue-cntnt-ltBox-experience-content-form-delBtn"]
+                    }
+                  onClick={() => handleDeleteExperience(exp.id)}>
+                    X
+                  </button>
+                  <button 
+                  className={
+                    bluestyles["tempBlue-cntnt-ltBox-experience-content-form-sbmtBtn"]
+                  }
+                  type="sybmit">
+                    <FaCheck />
+                  </button>
+                </div>
+              </form>
             );
           })
         ) : (
@@ -154,7 +161,14 @@ const EditExperience = (styles) => {
   return (
     <>
       {type === "ash" ? handleTypeOne() : handleTypeTwo()}
-      <button className="addBtn" onClick={handleAddNewExperience}> +</button>
+      <button 
+      className={
+        bluestyles["tempBlue-cntnt-ltBox-experience-content-addBtn"]
+      }
+      onClick={handleAddNewExperience}>
+        {" "}
+        +
+      </button>
     </>
   );
 };

@@ -10,6 +10,7 @@ import {
 
 import { FaCheck } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
+import bluestyles from "../../assets/scss/componentsStyles/templates/EditCvTemplateBlue.module.scss";
 
 const EditSkill = () => {
   const userId = useSelector((state) => state.user.userData.userId);
@@ -53,6 +54,7 @@ const EditSkill = () => {
           return (
             <div key={id}>
               <form
+                className={bluestyles["tempBlue-cntnt-ltBox-skills-list-form"]}
                 onSubmit={(e) => handelUpdateUserSkill(e, skill.id)}
                 key={skill.id}
               >
@@ -64,14 +66,32 @@ const EditSkill = () => {
                     defaultValue={skill.title}
                     onChange={(e) => handleChange(e, skill.id)}
                   />
-                  <span>
-                    <button onClick={() => handleDeleteSkill(skill.id)}>
-                      {" "}
-                      X{" "}
+                  <span
+                    className={
+                      bluestyles[
+                        "tempBlue-cntnt-ltBox-skills-list-form-btnCont"
+                      ]
+                    }
+                  >
+                    <button
+                      className={
+                        bluestyles[
+                          "tempBlue-cntnt-ltBox-skills-list-form-btnCont-delBtn"
+                        ]
+                      }
+                      onClick={() => handleDeleteSkill(skill.id)}
+                    >
+                      X
                     </button>
-                    <button type="sybmit">
-                      {" "}
-                      <FaCheck />{" "}
+                    <button
+                      className={
+                        bluestyles[
+                          "tempBlue-cntnt-ltBox-skills-list-form-btnCont-svtBtn"
+                        ]
+                      }
+                      type="sybmit"
+                    >
+                      <FaCheck />
                     </button>
                   </span>
                 </p>
@@ -82,10 +102,12 @@ const EditSkill = () => {
       ) : (
         <Spinner />
       )}
-      <button className={"addBtn"} onClick={handleAddNewSkill}>
-        {" "}
-        +{" "}
-      </button>
+        <button
+          className={bluestyles["tempBlue-cntnt-ltBox-skills-list-addBtn"]}
+          onClick={handleAddNewSkill}
+        >
+          +
+        </button>
     </>
   );
 };

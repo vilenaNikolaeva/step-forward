@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import templateOne from '../../../assets/images/templateOne.png';
+import CVTemplateBlue from '../../../assets/images/cvTemplateBlue.PNG';
 import templateTwo from '../../../assets/images/templateTwo.png';
 import coverLetterOne from '../../../assets/images/coverLetterOne.PNG'
 import {updateUserCLTemplate, updateUserCVTemplate} from '../../../features/userSlice';
@@ -28,7 +28,7 @@ const Templates = () => {
       <div className={styles['templates-content']}>
         <div className={styles['templates-content-box']}>
           <div className={styles['templates-content-box-card']}>
-            <img width={300} height={350} src={templateOne} alt="templateImg"></img>
+            <img width={300} height={350} src={CVTemplateBlue} alt="templateImg"></img>
             <button name ={'blue'} onClick={(e)=>handleTemplate(e)}>Choose the template</button>
           </div>
           <div className={styles['templates-content-box-card']}>

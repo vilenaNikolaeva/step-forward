@@ -1,8 +1,9 @@
 import React from "react";
+import CVTemplateBlue from "./templates/cv/templateBlue/CVTemplateBlue";
 
 function ExampleCV (){
     return(
-        <h2>ExampleCV </h2>
+        <CVTemplateBlue/>
     )
 }
 

@@ -10,6 +10,7 @@ import {
 
 import { FaCheck } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
+import bluestyles from "../../assets/scss/componentsStyles/templates/EditCvTemplateBlue.module.scss";
 
 const EditLanguage = () => {
   const userId = useSelector((state) => state.user.userData.userId);
@@ -39,7 +40,7 @@ const EditLanguage = () => {
     dispatch(updateUserLanguageAsync({ id, language }));
   };
   const handleAddNewLanguage = () => {
-    dispatch(addNewLanguageAsync(userId)).then((res) => console.log(res));
+    dispatch(addNewLanguageAsync(userId)).then((res) => res);
   };
   const handleDeleteLanguage = (id) => {
     console.log(id);
@@ -53,6 +54,9 @@ const EditLanguage = () => {
           return (
             <div key={id}>
               <form
+                className={
+                  bluestyles["tempBlue-cntnt-rtBox-languages-list-form"]
+                }
                 onSubmit={(e) => handelUpdateUserLanguage(e, lng.id)}
                 key={lng.id}
               >
@@ -66,12 +70,10 @@ const EditLanguage = () => {
                   />
                   <span>
                     <button onClick={() => handleDeleteLanguage(lng.id)}>
-                      {" "}
-                      X{" "}
+                      X
                     </button>
                     <button type="sybmit">
-                      {" "}
-                      <FaCheck />{" "}
+                      <FaCheck />
                     </button>
                   </span>
                 </p>
@@ -82,7 +84,12 @@ const EditLanguage = () => {
       ) : (
         <Spinner />
       )}
-      <button onClick={handleAddNewLanguage}> + </button>
+        <button
+          className={bluestyles["tempBlue-cntnt-rtBox-languages-list-addBtn"]}
+          onClick={handleAddNewLanguage}
+        >
+          +
+        </button>
     </>
   );
 };

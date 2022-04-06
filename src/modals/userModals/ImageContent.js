@@ -6,7 +6,6 @@ import {
 } from "../../features/userSlice";
 import profilePicture from "../../assets/images/profilePicture.png";
 import styles from "../../assets/scss/componentsStyles/ImageCropper.module.scss";
-import Cropper from "react-easy-crop";
 
 const ImageContent = () => {
   const userImageSrc = useSelector(

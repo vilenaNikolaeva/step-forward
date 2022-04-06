@@ -14,7 +14,6 @@ const ModalUserCV = () => {
       isOpenModalComponent={isOpenUserCvTemplateModal}
     >
       <div>
-        <button  onClick={()=>setIsOpenUserCvTemplateModal(false)} className={'modalBackground-clsBtn'}>X</button>
         <EditCVTemplateBlue/>
       </div>
     </ModalWrapper>

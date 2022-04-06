@@ -29,15 +29,16 @@ import {
 } from "react-icons/fa";
 
 import logo from "../../../assets/images/Logo.png";
-import styles from "../../../assets/scss/componentsStyles/templates/CVTemplateBlue.module.scss";
-
-
+import styles from "../../../assets/scss/componentsStyles/templates/EditCvTemplateBlue.module.scss";
+import { useModal } from "../../../contexts/ModalCtx";
+import { Navigate } from "react-router-dom";
 
 const EditCVTemplateBlue = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.userData.userId);
   const userInfo = useSelector((state) => state.user.userProfileInfo);
-
+  const { setIsOpenUserCvTemplateModal,setIsOpenUserProfileModal } = useModal();
+  useModal();
   useEffect(() => {
     dispatch(getUserInfoAsync(userId));
   }, []);
@@ -46,60 +47,57 @@ const EditCVTemplateBlue = () => {
     e.preventDefault();
     dispatch(updateUserInfo({ userId, userInfo }));
   };
-  // TODOO
-  //  const handleUpdateExpereince=(e)=>{}
 
+  const handleRedirect = () =>{
+    
+  }
   return (
-    <div className={styles.templateOne}>
-      <form
-        onSubmit={handleUpdateUserInfo}
-        className={styles["templateOne-profile"]}
+    <div className={styles.tempBlue}>
+      <button
+        className={styles["tempBlue-clsBtn"]}
+        onClick={() => setIsOpenUserCvTemplateModal(false)}
       >
-        <div className={styles["templateOne-profile-objective"]}>
-          {userId ? (
-            <input
-              type="text"
-              name="username"
-              defaultValue={userInfo.username}
-              onChange={(e) => dispatch(updateUserFullName(e.target.value))}
-              placeholder="Full Name..."
-            />
-          ) : (
-            <h1> John Doe</h1>
-          )}
-          {userId ? (
-            <input
-              type="text"
-              name="jobTitle"
-              defaultValue={userInfo.jobTitle}
-              onChange={(e) => dispatch(updateUserJobTitle(e.target.value))}
-              placeholder="Job title..."
-            />
-          ) : (
-            <label>Position Title</label>
-          )}
-          {userId ? (
-            <textarea
-              type="text"
-              name="description"
-              defaultValue={userInfo.description}
-              onChange={(e) => dispatch(updateUserDescription(e.target.value))}
-              placeholder="Summary..."
-            />
-          ) : (
-            <span>Text area to place short objective.</span>
-          )}
+        CLOSE
+      </button>
+      <form onSubmit={handleUpdateUserInfo} className={styles["tempBlue-prfl"]}>
+        <div className={styles["tempBlue-prfl-objective"]}>
+          <input
+            type="text"
+            name="username"
+            defaultValue={userInfo.username}
+            onChange={(e) => dispatch(updateUserFullName(e.target.value))}
+            placeholder="Full Name..."
+          />
+          <input
+            type="text"
+            name="jobTitle"
+            defaultValue={userInfo?.jobTitle}
+            onChange={(e) => dispatch(updateUserJobTitle(e.target.value))}
+            placeholder="Job title..."
+          />
+          <textarea
+            type="text"
+            name="description"
+            defaultValue={userInfo.description}
+            onChange={(e) => dispatch(updateUserDescription(e.target.value))}
+            placeholder="Summary..."
+          />
         </div>
-        <div className={styles["templateOne-profile-image"]}>
-          {userInfo.ImageSrc ? (
-            <img alt="user Imagae" src={userInfo.ImageSrc} />
+        <div className={styles["tempBlue-prfl-image"]}>
+          {userInfo.imageSrc ? (
+            <img
+              alt="user Imagae"
+              width={130}
+              height={130}
+              src={userInfo.imageSrc}
+              onClick={handleRedirect}
+            />
           ) : (
             <FaUserAlt width={100} height={100} />
           )}
         </div>
-        <div className={styles["templateOne-profile-info"]}>
+        <div className={styles["tempBlue-prfl-info"]}>
           <span>
-            {userId ? (
               <input
                 type="text"
                 name="email"
@@ -107,13 +105,9 @@ const EditCVTemplateBlue = () => {
                 onChange={(e) => dispatch(updateUserEmail(e.target.value))}
                 placeholder="Email addres..."
               />
-            ) : (
-              "johnDoeExample@gmail.bg"
-            )}
             <FaRegEnvelope />
           </span>
           <span>
-            {userId ? (
               <input
                 type="text"
                 name="address"
@@ -121,13 +115,9 @@ const EditCVTemplateBlue = () => {
                 onChange={(e) => dispatch(updateUserAddress(e.target.value))}
                 placeholder="Address..."
               />
-            ) : (
-              "MS,MV,Edgertown, st. Strawbarry Lane 22"
-            )}
             <FaMapMarkerAlt />
           </span>
           <span>
-            {userId ? (
               <input
                 type="text"
                 name="phone"
@@ -135,13 +125,9 @@ const EditCVTemplateBlue = () => {
                 onChange={(e) => dispatch(updateUserPhone(e.target.value))}
                 placeholder="Phone number..."
               />
-            ) : (
-              "+ 359 888 888 999"
-            )}
             <FaPhone />
           </span>
           <span>
-            {userId ? (
               <input
                 type="text"
                 name="link"
@@ -149,97 +135,49 @@ const EditCVTemplateBlue = () => {
                 onChange={(e) => dispatch(updateUserLink(e.target.value))}
                 placeholder="Link..."
               />
-            ) : (
-              " someExampleLink.com"
-            )}
             <FaLinkedin />
           </span>
           <span>
-            {userId ? (
               <input
                 type="text"
                 name="otherConnections"
-                defaultValue={userInfo.link}
+                defaultValue={userInfo.otherConnections}
                 onChange={(e) =>
                   dispatch(updateUserOtherConnections(e.target.value))
                 }
                 placeholder="Other connections..."
               />
-            ) : (
-              " otherConnections.com"
-            )}
             <FaLink />
           </span>
         </div>
-        <button type="submit">Save</button>
+        <button className={styles['tempBlue-prfl-svBtn']}type="submit">Save</button>
       </form>
-      <div className={styles["templateOne-cvContent"]}>
-        <div className={styles["templateOne-cvContent-leftBox"]}>
-          <div className={styles["templateOne-cvContent-leftBox-experience"]}>
+      <div className={styles["tempBlue-cntnt"]}>
+        <div className={styles["tempBlue-cntnt-ltBox"]}>
+          <div className={styles["tempBlue-cntnt-ltBox-experience"]}>
             <label>Experiences</label>
-            <div
-              className={
-                styles["templateOne-cvContent-leftBox-experience-content"]
-              }
-            >
+            <div className={styles["tempBlue-cntnt-ltBox-experience-content"]}>
               <EditExperience />
             </div>
-            {/* <div
-                className={
-                  styles["templateOne-cvContent-leftBox-experience-content"]
-                }
-              >
-                <ExperienceContent />
-              </div>
-              <div
-                className={
-                  styles["templateOne-cvContent-leftBox-experience-content"]
-                }
-              >
-                <ExperienceContent />
-              </div> */}
           </div>
-          <div className={styles["templateOne-cvContent-leftBox-education"]}>
-            <label>Education</label>
-            <div
-              className={
-                styles["templateOne-cvContent-leftBox-education-content"]
-              }
-            >
-              <EditEducation/>
-              {/* <EducationContent contentType="one" /> */}
-            </div>
-            <div
-              className={
-                styles["templateOne-cvContent-leftBox-education-content"]
-              }
-            >
-              {/* <EducationContent contentType="one" /> */}
+          <div className={styles["tempBlue-cntnt-ltBox-skills"]}>
+            <label>Skills</label>
+            <div className={styles["tempBlue-cntnt-ltBox-skills-list"]}>
+              <EditSkill />
             </div>
           </div>
         </div>
-        <div className={styles["templateOne-cvContent-rightBox"]}>
-          <div className={styles["templateOne-cvContent-rightBox-skills"]}>
-            <label>Skills</label>
-            <div
-              className={styles["templateOne-cvContent-rightBox-skills-list"]}
-            >
-              <EditSkill/>
-              {/* <p>Teamwork</p>
-              <p>Organization Skills</p>
-              <p>Creativity</p> */}
+        <div className={styles["tempBlue-cntnt-rtBox"]}>
+          <div className={styles["tempBlue-cntnt-rtBox-education"]}>
+            <label>Education</label>
+            <div className={styles["tempBlue-cntnt-rtBox-education-content"]}>
+              <EditEducation />
             </div>
           </div>
-          <div className={styles["templateOne-cvContent-rightBox-languages"]}>
+          <div className={styles["tempBlue-cntnt-rtBox-languages"]}>
             <label>Languages</label>
-            <div
-              className={
-                styles["templateOne-cvContent-rightBox-languages-list"]
-              }
-            >
+            <div className={styles["tempBlue-cntnt-rtBox-languages-list"]}>
               <EditLanguage />
-              {/* <p>English</p>
-              <p>Arabic</p> */}
             </div>
           </div>
         </div>

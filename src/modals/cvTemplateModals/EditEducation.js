@@ -12,9 +12,10 @@ import {
   updateUniversity,
   updateUserEducationAsync,
 } from "../../features/educationSlice";
-import {FaCheck} from 'react-icons/fa'
+import { FaCheck } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 
+import bluestyles from "../../assets/scss/componentsStyles/templates/EditCvTemplateBlue.module.scss";
 
 const EditEducation = () => {
   const type = useSelector((state) => state.user.userProfileInfo.cvTemplate);
@@ -97,57 +98,67 @@ const EditEducation = () => {
         {userEducations || userEducations !== undefined ? (
           userEducations.map((educ, id) => {
             return (
-              <div key={id}>
-                <button onClick={() => handleDeleteEducation(educ.id)}>
-                 X
-                </button>
-                <form
-                  onSubmit={(e) => handelUpdateUserEducation(e, educ.id)}
-                  key={educ.id}
-                >
-                  <span>
-                    <input
-                      type="date"
-                      name="startDate"
-                      defaultValue={educ.startDate
-                        ?.toLocaleString()
-                        .slice(0, 10)}
-                      onChange={(e) => handleChange(e, educ.id)}
-                    />{" "}
-                    -
-                    <input
-                      type="date"
-                      name="endDate"
-                      value={educ.endDate?.toLocaleString().slice(0, 10)}
-                      onChange={(e) => handleChange(e, educ.id)}
-                    />
-                  </span>
+              <form
+                className={
+                  bluestyles["tempBlue-cntnt-rtBox-education-content-form"]
+                }
+                onSubmit={(e) => handelUpdateUserEducation(e, educ.id)}
+                key={educ.id}
+              >
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Degree Title..."
+                  defaultValue={educ.title}
+                  onChange={(e) => handleChange(e, educ.id)}
+                />
+                <input
+                  type="text"
+                  name="university"
+                  placeholder="University..."
+                  defaultValue={educ.university}
+                  onChange={(e) => handleChange(e, educ.id)}
+                />
+                <span>
                   <input
-                    type="text"
-                    name="title"
-                    placeholder="Degree Title..."
-                    defaultValue={educ.title}
+                    type="date"
+                    name="startDate"
+                    defaultValue={educ.startDate?.toLocaleString().slice(0, 10)}
                     onChange={(e) => handleChange(e, educ.id)}
-                  />
+                  />{" "}
+                  -
                   <input
-                    type="text"
-                    name="university"
-                    placeholder="University..."
-                    defaultValue={educ.university}
+                    type="date"
+                    name="endDate"
+                    value={educ.endDate?.toLocaleString().slice(0, 10)}
                     onChange={(e) => handleChange(e, educ.id)}
                   />
-                  <textarea
-                    type="text"
-                    name="description"
-                    placeholder="Description of your accomplishments..."
-                    defaultValue={educ.description}
-                    onChange={(e) => handleChange(e, educ.id)}
-                  />
-                  <div>
-                    <button type="sybmit"> <FaCheck/> </button>
-                  </div>
-                </form>
-              </div>
+                </span>
+                <textarea
+                  type="text"
+                  name="description"
+                  placeholder="Description of your accomplishments..."
+                  defaultValue={educ.description}
+                  onChange={(e) => handleChange(e, educ.id)}
+                />
+                <div>
+                  <button
+                    className={
+                      bluestyles["tempBlue-cntnt-rtBox-education-content-form-delBtn"]
+                    }
+                    onClick={() => handleDeleteEducation(educ.id)}
+                  >
+                    X
+                  </button>
+                  <button
+                    className={
+                      bluestyles["tempBlue-cntnt-rtBox-education-content-form-sbmtBtn"]
+                    }
+                  type="sybmit">
+                    <FaCheck />{" "}
+                  </button>
+                </div>
+              </form>
             );
           })
         ) : (
@@ -160,7 +171,11 @@ const EditEducation = () => {
   return (
     <>
       {type === "one" ? handleTypeOne() : handleTypeTwo()}
-      <button onClick={handleAddNewEducation}> + </button>
+      <button 
+        className={
+          bluestyles["tempBlue-cntnt-rtBox-education-content-addBtn"]
+        }
+      onClick={handleAddNewEducation}> + </button>
     </>
   );
 };
