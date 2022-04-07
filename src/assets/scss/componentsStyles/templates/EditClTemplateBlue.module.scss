@@ -1,0 +1,190 @@
+$background: url("./../../../images/4770cf05fe96befcdcd74204ba533198.jpg");
+
+.tempBlue {
+    background-color: #f6f7f9;
+    max-width: 100rem;
+    // height: 80rem;
+    background-image: $background;
+    background-position: 60rem 0rem 20rem 0;
+    background-image: linear-gradient(to bottom, rgba(223, 228, 244, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%),
+        $background;
+    &-clsBtn {
+        background-color: transparent;
+        color: black;
+        margin-left: 90%;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        font-weight: 800;
+        padding: 0.5rem;
+    }
+    &-cont {
+        display: flex;
+        margin:4rem 0 4rem 0;
+        &-ltCont {
+            width: 40rem;
+            &-flform {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                padding: 3rem;
+                &-username {
+                    color: #007aff;
+                    font-style: italic;
+                    font-size: 2.8rem;
+                    font-weight: 800;
+                    text-align: center;
+                    letter-spacing: 0.2rem;
+                }
+                &-jobTitle {
+                    color: rgb(44, 79, 221);
+                    font-style: italic;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    letter-spacing: 0.2rem;
+                    text-align: center;
+                }
+                input {
+                    border: none;
+                    margin:0.5rem;
+                    background-color: transparent;
+                    border-bottom: 2px dotted white;
+                }
+                img {
+                    align-self: center;
+                    border-radius: 50rem;
+                    margin: 3rem 0rem 3rem 0rem;
+                    border: 2px solid #007aff;
+                }
+                label {
+                    color: #8799ab;
+                    padding-top: 2rem;
+                    font-size: 1.8rem;
+                    font-weight: 900;
+                    padding-bottom: 3rem;
+                    border-bottom: 2px solid #91adcb;
+                }
+                &-contactBox {
+                    margin-top: 2rem;
+                    p {
+                        display: flex;
+                        padding-left: 0.5rem;
+                        align-items: baseline;
+                        color: #7795b5;
+                        font-weight: 700;
+                        input {
+                            margin-left: 1rem;
+                            text-align: center;
+                            color:#2872c2;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                &-recepBox {
+                    margin-top: 2rem;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    input {
+                        margin: 0.5rem;
+                        color:#2872c2;
+                    }
+                    input:nth-child(1){
+                        font-size: 1.8rem;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        &-rtCont {
+            width: 60rem;
+            padding: 0rem 5rem 0rem 3rem;
+            &-rtForm {
+                display: flex;
+                justify-content: start;
+                flex-direction: column;
+                height: 100%;
+                &-label {
+                    margin: 5rem 0 5rem 0;
+                    color: #007aff;
+                    display: flex;
+                    align-self: flex-start;
+                    flex-direction: column;
+                    font-style: italic;
+                    font-size: 2rem;
+                    font-weight: 800;
+                    letter-spacing: 0.2rem;
+                }
+                &-appel {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                    max-width: 30rem;
+                    align-items: flex-start;
+                    input {
+                        background-color: transparent;
+                        border: none;
+                        margin: 0.5rem 0 0.5rem 0;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        font-style: italic;
+                        color: #2872c2;
+                        border-bottom: 2px dotted #7795b5;
+                    }
+                    label {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        display: flex;
+                        justify-content: flex-start;
+                    }
+                }
+                &-prsnttnBox {
+                    min-width: 50rem;
+                    display: flex;
+                    justify-content: flex-start;
+                    textarea {
+                        margin: 5rem 0 5rem 0;
+                        min-height: 50rem;
+                        width: 50rem;
+                        border: 1px dotted lightblue;
+                        letter-spacing: 0.2rem;
+                        background-color: transparent;
+                    }
+                }
+                &-regardsBox{
+                    display: flex;
+                    justify-content: space-between;
+                    input {
+                        background-color: transparent;
+                        border: none;
+                        margin: 0.5rem 0 0.5rem 0;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        font-style: italic;
+                        color: #2872c2;
+                        border-bottom: 2px dotted #7795b5;
+                    }
+                }
+                input {
+                    display: flex;
+                    justify-content: flex-start;
+                    background-color: transparent;
+                    border: none;
+                    margin: 0.5rem 0 0.5rem 0;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    font-style: italic;
+                    color: #2872c2;
+                    border-bottom: 2px dotted #7795b5;
+                }
+            }
+            input {
+                text-align: left;
+            }
+          
+        }
+    }
+    &-logo{
+        display: flex;
+        justify-content: flex-end;
+    }
+}

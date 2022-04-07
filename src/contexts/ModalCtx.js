@@ -7,6 +7,7 @@ export const useModal = () => useContext(ModalCtx);
 export const ModalProvider = ({ children }) => {
    const [isOpenUserProfileModal, setIsOpenUserProfileModal] = useState(false);
    const [isOpenUserCvTemplateModal, setIsOpenUserCvTemplateModal] = useState(false);
+   const [isOpenUserClTemplateModal, setIsOpenUserClTemplateModal]= useState(false);
    
    const showUserProfileInfo = () =>{
        setIsOpenUserProfileModal(true);
@@ -20,6 +21,8 @@ export const ModalProvider = ({ children }) => {
         setIsOpenUserProfileModal,
         isOpenUserCvTemplateModal,
         setIsOpenUserCvTemplateModal,
+        isOpenUserClTemplateModal,
+        setIsOpenUserClTemplateModal,
         showUserProfileInfo
     };
     return <ModalCtx.Provider value={value}>{children}</ModalCtx.Provider>;

@@ -37,8 +37,8 @@ const EditCVTemplateBlue = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.userData.userId);
   const userInfo = useSelector((state) => state.user.userProfileInfo);
-  const { setIsOpenUserCvTemplateModal,setIsOpenUserProfileModal } = useModal();
-  useModal();
+  const { setIsOpenUserCvTemplateModal } = useModal();
+  
   useEffect(() => {
     dispatch(getUserInfoAsync(userId));
   }, []);
@@ -48,9 +48,6 @@ const EditCVTemplateBlue = () => {
     dispatch(updateUserInfo({ userId, userInfo }));
   };
 
-  const handleRedirect = () =>{
-    
-  }
   return (
     <div className={styles.tempBlue}>
       <button
@@ -90,7 +87,6 @@ const EditCVTemplateBlue = () => {
               width={130}
               height={130}
               src={userInfo.imageSrc}
-              onClick={handleRedirect}
             />
           ) : (
             <FaUserAlt width={100} height={100} />

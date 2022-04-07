@@ -4,7 +4,6 @@ $background: url("./../../../images/4770cf05fe96befcdcd74204ba533198.jpg");
   background-image: $background;
   background-image: linear-gradient(to bottom, rgba(223, 228, 244, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), $background;
   max-width: 90rem;
-  height: 100%;
   text-align: center;
   color: darkblue;
   font-size: 1.3rem;
@@ -33,6 +32,8 @@ $background: url("./../../../images/4770cf05fe96befcdcd74204ba533198.jpg");
       margin-bottom: 0.3rem;
       border: none;
       border-bottom: 1px dotted #007aff;
+      letter-spacing: 0.1rem;
+
     }
     &-svBtn {
       align-self: end;

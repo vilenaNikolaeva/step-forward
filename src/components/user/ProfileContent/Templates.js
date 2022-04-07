@@ -13,15 +13,22 @@ import styles from '../../../assets/scss/componentsStyles/templates/Templates.mo
 
 const Templates = () => {
  const dispatch = useDispatch();
- const {setIsOpenUserCvTemplateModal } = useModal();
+ const {setIsOpenUserCvTemplateModal,setIsOpenUserClTemplateModal } = useModal();
 
- const handleTemplate=(e)=>{
+ const handleCVTemplate=(e)=>{
      const template= e.target.name;
   dispatch(updateUserCVTemplate(template))
     if(template === 'blue'){
       setIsOpenUserCvTemplateModal(true)
     }
  }
+ const handleCLTemplate=(e)=>{
+  const template= e.target.name;
+dispatch(updateUserCLTemplate(template))
+ if(template === 'blue'){
+   setIsOpenUserClTemplateModal(true)
+ }
+}
   return (
     <div className={styles.templates}>
       <label> CV Templates </label>
@@ -29,11 +36,11 @@ const Templates = () => {
         <div className={styles['templates-content-box']}>
           <div className={styles['templates-content-box-card']}>
             <img width={300} height={350} src={CVTemplateBlue} alt="templateImg"></img>
-            <button name ={'blue'} onClick={(e)=>handleTemplate(e)}>Choose the template</button>
+            <button name ={'blue'} onClick={(e)=>handleCVTemplate(e)}>Choose the template</button>
           </div>
           <div className={styles['templates-content-box-card']}>
             <img width={300} height={350} src={templateTwo} alt="templateImg"></img>
-            <button name ={'ash'}  onClick={(e)=>handleTemplate(e)} >Choose the template</button>
+            <button name ={'ash'}  onClick={(e)=>handleCVTemplate(e)} >Choose the template</button>
           </div>
         </div>
       </div>
@@ -42,11 +49,11 @@ const Templates = () => {
         <div className={styles['templates-content-box']}>
           <div className={styles['templates-content-box-card']}>
             <img width={300} height={350} src={coverLetterOne} alt="templateImg"></img>
-            <button name={'ash'}onClick={(e)=>dispatch(updateUserCLTemplate(e.target.name))}>Choose the template</button>
+            <button name={'ash'} onClick={(e)=>handleCLTemplate(e)}>Choose the template</button>
           </div>
           <div className={styles['templates-content-box-card']}>
             <img width={300} height={350} src={""} alt="upcomming ..."></img>
-            <button name={'blue'} onClick={(e)=>dispatch(updateUserCLTemplate(e.target.name))}>Choose the template</button>
+            <button name={'blue'} onClick={(e)=>handleCLTemplate(e)} >Choose the template</button>
           </div>
         </div>
       </div>
