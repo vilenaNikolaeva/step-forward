@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import coverLetterReducer from "../features/coverLetterSlice";
 import educationReducer from "../features/educationSlice";
 import experienceReducer from "../features/experienceSlice";
 import languageReducer from "../features/languageSlice";
@@ -11,6 +12,7 @@ export const store = configureStore({
     experience: experienceReducer,
     education: educationReducer,
     skill: skillReducer,
-    language: languageReducer
+    language: languageReducer,
+    clLetter: coverLetterReducer,
   },
 });

@@ -13,16 +13,17 @@ const addUserLogin = (userData) => {
 const updateUserProfileInfo = (userId, userInfo) => {
     return requester.putFormData(apiRoutes.userProfileInfoURL(userId), userInfo)
 }
-
-// const updateUserInfo = (userId, userData) => {
-//     return requester.put(apiRoutes.userByIdURL(userId), userData);
-// }
+const updateUserCoverLetter =(userId, coverLetter)=>{
+    console.log(userId,coverLetter)
+    return requester.put(apiRoutes.updateCoverLetterURL(userId),coverLetter)
+}
 
 const userService = {
     getUserProfileInfo,
     addUserRegister,
     addUserLogin,
     updateUserProfileInfo,
+    updateUserCoverLetter,
 };
 
 export default userService;

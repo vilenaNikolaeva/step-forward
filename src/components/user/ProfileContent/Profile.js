@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "../../../assets/scss/componentsStyles/Profile.module.scss";
@@ -7,7 +7,10 @@ import { useModal } from "../../../contexts/ModalCtx";
 
 const Profile = () => {
   const userName = useSelector((state) => state.user.userData.name);
+  
   const { setIsOpenUserProfileModal } = useModal();
+  useEffect(()=>{
+  },[userName])
   return (
     <div>
       <div className={styles.userInfoBtn}>

@@ -15,6 +15,7 @@ const initialState = {
     link: "",
     otherConnections: "",
     description: "",
+    coverLetter: {},
     imageSrc: "",
     imageFile: "",
     cvTemplate: "",
@@ -57,6 +58,7 @@ export const updateUserInfo = createAsyncThunk(
     return await user;
   }
 );
+
 
 const userSlice = createSlice({
   name: "user",

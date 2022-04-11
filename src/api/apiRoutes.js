@@ -8,6 +8,7 @@ const userRoutes = {
   userEducationURL: (userId) =>`${BASE_URL}User/${userId}/educations`,
   userSkillURL: (userId) =>`${BASE_URL}User/${userId}/skills`,
   userLanguageURL: (userId) =>`${BASE_URL}User/${userId}/languages`,
+  updateCoverLetterURL:(userId)=>`${BASE_URL}User/${userId}/coverLetter`,
 };
 const userExperinceRoutes = {
   updateExperienceURL: (id) => `${BASE_URL}Experience/${id}`,

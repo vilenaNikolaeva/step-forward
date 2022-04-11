@@ -21,7 +21,13 @@
                 margin: 2rem;
                 padding: 2rem;
                 border: 1px solid white;
-               
+               label{
+                   position: absolute;
+                   color:#705959;
+                   font-weight: 800;
+                   text-decoration: underline;
+                   transform: rotate(-30deg);
+               }
                 img {
                     margin-bottom: 2rem;
                 }

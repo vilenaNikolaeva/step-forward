@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import CVTemplateBlue from '../../../assets/images/cvTemplateBlue.PNG';
 import templateTwo from '../../../assets/images/templateTwo.png';
 import coverLetterOne from '../../../assets/images/coverLetterOne.PNG'
+import coverLetterBlue from '../../../assets/images/clTemplateBlue.PNG'
 import {updateUserCLTemplate, updateUserCVTemplate} from '../../../features/userSlice';
 
 import { useModal } from "../../../contexts/ModalCtx";
@@ -39,21 +40,23 @@ dispatch(updateUserCLTemplate(template))
             <button name ={'blue'} onClick={(e)=>handleCVTemplate(e)}>Choose the template</button>
           </div>
           <div className={styles['templates-content-box-card']}>
-            <img width={300} height={350} src={templateTwo} alt="templateImg"></img>
-            <button name ={'ash'}  onClick={(e)=>handleCVTemplate(e)} >Choose the template</button>
+            <label>Comming Soon ...</label>
+            <img width={300} height={350} src={templateTwo} alt="templateImg"/>
+            <button  disabled={true} name ={'ash'}  onClick={(e)=>handleCVTemplate(e)} >Choose the template</button>
           </div>
         </div>
       </div>
       <label> Cover Letters</label>
       <div className={styles['templates-content']}>
         <div className={styles['templates-content-box']}>
-          <div className={styles['templates-content-box-card']}>
-            <img width={300} height={350} src={coverLetterOne} alt="templateImg"></img>
-            <button name={'ash'} onClick={(e)=>handleCLTemplate(e)}>Choose the template</button>
+        <div className={styles['templates-content-box-card']}>
+            <img width={300} height={350} src={coverLetterBlue} alt="templateImg"></img>
+            <button  name={'blue'} onClick={(e)=>handleCLTemplate(e)} >Choose the template</button>
           </div>
           <div className={styles['templates-content-box-card']}>
-            <img width={300} height={350} src={""} alt="upcomming ..."></img>
-            <button name={'blue'} onClick={(e)=>handleCLTemplate(e)} >Choose the template</button>
+            <label>Comming Soon ...</label>
+            <img width={300} height={350} src={coverLetterOne} alt="templateImg"></img>
+            <button  disabled={true} name={'ash'} onClick={(e)=>handleCLTemplate(e)}>Choose the template</button>
           </div>
         </div>
       </div>
